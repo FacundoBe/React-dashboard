@@ -6,9 +6,9 @@ function App() {
 
   return (
     <>
-    
-      <h1>Vite + React</h1>
-     
+      <main>
+        <h1>🔱 Cryptofolio</h1>
+      </main>
     </>
   )
 }
