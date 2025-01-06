@@ -1,50 +1,36 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
+
 
 /* Variables css para los colores*/
 :root {
-  --white: #fff;
+  --white: #e6e6e6;
   --black: #111;
   --blue: #3a80e9;
-  --grey: #888;
+  --grey: #b3b3b3;
   --darkgrey: #1b1b1b;
-  --green: #61c96f;
-  --red: #f94141;
+  --green: #60cf6f;
+  --red: #c86066;
+  --darkblue: #525c6c;
+  --selected:rgba(209, 218, 233, 0.091);
+  background-color: var(--darkblue);
+  color: var(--white);
 }
 
 #root {
   max-width: 1280px;
   margin: 0 auto;
   text-align: center;
-  font-family: "Poppins", serif;
-  font-weight: 200;
+  font-family: "Inter", serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
   font-style: normal;
 }
 
-main{
-  height: 200vh;
-}
+
 
 /* Color de seleccion personalizado */
 ::selection{
   background-color: var(--blue);
 }
 
-
-/* Barra de scroll personalizada */
-html {
-  scroll-behavior: smooth;
-}
-
-::-webkit-scrollbar {
-  width: 0.3rem;
-}
-
-::-webkit-scrollbar-track {
-  background-color: var(--black);
-}
-
-::-webkit-scrollbar-thumb {
-  background: var(--blue);
-  border-radius: 10px;
-}
 

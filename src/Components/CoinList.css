@@ -1,0 +1,109 @@
+/* block image selecting or dragging*/
+img {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-user-drag: none;
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+}
+
+.down {
+  color: var(--red);
+}
+
+.up {
+  color: var(--green);
+}
+
+.coin-list-container {
+  height: 75vh;
+  overflow: hidden;
+  padding: 15px 20px 15px 15px;
+  color: var(--white);
+  background: radial-gradient(
+      farthest-side at top left,
+      rgba(21, 21, 71, 0.75),
+      transparent
+    ),
+    radial-gradient(
+      farthest-side at bottom left,
+      rgba(34, 77, 120, 0.75),
+      transparent
+    ),
+    radial-gradient(
+        farthest-corner at bottom right,
+        rgba(7, 8, 72, 0.75),
+        transparent
+      )
+      #1b353b;
+}
+
+.coin-list {
+  height: 100%;
+  overflow-y: scroll;
+  padding-right: 10px;
+  font-size: 0.9rem;
+}
+
+.coin-row-container {
+  display: grid;
+  grid-template-columns: 70px 0.35fr 2fr 1fr 2fr 2fr 2fr;
+  padding: 12px 0px 12px 0px;
+  align-items: center;
+  justify-items: end;
+  box-shadow: 0px -1px var(--selected);
+}
+
+.coin-row-container:hover {
+  background-color: var(--selected);
+}
+
+.justify-left {
+  justify-self: start;
+}
+
+.justify-center {
+  justify-self: center;
+}
+
+.header-coin-name {
+  grid-column: 2/4;
+}
+
+.briefcase-icon{
+    stroke:var(--selected);
+    width: 30px;
+}
+
+.briefcase-icon-selected{
+    stroke:var(--white);
+    width: 30px;
+}
+
+.coin-name {
+  display: flex;
+  justify-self: left;
+}
+
+.coin-name div {
+  font-weight: 800;
+}
+
+.coin-name span {
+  padding-left: 0.3em;
+  color: var(--grey);
+}
+
+.coin-image {
+  width: 30px;
+  object-fit: cover;
+  padding-right: 1em;
+}
+
+/* scrollbars*/
+.coin-list {
+  scrollbar-width: thin;
+  scrollbar-color: var(--white) var(--selected);
+}
