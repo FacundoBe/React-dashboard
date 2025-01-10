@@ -11,7 +11,7 @@ const options = [
 
 export default function CoinSourceForm() {
 
-    const [value, setValue] = useState(options[0])
+    const [selectedOption, setSelectedOption] = useState(options[0])
 
 
     return (
@@ -24,7 +24,7 @@ export default function CoinSourceForm() {
                 <div className="coin-info">
                     <div className="flex-col left">
                         <label htmlFor="coin-select">Coin</label>
-                        <SelectSearch id="coin-select" options={options} value={value} onChange={val => setValue(val)} />
+                        <SelectSearch id="coin-select" options={options} selectedOption={selectedOption} onChange={val => setSelectedOption(val)} />
                     </div>
                     <div className="flex-col left">
                         <label htmlFor="coin-amount-input"> Amount </label>

@@ -1,14 +1,16 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useRef, useState } from 'react'
 import styles from './selectsearch.module.css'
-export default function Select({ value, onChange, options , id="" }) {
+export default function Select({ selectedOption, onChange, options, id = "" }) {
 
     const [searchValue, setSearchValue] = useState("")
     const [isOpen, setIsOpen] = useState(false)
     const [highligtedIndex, setHighligtedIndex] = useState(0)
-    const [placeholder, setPlaceholder] = useState("")             //uso el placeholder para mostrar el valor elejido pero que desaparesca al escribir una busqueda
     const containerRef = useRef()
     const inputRef = useRef()
+
+    const placeholder = selectedOption?.label    // If there is a previously selected value of "selectedOption" state 
+    //                                              it is shown in the input using the placeholder    
 
     function clearOptions(e) {
         e.stopPropagation()
@@ -19,7 +21,6 @@ export default function Select({ value, onChange, options , id="" }) {
 
 
     function handleInputChange(e) {
-
         setSearchValue(e.target.value)
     }
 
@@ -29,16 +30,9 @@ export default function Select({ value, onChange, options , id="" }) {
     }
         , [isOpen])
 
-    useEffect(() => {   // syncs the placeholder with the reveived state value (value.label)
-        if (value?.label !== undefined) {
-            setPlaceholder(value.label)
-        } else setPlaceholder("")
-
-    }, [value?.label])
 
     const filteredOptions = searchValue === "" ? options
         : options.filter(option => option.label.toLowerCase().includes(searchValue.toLowerCase()))
-
 
 
     // sets event handlers for keyword support
@@ -89,7 +83,7 @@ export default function Select({ value, onChange, options , id="" }) {
                 onClick={() => setIsOpen(prev => !prev)}
             >
                 <input
-                    className={styles.value}
+                    className={styles.selectedOption}
                     id={id}
                     value={searchValue}
                     onChange={(e) => handleInputChange(e)}
@@ -117,9 +111,9 @@ export default function Select({ value, onChange, options , id="" }) {
                         <li key={option.label}
                             className={`${styles.option} ${index === highligtedIndex ? styles.highlighted : ""}`}
                             onMouseEnter={() => setHighligtedIndex(index)}
-                            onMouseDown={(e) => {   // ** no funciona con onClick revisar por que
+                            onMouseDown={(e) => {  
                                 e.stopPropagation()
-                                if (option !== value) onChange(option)
+                                if (option !== selectedOption) onChange(option)
                                 setSearchValue("")
                                 setIsOpen(false)
                             }}

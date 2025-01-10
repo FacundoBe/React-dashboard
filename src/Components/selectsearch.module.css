@@ -27,7 +27,7 @@
   border-color: hsl(200, 100%, 50%);
 }
 
-.value {
+.selectedOption {
   padding: 0.5em;
   border: none;
   background: none;
@@ -40,7 +40,7 @@
   gap: 0.5em;
 }
 
-.value::placeholder {
+.selectedOption::placeholder {
   color: var(--almostwhite);
 }
 
