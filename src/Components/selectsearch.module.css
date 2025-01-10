@@ -1,5 +1,6 @@
 .container {
   --white: #e6e6e6;
+  --almostwhite: #d3d3d3;
   --darkgrey: #777;
   --grey: #b3b3b3;
   --background: #303d52;
@@ -8,7 +9,7 @@
 
   position: relative;
   width: 20em;
-  height: 1.5em;
+  height: 2.5em;
   border: 0.05em solid var(--darkgrey);
   border-radius: 0.25em;
   display: flex;
@@ -22,15 +23,25 @@
   border-color: hsl(200, 100%, 50%);
 }
 
+.container:focus-within {
+  border-color: hsl(200, 100%, 50%);
+}
+
 .value {
+  padding: 0.5em;
+  border: none;
+  background: none;
+  outline: 0;
+  line-height: 1.5;
+  font-size: 1rem;
+  color: var(--white);
   flex-grow: 1;
   display: flex;
   gap: 0.5em;
-  flex-wrap: wrap;
-  line-height: 1.5;
-  font-size: 1rem;
-  padding: 0.5em;
-  line-height: 1.5em;
+}
+
+.value::placeholder {
+  color: var(--almostwhite);
 }
 
 .clear-btn {
@@ -87,9 +98,6 @@
   cursor: pointer;
 }
 
-.option.selected {
-  background-color: var(--selected);
-}
 
 .option.highlighted {
   background-color: var(--highlighted);

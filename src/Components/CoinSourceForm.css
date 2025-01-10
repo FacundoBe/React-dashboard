@@ -1,0 +1,27 @@
+.coin-source-container{
+    background-color: var(--darkgrey);
+    border-radius: 15px;
+    padding: 15px;
+    width: 50%;
+}
+
+.coin-source-form{
+    display: flex;
+    flex-direction: column;
+    justify-items: center;   
+    gap: 20px; 
+}
+
+.coin-info{
+    display: flex;
+    gap: 20px; 
+}
+
+.flex-col{
+    display: flex;
+    flex-direction: column;
+}
+
+.left{
+    align-items: flex-start;
+}
