@@ -1,3 +1,18 @@
+.flex-col{
+    display: flex;
+    flex-direction: column;
+}
+
+.flex{
+    display: flex;
+}
+
+
+.left{
+    align-items: flex-start;
+}
+
+
 .coin-source-container{
     background-color: var(--darkgrey);
     border-radius: 15px;
@@ -12,16 +27,10 @@
     gap: 20px; 
 }
 
+
 .coin-info{
     display: flex;
     gap: 20px; 
 }
 
-.flex-col{
-    display: flex;
-    flex-direction: column;
-}
 
-.left{
-    align-items: flex-start;
-}

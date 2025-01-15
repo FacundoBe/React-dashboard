@@ -82,15 +82,22 @@ export default function Select({ selectedOption, onChange, options, id = "" }) {
                 onBlur={() => setIsOpen(false)}
                 onClick={() => setIsOpen(prev => !prev)}
             >
-                <input
-                    className={styles.selectedOption}
-                    id={id}
-                    value={searchValue}
-                    onChange={(e) => handleInputChange(e)}
-                    ref={inputRef}
-                    placeholder={placeholder}
-                >
-                </input>
+                <div className={styles["img-input-container"]}>
+                    <div className={styles["img-container"]}>
+                        {searchValue==="" && 
+                        <img src={selectedOption?.value?.image} className={styles["coin-img"]} />
+                        }
+                    </div>
+                    <input
+                        className={styles.selectedOption}
+                        id={id}
+                        value={searchValue}
+                        onChange={(e) => handleInputChange(e)}
+                        ref={inputRef}
+                        placeholder={placeholder}
+                    >
+                    </input>
+                </div>
                 <button
                     type='button'
                     className={styles["clear-btn"]}
@@ -111,14 +118,17 @@ export default function Select({ selectedOption, onChange, options, id = "" }) {
                         <li key={option.label}
                             className={`${styles.option} ${index === highligtedIndex ? styles.highlighted : ""}`}
                             onMouseEnter={() => setHighligtedIndex(index)}
-                            onMouseDown={(e) => {  
+                            onMouseDown={(e) => {
                                 e.stopPropagation()
                                 if (option !== selectedOption) onChange(option)
                                 setSearchValue("")
                                 setIsOpen(false)
                             }}
                         >
-                            {option.label}
+                            <div className={styles["img-input-container"]}>
+                                <img src={option?.value?.image} className={styles["coin-img"]} />
+                                <div className={styles["option-label"]} >{option.label}</div>
+                            </div>
                         </li>
                     ))}
                 </ul>

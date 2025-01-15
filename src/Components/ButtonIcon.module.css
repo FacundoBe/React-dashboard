@@ -1,0 +1,16 @@
+/* Variables css para los colores*/
+.button {
+  --white: #e6e6e6;
+  --almostwhite: #d3d3d3;
+}
+
+.button {
+  height: 1.5em;
+  color: var(--grey);
+}
+
+.button:hover {
+  color: var(--white);
+  transform: scale(1.1);
+}
+

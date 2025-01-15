@@ -37,8 +37,6 @@ export default function CoinList() {
                     ${coin.market_cap.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                 </div>
 
-
-
             </div>
         )
     }
