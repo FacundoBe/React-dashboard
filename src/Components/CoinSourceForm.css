@@ -33,4 +33,10 @@
     gap: 20px; 
 }
 
+.coin-img {
+    height: 1.1em;
+  }
 
+.invisible{
+    display: none;
+}

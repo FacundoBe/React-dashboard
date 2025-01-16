@@ -30,9 +30,9 @@ export function ButtonIcon({ type, ...rest }) {
   }
 
   return (
-    <div>
+    <button className={styles["invisible"]} >
       {svg}
-    </div>
+    </button>
   )
 
 }

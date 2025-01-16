@@ -14,3 +14,8 @@
   transform: scale(1.1);
 }
 
+.invisible{
+  border: 0;
+  outline: 0;
+  background: none;
+}
