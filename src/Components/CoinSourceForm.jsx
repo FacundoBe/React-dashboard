@@ -7,7 +7,7 @@ import { ButtonIcon } from "./ButtonIcon";
 import coinList from '../json'
 
 
-export default function CoinSourceForm({assetsList, saveAssetsList, cleanEditAssetSourceId,editAssetSourceId }) {
+export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAssetSourceId, editAssetSourceId }) {
     const [isSourceNameSet, setIsSourceNameSet] = useState(false)
     const [formData, setFormData] = useState({ sourceName: "", selectedOption: "", amount: "" })
     const [myCoinsData, setMyCoinsData] = useState([])
@@ -32,9 +32,9 @@ export default function CoinSourceForm({assetsList, saveAssetsList, cleanEditAss
             setFormData(prev => ({ ...prev, selectedOption: options[0] }))
             setMyCoinsData([])
         }
-        else{ // editing existing source
-            const sourceToEdit = assetsList.find(source => source.name === editAssetSourceId )
-            setFormData({sourceName: sourceToEdit.name, selectedOption:"", amount:"" })
+        else { // editing existing source
+            const sourceToEdit = assetsList.find(source => source.name === editAssetSourceId)
+            setFormData({ sourceName: sourceToEdit.name, selectedOption: "", amount: "" })
             console.log(sourceToEdit)
             setMyCoinsData(sourceToEdit.sourceAssets)
             setIsSourceNameSet(true)
@@ -112,9 +112,16 @@ export default function CoinSourceForm({assetsList, saveAssetsList, cleanEditAss
     function handleFinishEntry(e) {
         e.preventDefault()
         const sourceData = { name: formData.sourceName, sourceAssets: myCoinsData }
+        if (editAssetSourceId === "") {  //new coin source
+            if (assetsList.find(source => source.name === formData.sourceName)) { //Early return if the name is already used 
+                alert("Wallet / Exchange name already used, please pick a different name")
+                setIsSourceNameSet(false)
+                return
+            }
+        }
         saveAssetsList(sourceData)
         handleClear()
-        if(editAssetSourceId!=="") cleanEditAssetSourceId()
+        if (editAssetSourceId !== "") cleanEditAssetSourceId()
     }
 
     return (
