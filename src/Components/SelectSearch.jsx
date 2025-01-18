@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useRef, useState } from 'react'
 import styles from './selectsearch.module.css'
-export default function Select({ selectedOption, onChange, options, id = "" }) {
+export default function Select({ disabled = false, selectedOption, onChange, options, id = "" }) {
 
     const [searchValue, setSearchValue] = useState("")
     const [isOpen, setIsOpen] = useState(false)
@@ -47,13 +47,13 @@ export default function Select({ selectedOption, onChange, options, id = "" }) {
         // This line assumes a particular DOM structure:
         const divNode = listNode.querySelectorAll('li > div')[index];
         divNode?.scrollIntoView({
-          behavior: 'smooth',
-          block: 'nearest',
-          inline: 'center'
+            behavior: 'smooth',
+            block: 'nearest',
+            inline: 'center'
         });
-      }
+    }
 
-      
+
     // Sets the scroll of the higligted item in the option box for key navigation support
     if (isOpen) {
         scrollToIndex(highligtedIndex)
@@ -102,9 +102,9 @@ export default function Select({ selectedOption, onChange, options, id = "" }) {
             <div
                 className={styles.container}
                 ref={containerRef}
-                tabIndex={0}
+                tabIndex={disabled ? "none" : 0} //makes cointainer not focusable if it is disabled
                 onBlur={() => setIsOpen(false)}
-                onClick={() => setIsOpen(prev => !prev)}
+                onClick={() => { if (!disabled) setIsOpen(prev => !prev) }}
             >
                 <div className={styles["img-input-container"]}>
                     <div className={styles["img-container"]}>
@@ -115,6 +115,7 @@ export default function Select({ selectedOption, onChange, options, id = "" }) {
                     <input
                         className={styles.selectedOption}
                         id={id}
+                        disabled={disabled}
                         value={searchValue}
                         onChange={(e) => handleInputChange(e)}
                         ref={inputRef}
@@ -124,15 +125,16 @@ export default function Select({ selectedOption, onChange, options, id = "" }) {
                 </div>
                 <button
                     type='button'
-                    className={styles["clear-btn"]}
+                    className={`${styles["clear-btn"]} ${disabled ? styles.disabled : null} `}
                     onClick={(e) => { clearOptions(e) }}
+                    disabled={disabled}
                 >
                     <svg fill="none" viewBox="0 0 24 24" strokeWidth={3} stroke="currentColor" >
                         <path strokeLinecap="round" strokeLinejoin="round" d="M6 18 18 6M6 6l12 12" />
                     </svg>
                 </button>
-                <div className={styles.divider}></div>
-                <div className={styles.caret}>
+                <div className={`${styles.divider}  `}></div>
+                <div className={`${styles.caret}  ${disabled ? styles.disabled : null}`}>
 
                 </div>
 

@@ -100,7 +100,7 @@
   margin: 0;
   padding: 0;
   list-style: none;
-  max-height: 10em;
+  max-height: 16em;
   overflow-y: auto;
   border: 0.05em solid var(--darkgrey);
   border-radius: 0.25em;
@@ -127,4 +127,22 @@
 
 .option-label {
   padding: 0.5em;
+}
+
+.options {
+  scrollbar-width: thin;
+  scrollbar-color: var(--white) var(--selected);
+}
+
+.disabled {
+  color: var(--selected);
+  background-color: transparent;
+  border-top-color: var(--selected);
+}
+
+
+.disabled:hover {
+  color: var(--selected);
+  background-color: transparent;
+  border-top-color: var(--selected);
 }

@@ -54,16 +54,26 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
         setFormData(prevFormData => ({ ...prevFormData, [id]: value }))
     }
 
-    function handleClear() {
+    function handleClear() { // Clears all the form
         setFormData(prev => ({ ...prev, sourceName: "", amount: "" }))
         setMyCoinsData([])
         setIsSourceNameSet(false)
-
     }
 
     function handleSubmitName(e) {
         e.preventDefault()
+        if (editAssetSourceId === "") {  //new coin source
+            if (assetsList.find(source => source.name === formData.sourceName)) { //Early return if the name is already used 
+                alert("Wallet / Exchange name already used, please pick a different name")
+                return
+            }
+        }
         if (formData.sourceName !== "") setIsSourceNameSet(true)
+    }
+
+    function handleCancelEditCoin(){ // clear the coin - amount part of the form and the coinToEditRef reference
+        coinToEditRef.current = undefined
+        setFormData(prevFormData => ({ ...prevFormData, amount: "", selectedOption: options[0] })) //resets form data SelectSearch and Amount states
     }
 
     function handleSubmitCoin(e) {
@@ -112,13 +122,6 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
     function handleFinishEntry(e) {
         e.preventDefault()
         const sourceData = { name: formData.sourceName, sourceAssets: myCoinsData }
-        if (editAssetSourceId === "") {  //new coin source
-            if (assetsList.find(source => source.name === formData.sourceName)) { //Early return if the name is already used 
-                alert("Wallet / Exchange name already used, please pick a different name")
-                setIsSourceNameSet(false)
-                return
-            }
-        }
         saveAssetsList(sourceData)
         handleClear()
         if (editAssetSourceId !== "") cleanEditAssetSourceId()
@@ -146,7 +149,12 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
                         <div className="coin-info">
                             <div className="flex-col left">
                                 <label htmlFor="coin-select">Coin</label>
-                                <SelectSearch id="coin-select" options={options} selectedOption={formData.selectedOption} onChange={handleSelectedOption} />
+                                <SelectSearch
+                                disabled={coinToEditRef.current} 
+                                id="coin-select" 
+                                options={options} 
+                                selectedOption={formData.selectedOption} 
+                                onChange={handleSelectedOption} />
                             </div>
                             <div className="flex-col left">
                                 <label htmlFor="amount"> Amount </label>
@@ -157,6 +165,7 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
                                 />
                             </div>
                             <ButtonIcon type="check" onClick={handleSubmitCoin} />
+                            <ButtonIcon type="clear" onClick={handleCancelEditCoin} />
                         </div>
                     </form>
 
