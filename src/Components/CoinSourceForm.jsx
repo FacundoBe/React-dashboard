@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState, useRef, useEffect } from "react";
 import axios from "axios"
 import SelectSearch from "./SelectSearch"
@@ -6,10 +7,10 @@ import { ButtonIcon } from "./ButtonIcon";
 import coinList from '../json'
 
 
-export default function CoinSourceForm() {
+export default function CoinSourceForm({assetsList, saveAssetsList, cleanEditAssetSourceId,editAssetSourceId }) {
     const [isSourceNameSet, setIsSourceNameSet] = useState(false)
     const [formData, setFormData] = useState({ sourceName: "", selectedOption: "", amount: "" })
-    const [coinsData, setCoinsData] = useState([])
+    const [myCoinsData, setMyCoinsData] = useState([])
 
     const coinToEditRef = useRef(undefined)
     const coinListRef = useRef(undefined)
@@ -17,7 +18,7 @@ export default function CoinSourceForm() {
     const selectSearchHandle = document.getElementById("coin-select")
 
     useEffect(() => {
-        //console.log("fetching data from coingecko")
+        //console.log("fetching data from coingecko") / ** esto hay que subirlo mas arriba en la cadena de componentes y pasarlo por props
         //axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false')
         //    .then(res => coinListRef.current = res.data)
         //    .catch(err => alert(err))
@@ -25,15 +26,24 @@ export default function CoinSourceForm() {
 
     const options = coinList.map(coin => ({ label: coin.name, value: { name: coin.name, image: coin.image, symbol: coin.symbol } }))
 
+    // Sets the form according to new source o editing existing source case
     useEffect(() => {
-        setFormData(prev => ({ ...prev, selectedOption: options[0] })
-        )
+        if (editAssetSourceId === "") {  // new source input
+            setFormData(prev => ({ ...prev, selectedOption: options[0] }))
+            setMyCoinsData([])
+        }
+        else{ // editing existing source
+            const sourceToEdit = assetsList.find(source => source.name === editAssetSourceId )
+            setFormData({sourceName: sourceToEdit.name, selectedOption:"", amount:"" })
+            console.log(sourceToEdit)
+            setMyCoinsData(sourceToEdit.sourceAssets)
+            setIsSourceNameSet(true)
+        }
     }
-        , [])
+        , [assetsList, editAssetSourceId])
 
 
     function handleSelectedOption(option) {
-
         setFormData(prev => ({ ...prev, selectedOption: option }))
         amountInputRef.current.focus();
     }
@@ -44,9 +54,11 @@ export default function CoinSourceForm() {
         setFormData(prevFormData => ({ ...prevFormData, [id]: value }))
     }
 
-
     function handleClear() {
-        setFormData({ sourceName: "", selectedOption: "", amount: "" })
+        setFormData(prev => ({ ...prev, sourceName: "", amount: "" }))
+        setMyCoinsData([])
+        setIsSourceNameSet(false)
+
     }
 
     function handleSubmitName(e) {
@@ -56,31 +68,53 @@ export default function CoinSourceForm() {
 
     function handleSubmitCoin(e) {
         e.preventDefault()
-        console.log(coinToEditRef.current)
-        if (coinToEditRef.current !== undefined ) {// editing existing coin
-            const updatedCoinList = coinsData.map(coin => {
+        const coinName = formData.selectedOption.label
+        const coinImage = formData.selectedOption.value.image
+        const coinAmount = Number.parseFloat(formData.amount)
+
+        if (coinToEditRef.current !== undefined) {// editing existing coin
+            const updatedCoinList = myCoinsData.map(coin => {
                 if (coin.name !== coinToEditRef.current) return coin
-                else return {...coin, amount: formData.amount}
+                else return { ...coin, amount: coinAmount }
             })
-            setCoinsData(updatedCoinList)
-            setFormData(prevFormData => ({ ...prevFormData, amount: "", selectedOption: options[0] }))
+            setMyCoinsData(updatedCoinList)
+            setFormData(prevFormData => ({ ...prevFormData, amount: "", selectedOption: options[0] })) //resets form data SelectSearch and Amount states
             coinToEditRef.current = undefined
         }
-        else if (!isNaN(formData.amount) && Number(formData.amount) > 0) { // Checks that th input is a positive number
-            setCoinsData(prev => [...prev, { name: formData.selectedOption.label, image: formData.selectedOption.value.image, amount: formData.amount }])
-            setFormData(prevFormData => ({ ...prevFormData, amount: "" }))
+        else if (!isNaN(formData.amount) && Number(formData.amount) > 0) { // Checks that the input is a positive number
+
+            if (myCoinsData.find(coin => coin.name === coinName) === undefined) {  // add the coin if it is not already in the coin list
+
+                setMyCoinsData(prev => [...prev, { name: coinName, image: coinImage, amount: coinAmount }])
+            }
+            else { // if the coin already exists the amounts of this new input is added to the previous amount value.
+                setMyCoinsData(prev => prev.map(coin => {
+                    if (coin.name !== coinName) return coin
+                    else return { ...coin, amount: coin.amount + coinAmount }
+                }))
+            }
+            setFormData(prevFormData => ({ ...prevFormData, amount: "", selectedOption: options[0] }))
             selectSearchHandle.focus()
         }
     }
 
     function handleDeleteCoin(name) {
-        setCoinsData(prev => prev.filter((coin => coin.name !== name)))
+        setMyCoinsData(prev => prev.filter((coin => coin.name !== name)))
     }
 
     function handleEditCoin(name, amount) {
         coinToEditRef.current = name
         const index = options.findIndex(option => option.label === name)
         setFormData(prev => ({ ...prev, selectedOption: options[index], amount: amount }))
+        amountInputRef.current.focus()
+    }
+
+    function handleFinishEntry(e) {
+        e.preventDefault()
+        const sourceData = { name: formData.sourceName, sourceAssets: myCoinsData }
+        saveAssetsList(sourceData)
+        handleClear()
+        if(editAssetSourceId!=="") cleanEditAssetSourceId()
     }
 
     return (
@@ -119,9 +153,9 @@ export default function CoinSourceForm() {
                         </div>
                     </form>
 
-                    {coinsData.length > 0 &&
+                    {myCoinsData.length > 0 &&
                         <div>
-                            {coinsData.map(coin => (
+                            {myCoinsData.map(coin => (
                                 <div key={coin.name} className="flex" style={{ gap: "10px", padding: "10px" }}>
                                     <img src={coin.image} className="coin-img" />
                                     <div> {coin.name} </div>
@@ -131,10 +165,10 @@ export default function CoinSourceForm() {
                                 </div>))}
                         </div>}
 
-                    <div className="form-controls">
+                    <form className="form-controls" onSubmit={(e) => handleFinishEntry(e)}>
                         <button type="button" onClick={() => setIsSourceNameSet(false)}> Back </button>
                         <button type="submit"> Finish </button>
-                    </div>
+                    </form>
                 </div>
             }
         </div>

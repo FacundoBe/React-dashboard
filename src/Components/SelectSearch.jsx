@@ -9,11 +9,10 @@ export default function Select({ selectedOption, onChange, options, id = "" }) {
     const containerRef = useRef()
     const inputRef = useRef()
     const optionsListRef = useRef()
-    const highlightedItemRef = useRef()
+
 
     const placeholder = selectedOption?.label    // If there is a previously selected value of "selectedOption" state 
     //                                              it is shown in the input using the placeholder    
-
 
 
     function clearOptions(e) {
@@ -33,7 +32,6 @@ export default function Select({ selectedOption, onChange, options, id = "" }) {
         if (isOpen) {
             setHighligtedIndex(0)
             optionsListRef.current?.scrollTo(0, 0)
-
         }
     }
         , [isOpen])
@@ -43,20 +41,23 @@ export default function Select({ selectedOption, onChange, options, id = "" }) {
         : options.filter(option => option.label.toLowerCase().includes(searchValue.toLowerCase()))
 
 
-    // Checks the visibility of the higligted item in the option box for key navigation support
+
+    function scrollToIndex(index) {
+        const listNode = optionsListRef.current;
+        // This line assumes a particular DOM structure:
+        const divNode = listNode.querySelectorAll('li > div')[index];
+        divNode?.scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'center'
+        });
+      }
+
+      
+    // Sets the scroll of the higligted item in the option box for key navigation support
     if (isOpen) {
-        console.log(highlightedItemRef?.current)
+        scrollToIndex(highligtedIndex)
     }
-
-    // 
-    function getMap() {
-        if (!highlightedItemRef.current) {
-            // Initialize the Map on first usage.
-            highlightedItemRef.current = new Map();
-        }
-        return highlightedItemRef.current;
-    }
-
 
     // sets event handlers for keyword support
     useEffect(() => {
@@ -142,14 +143,6 @@ export default function Select({ selectedOption, onChange, options, id = "" }) {
                     {filteredOptions.map((option, index) => (
                         <li key={option.label}
                             className={`${styles.option} ${index === highligtedIndex ? styles.highlighted : ""}`}
-                            ref={(node) => {
-                                const map = getMap();
-                                map.set(option.label, node);
-
-                                return () => {
-                                    map.delete(option.label);
-                                };
-                            }}
                             onMouseEnter={() => setHighligtedIndex(index)}
                             onMouseDown={(e) => {
                                 e.stopPropagation()
