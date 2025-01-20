@@ -1,23 +1,23 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap');
-
+@import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap");
 
 /* Variables css para los colores*/
 :root {
   --white: #e6e6e6;
-  --black: #111;
+  --black: #080808;
   --blue: #3a80e9;
   --grey: #b3b3b3;
-  --darkgrey: #454748;
+  --darkgrey: #464352;
   --green: #60cf6f;
   --red: #c86066;
-  --darkblue: #1a212b;
-  --selected:rgba(209, 218, 233, 0.091);
-  background-color: var(--darkblue);
+  --background: #0d1117;
+  --selected: #19181f;
+  --accent:#AD9A4B;
+  background-color: var(--background);
   color: var(--white);
+  box-sizing: border-box;
 }
 
 #root {
-  max-width: 1280px;
   margin: 0 auto;
   text-align: center;
   font-family: "Inter", serif;
@@ -26,11 +26,7 @@
   font-style: normal;
 }
 
-
-
 /* Color de seleccion personalizado */
-::selection{
+::selection {
   background-color: var(--blue);
 }
-
-

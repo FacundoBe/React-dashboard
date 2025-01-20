@@ -9,7 +9,7 @@ import coinList from '../json'
 
 export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAssetSourceId, editAssetSourceId }) {
     const [isSourceNameSet, setIsSourceNameSet] = useState(false)
-    const [formData, setFormData] = useState({ sourceName: "", selectedOption: "", amount: "" })
+    const [formData, setFormData] = useState({ sourceName: "", sourceAdress:"", selectedOption: "", amount: "" })
     const [myCoinsData, setMyCoinsData] = useState([])
 
     const coinToEditRef = useRef(undefined)
@@ -55,7 +55,7 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
     }
 
     function handleClear() { // Clears all the form
-        setFormData(prev => ({ ...prev, sourceName: "", amount: "" }))
+        setFormData(prev => ({ ...prev, sourceName: "", sourceAdress:"", amount: "" }))
         setMyCoinsData([])
         setIsSourceNameSet(false)
     }
@@ -71,7 +71,7 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
         if (formData.sourceName !== "") setIsSourceNameSet(true)
     }
 
-    function handleCancelEditCoin(){ // clear the coin - amount part of the form and the coinToEditRef reference
+    function handleCancelEditCoin() { // clear the coin - amount part of the form and the coinToEditRef reference
         coinToEditRef.current = undefined
         setFormData(prevFormData => ({ ...prevFormData, amount: "", selectedOption: options[0] })) //resets form data SelectSearch and Amount states
     }
@@ -129,16 +129,28 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
 
     return (
         <div className="coin-source-container">
-
-            <form className="coin-source-form" onSubmit={handleSubmitName}>
+            <div className="form-header">
+                Ingrese la información de sus cryptomonedas para seguirlas en su Portfolio.
+            </div>
+            <div className="form-divider-hor">  </div>
+            <form onSubmit={handleSubmitName}>
                 {!isSourceNameSet &&
-                    <div>
-                        <div className="flex" >
-                            <label htmlFor="sourceName">Wallet/Exchange</label>
-                            <input type="text" id="sourceName" value={formData.sourceName} onChange={(e) => handleChange(e)} placeholder="Binanace, Metamask..." />
+                    <div className="coin-source-form">
+                        <label htmlFor="sourceName">Wallet/Exchange</label>
+                        <input type="text" 
+                        id="sourceName" 
+                        className="input" 
+                        autoComplete="off"
+                        value={formData.sourceName} 
+                        onChange={(e) => handleChange(e)} 
+                        placeholder="Binanace, Metamask..." 
+                        />
+                        <label htmlFor="sourceAdress">Wallet/Exchange adress</label>
+                        <input type="text" id="sourceAdress" className="input" value={formData.sourceAdress} onChange={(e) => handleChange(e)} placeholder="www.Binanace.com/sdefd8575..." />
+                        <div className="form-controls">
+                            <button type="button" className="cancel-btn" onClick={handleClear}>Cancel</button>
+                            <button type="submit" className="ok-btn">Next</button>
                         </div>
-                        <button type="button" onClick={handleClear}>Clear</button>
-                        <button type="submit">Continue</button>
                     </div>
                 }
             </form>
@@ -150,15 +162,16 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
                             <div className="flex-col left">
                                 <label htmlFor="coin-select">Coin</label>
                                 <SelectSearch
-                                disabled={coinToEditRef.current} 
-                                id="coin-select" 
-                                options={options} 
-                                selectedOption={formData.selectedOption} 
-                                onChange={handleSelectedOption} />
+                                    disabled={coinToEditRef.current}
+                                    id="coin-select"
+                                    options={options}
+                                    selectedOption={formData.selectedOption}
+                                    onChange={handleSelectedOption} />
                             </div>
                             <div className="flex-col left">
                                 <label htmlFor="amount"> Amount </label>
                                 <input id="amount"
+                                    className="input"
                                     ref={amountInputRef}
                                     value={formData.amount}
                                     onChange={(e) => handleChange(e)}

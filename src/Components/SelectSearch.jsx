@@ -6,6 +6,7 @@ export default function Select({ disabled = false, selectedOption, onChange, opt
     const [searchValue, setSearchValue] = useState("")
     const [isOpen, setIsOpen] = useState(false)
     const [highligtedIndex, setHighligtedIndex] = useState(0)
+    const [usingKeyNav, setUsingKeyNav] = useState(false)
     const containerRef = useRef()
     const inputRef = useRef()
     const optionsListRef = useRef()
@@ -59,12 +60,14 @@ export default function Select({ disabled = false, selectedOption, onChange, opt
         scrollToIndex(highligtedIndex)
     }
 
-    // sets event handlers for keyword support
+
+    // sets event handlers for keyword support, key navigationsuspends mouse interaction with options by seting useKeyNav state
     useEffect(() => {
         const handler = (e) => {
             if (e.target != containerRef.current && e.target != inputRef.current) return
 
             if (!isOpen) setIsOpen(true)
+            setUsingKeyNav(true)
             switch (e.code) {
                 case "ArrowUp":
                     e.preventDefault()
@@ -95,6 +98,14 @@ export default function Select({ disabled = false, selectedOption, onChange, opt
 
     }, [isOpen, highligtedIndex, filteredOptions])
 
+
+    // event listener to check mouse movement to reset usingKeyNav state
+
+    useEffect(()=> {
+        const move = () => setUsingKeyNav(false)
+        window.addEventListener('mousemove', move)
+        return () => window.removeEventListener('mousemove', move)
+    },[])
 
 
     return (
@@ -145,12 +156,14 @@ export default function Select({ disabled = false, selectedOption, onChange, opt
                     {filteredOptions.map((option, index) => (
                         <li key={option.label}
                             className={`${styles.option} ${index === highligtedIndex ? styles.highlighted : ""}`}
-                            onMouseEnter={() => setHighligtedIndex(index)}
+                            onMouseOver={() => { if (!usingKeyNav) setHighligtedIndex(index) }}
                             onMouseDown={(e) => {
                                 e.stopPropagation()
-                                if (option !== selectedOption) onChange(option)
-                                setSearchValue("")
-                                setIsOpen(false)
+                                if (!usingKeyNav) {
+                                    if (option !== selectedOption) onChange(option)
+                                    setSearchValue("")
+                                    setIsOpen(false)
+                                }
                             }}
                         >
                             <div className={styles["img-input-container"]}>

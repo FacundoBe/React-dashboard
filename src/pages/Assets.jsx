@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import AssetsCard from '../Components/AssetsCard'
 import CoinSourceForm from '../Components/CoinSourceForm'
 
@@ -7,7 +7,14 @@ export default function Assets() {
     const [assetsList, setAssetsList] = useState([])
     const [editAssetSourceId, setEditAssetSourceId] = useState("")
 
-    console.log(editAssetSourceId)
+    useEffect(() => { // Read assetsList from local storage 
+        const saved = localStorage.getItem("anonymousAssetList")
+        if (saved) {
+            const savedList = JSON.parse(saved)
+            setAssetsList(savedList)
+        }
+    }, [])
+
 
     function saveAssetsList(newSource) {
         if (editAssetSourceId === "") {  // adding a nuew coin source
@@ -16,6 +23,10 @@ export default function Assets() {
             setAssetsList(prevAssetsList => [...prevAssetsList.filter(source => source.name !== editAssetSourceId), newSource])
         }
     }
+
+    useEffect(()=>{
+        localStorage.setItem("anonymousAssetList", JSON.stringify(assetsList))  // Saves the assets list to local Storage
+    },[assetsList])
 
     function cleanEditAssetSourceId() {
         setEditAssetSourceId("")

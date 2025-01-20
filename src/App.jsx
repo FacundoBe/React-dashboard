@@ -9,7 +9,6 @@ function App() {
   return (
     <>
       <main>
-        <h1>🔱 Cryptofolio</h1>
 
         <Assets/>
 
