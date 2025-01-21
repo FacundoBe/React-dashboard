@@ -9,7 +9,7 @@ import coinList from '../json'
 
 export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAssetSourceId, editAssetSourceId }) {
     const [isSourceNameSet, setIsSourceNameSet] = useState(false)
-    const [formData, setFormData] = useState({ sourceName: "", sourceAdress:"", selectedOption: "", amount: "" })
+    const [formData, setFormData] = useState({ sourceName: "", sourceAdress: "", selectedOption: "", amount: "" })
     const [myCoinsData, setMyCoinsData] = useState([])
 
     const coinToEditRef = useRef(undefined)
@@ -55,7 +55,7 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
     }
 
     function handleClear() { // Clears all the form
-        setFormData(prev => ({ ...prev, sourceName: "", sourceAdress:"", amount: "" }))
+        setFormData(prev => ({ ...prev, sourceName: "", sourceAdress: "", amount: "" }))
         setMyCoinsData([])
         setIsSourceNameSet(false)
     }
@@ -137,13 +137,13 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
                 {!isSourceNameSet &&
                     <div className="coin-source-form">
                         <label htmlFor="sourceName">Wallet/Exchange</label>
-                        <input type="text" 
-                        id="sourceName" 
-                        className="input" 
-                        autoComplete="off"
-                        value={formData.sourceName} 
-                        onChange={(e) => handleChange(e)} 
-                        placeholder="Binanace, Metamask..." 
+                        <input type="text"
+                            id="sourceName"
+                            className="input"
+                            autoComplete="off"
+                            value={formData.sourceName}
+                            onChange={(e) => handleChange(e)}
+                            placeholder="Binanace, Metamask..."
                         />
                         <label htmlFor="sourceAdress">Wallet/Exchange adress</label>
                         <input type="text" id="sourceAdress" className="input" value={formData.sourceAdress} onChange={(e) => handleChange(e)} placeholder="www.Binanace.com/sdefd8575..." />
@@ -155,45 +155,59 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
                 }
             </form>
             {isSourceNameSet &&
-                <div>
-                    <div>{formData.sourceName}</div>
-                    <form onSubmit={handleSubmitCoin}>
-                        <div className="coin-info">
-                            <div className="flex-col left">
-                                <label htmlFor="coin-select">Coin</label>
-                                <SelectSearch
-                                    disabled={coinToEditRef.current}
-                                    id="coin-select"
-                                    options={options}
-                                    selectedOption={formData.selectedOption}
-                                    onChange={handleSelectedOption} />
-                            </div>
-                            <div className="flex-col left">
-                                <label htmlFor="amount"> Amount </label>
-                                <input id="amount"
-                                    className="input"
-                                    ref={amountInputRef}
-                                    value={formData.amount}
-                                    onChange={(e) => handleChange(e)}
-                                />
-                            </div>
+
+                <div className="coin-assets-form">
+                    <form className="w100" onSubmit={handleSubmitCoin}>
+                        <div className="flex-col left">
+                            <label htmlFor="coin-select">Coin</label>
+                            <SelectSearch
+                                style={{ alignSelf: "stretch" }}
+                                disabled={coinToEditRef.current}
+                                id="coin-select"
+                                options={options}
+                                selectedOption={formData.selectedOption}
+                                onChange={handleSelectedOption} />
+                        </div>
+                        <div className="flex-col left">
+                            <label htmlFor="amount"> Amount </label>
+                            <input id="amount"
+                                className="input"
+                                ref={amountInputRef}
+                                value={formData.amount}
+                                onChange={(e) => handleChange(e)}
+                            />
+                        </div>
+                        <div className="submit-coin-container">
+                            {coinToEditRef.current && <ButtonIcon type="clear" onClick={handleCancelEditCoin} />}
                             <ButtonIcon type="check" onClick={handleSubmitCoin} />
-                            <ButtonIcon type="clear" onClick={handleCancelEditCoin} />
                         </div>
                     </form>
 
-                    {myCoinsData.length > 0 &&
-                        <div>
-                            {myCoinsData.map(coin => (
-                                <div key={coin.name} className="flex" style={{ gap: "10px", padding: "10px" }}>
-                                    <img src={coin.image} className="coin-img" />
-                                    <div> {coin.name} </div>
-                                    <div>{coin.amount}</div>
-                                    <button onClick={() => handleEditCoin(coin.name, coin.amount)}>Edit </button>
-                                    <button onClick={() => handleDeleteCoin(coin.name)}>Delete</button>
-                                </div>))}
-                        </div>}
+                    <div className="fund-list flex-column w100">
+                        <div className="wallet-name flex">{formData.sourceName}</div>
+                        <div className="funds-header">
+                            <span className="flex">Coin</span>
+                            <span className="flex right ">Funds</span>
+                            <div className="grid-divider">  </div>
+                        </div>
 
+                        {myCoinsData.length > 0 &&
+                            <div >
+                                {myCoinsData.map(coin => (
+                                    <div key={coin.name} className="funds-row">
+                                        <div className="flex align-center">
+                                            <img src={coin.image} className="coin-img" />
+                                            <div> {coin.name} </div>
+                                        </div>
+                                        <div className="flex right align-center">{coin.amount}</div>
+                                        <div className="flex right align-center">
+                                            <button onClick={() => handleEditCoin(coin.name, coin.amount)}>E </button>
+                                            <ButtonIcon type="clear" onClick={() => handleDeleteCoin(coin.name)} />
+                                        </div>
+                                        <div className="grid-divider">  </div>
+                                    </div>))}
+                            </div>}
+                    </div>
                     <form className="form-controls" onSubmit={(e) => handleFinishEntry(e)}>
                         <button type="button" onClick={() => setIsSourceNameSet(false)}> Back </button>
                         <button type="submit"> Finish </button>

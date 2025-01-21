@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useEffect, useRef, useState } from 'react'
 import styles from './selectsearch.module.css'
-export default function Select({ disabled = false, selectedOption, onChange, options, id = "" }) {
+export default function Select({ disabled = false, selectedOption, onChange, options, id = "", ...rest }) {
 
     const [searchValue, setSearchValue] = useState("")
     const [isOpen, setIsOpen] = useState(false)
@@ -112,6 +112,7 @@ export default function Select({ disabled = false, selectedOption, onChange, opt
         <>
             <div
                 className={styles.container}
+                {...rest}
                 ref={containerRef}
                 tabIndex={disabled ? "none" : 0} //makes cointainer not focusable if it is disabled
                 onBlur={() => setIsOpen(false)}
