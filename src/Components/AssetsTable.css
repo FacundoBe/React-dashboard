@@ -1,0 +1,43 @@
+.fund-list {
+  font-size: 0.85rem;
+}
+
+.funds-header {
+  display: grid;
+  grid-template-columns: 0.4fr 0.4fr 0.2fr;
+  padding: 12px 0px 0 0px;
+  color: var(--grey);
+}
+
+.funds-header.no-btn,
+.funds-row.no-btn {
+  grid-template-columns: 0.47fr 0.47fr 0.06fr;
+}
+
+.grid-divider {
+  grid-row: 2/2;
+  grid-column: 1/4;
+  height: 0.05em;
+  background-color: var(--darkgrey);
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.funds-row {
+  display: grid;
+  grid-template-columns: 0.4fr 0.4fr 0.2fr;
+}
+
+.funds-coin-name {
+  line-height: 1;
+  display: flex;
+  align-items: flex-end;
+  padding: 0.1em 0;
+}
+
+.funds-coin-name span {
+  color: var(--grey);
+  padding: 0 0.2em;
+  font-weight: 700;
+  font-size: 0.6rem;
+}

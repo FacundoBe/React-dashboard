@@ -1,11 +1,6 @@
 /* Variables css para los colores*/
-.button {
-  --white: #e6e6e6;
-  --almostwhite: #d3d3d3;
-}
 
 .button {
-  height: 1.5em;
   color: var(--grey);
 }
 
@@ -18,4 +13,7 @@
   border: 0;
   outline: 0;
   background: none;
+  display: flex;
+  align-items: center;
+  justify-items: center;
 }

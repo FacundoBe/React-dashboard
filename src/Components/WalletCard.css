@@ -1,0 +1,28 @@
+.wallet-card-container {
+  background-color: var(--innerbackground);
+    width: 100%;
+  min-height: 120px;
+  display: flex;
+  border-radius: 14px;
+  margin: 20px;
+  overflow: hidden;
+}
+
+.wallet-card-name {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5em;
+    align-items: center;
+    justify-content:center ;
+    min-width: 160px;
+    font-size: 1.25rem;
+    font-weight: 700;
+    background-color: var(--lightblack);
+    flex-grow: 1;
+}
+
+.wallet-card-list{
+    flex-grow: 4;
+    padding: 1em;
+}
+

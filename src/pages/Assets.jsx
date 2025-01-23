@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
-import AssetsCard from '../Components/AssetsCard'
+import './Assets.css'
+import WalletCard from '../Components/WalletCard'
 import CoinSourceForm from '../Components/CoinSourceForm'
 
 export default function Assets() {
@@ -44,9 +45,9 @@ export default function Assets() {
                 editAssetSourceId={editAssetSourceId}
                 cleanEditAssetSourceId={cleanEditAssetSourceId}
             />
-            <div>
+            <div className='wallet-cards-container'>
                 {assetsList.length > 0 &&
-                    assetsList.map(source => <AssetsCard key={source.name} source={source} editSource={editSource} />)
+                    assetsList.map(source => <WalletCard key={source.name} source={source} editSource={editSource} />)
                 }
             </div>
         </div>

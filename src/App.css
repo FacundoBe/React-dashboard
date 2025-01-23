@@ -4,12 +4,15 @@
 :root {
   --white: #e6e6e6;
   --black: #080808;
+  --lightblack: #19191F;
   --blue: #3a80e9;
-  --grey: #b3b3b3;
+  --grey: #9d9d9db7;
   --darkgrey: #464352;
   --green: #60cf6f;
   --red: #c86066;
   --background: #0d1117;
+  --innerbackground:  #1c2225;
+  ;
   --selected: #19181f;
   --accent:#AD9A4B;
   background-color: var(--background);
