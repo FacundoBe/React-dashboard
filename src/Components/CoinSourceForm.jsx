@@ -57,7 +57,6 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
     }
 
     function handleClear() { // Clears all the form
-        console.log(formData)
         setFormData(prev => ({ ...prev, sourceName: "", sourceAdress: "" }))
         setMyCoinsData([])
         setIsSourceNameSet(false)
@@ -193,16 +192,16 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
                     </form>
 
                     <div className="wallet-name flex">{formData.sourceName}</div>
-                   
+
                     {myCoinsData.length > 0 &&
-                                <AssetsTable 
-                                myCoinsData={myCoinsData} 
-                                editable 
-                                handleEditCoin={handleEditCoin} 
-                                handleDeleteCoin={handleDeleteCoin}
-                                />
+                        <AssetsTable
+                            myCoinsData={myCoinsData}
+                            editable
+                            handleEditCoin={handleEditCoin}
+                            handleDeleteCoin={handleDeleteCoin}
+                        />
                     }
-    
+
                     <form className="form-controls" onSubmit={(e) => handleFinishEntry(e)}>
                         <button type="button"
                             className="cancel-btn"

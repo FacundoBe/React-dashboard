@@ -33,10 +33,13 @@ export default function Assets() {
         setEditAssetSourceId("")
     }
 
-    function editSource(name) {
+    function editWallet(name) {
         setEditAssetSourceId(name)
     }
 
+    function deleteWallet(name) {
+        setAssetsList(prevAssetsList => prevAssetsList.filter(wallet => wallet.name !== name))
+    }
 
     return (
         <div className='flex'>
@@ -47,7 +50,7 @@ export default function Assets() {
             />
             <div className='wallet-cards-container'>
                 {assetsList.length > 0 &&
-                    assetsList.map(source => <WalletCard key={source.name} source={source} editSource={editSource} />)
+                    assetsList.map(source => <WalletCard key={source.name} source={source} editWallet={editWallet} deleteWallet={deleteWallet} />)
                 }
             </div>
         </div>

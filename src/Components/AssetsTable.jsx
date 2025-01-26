@@ -32,6 +32,7 @@ export default function AssetsTable({ myCoinsData, editable=true, handleEditCoin
                     <div className="grid-divider">  </div>
                 </div>))}
         </div>
+     
 
     )
 }
