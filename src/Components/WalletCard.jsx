@@ -13,10 +13,13 @@ export default function WalletCard({ source, editWallet, deleteWallet }) {
 
     const chartData = source.sourceAssets.map(coin => ({ name: coin.symbol.toUpperCase(), value: coinPrice(coin.symbol) * coin.amount }))
     const totalValue = chartData.map(coin => coin.value).reduce(
-        (accumulator, currentValue) => accumulator + currentValue).toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-    const tableData = source.sourceAssets.map(coin => ({ ...coin, ratio: coinPrice(coin.symbol) * coin.amount / totalValue * 100 }))
+        (accumulator, currentValue) => accumulator + currentValue).toFixed(2)
+    //const tableData = source.sourceAssets.map(coin => ({ ...coin, ratio: coinPrice(coin.symbol) * coin.amount / totalValue * 100 }))
 
-    console.log(tableData)
+    function formatUS(value){
+            return value.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+    }
+    
 
     return (
         <div className='wallet-card-container'>
@@ -24,7 +27,7 @@ export default function WalletCard({ source, editWallet, deleteWallet }) {
                 {source.name}
                 <div className='wallet-card-total'>
                     <div className='flex'>Net worth</div>
-                    <span>$</span>{totalValue}
+                    <span>$</span>{formatUS(totalValue)}
                 </div>
             </div>
             <div className='flex wallet-card-controls'>
@@ -35,7 +38,7 @@ export default function WalletCard({ source, editWallet, deleteWallet }) {
             <div className='wallet-card-list'>
                 <AssetsTable myCoinsData={source.sourceAssets} editable={false} />
             </div>
-            <WalletPieChart data={chartData} className="wallet-card-pie" />
+            <WalletPieChart data={chartData} className="wallet-card-pie" totalValue={totalValue}/>
 
         </div>
     )

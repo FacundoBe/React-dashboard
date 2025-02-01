@@ -1,41 +1,66 @@
-import { PieChart, Pie, Cell, ResponsiveContainer, LabelList } from 'recharts';
+/* eslint-disable react/prop-types */
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, LabelList } from 'recharts';
+import styles from './WalletPieChart.module.css'
 
-export default function WalletPieChart({ data = [], ...rest }) {
+export default function WalletPieChart({ data = [], totalValue, ...rest }) {
 
 
     const COLORS = ["#e9d8a6", "#ee9b00", "#ca6702", "#bb3e03", "#ae2012", "#9b2226", "#005f73", "#0a9396", "#94d2bd",];
 
 
-    return (
-        <div {...rest}> 
-            <PieChart width={100} height={100} >
-                <Pie
-                    data={data}
-                    cx={"50%"}
-                    cy={"50%"}
-                    innerRadius={35}
-                    outerRadius={40}
-                    fill="#1884d8"
-                    paddingAngle={8}
-                    cornerRadius={2}
-                    dataKey="value"
-                    fontSize={"0.8rem"}
-                >
-                    { /* <LabelList dataKey="name" position="outside" fontSize={"0.7rem"} /> */}
+    function Legend() {
 
-                    {data.map((entry, index) => {
-                        return <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} stroke={'transparent'} />
-                    })}
-
-                </Pie>
-            </PieChart>
-            <div className='flex-col' style={{padding:"0.2em 0 0 1.7em"}}>
+        return (
+            <div className={styles["legends-container"]} >
                 {data.map((coin, index) =>
-                    <div key={coin.name} className='flex align-center' style={{fontSize:"0.7rem", padding:"0.15em 0"}}>
-                        <div className='legend-color' style={{  width: "0.7rem", height: "0.7rem", borderRadius: "4px", backgroundColor: COLORS[index % COLORS.length], marginRight:"0.2em" }} >
+                    <div key={coin.name} className={styles['legend']} >
+                        <div className={styles['legend-color']} style={{ backgroundColor: COLORS[index % COLORS.length] }} >
                         </div>
                         {coin.name}
                     </div>)}
+            </div>
+        )
+    }
+
+    const CustomTooltip = ({ active, payload, label }) => {
+        if (active && payload && payload.length) {
+            return (
+                <div className={styles["custom-tooltip"]}>
+                    <p>{`${payload[0].name} : ${(payload[0].value / totalValue * 100).toFixed(1)}%`}</p>
+                </div>
+            );
+        }
+
+        return null;
+    };
+
+
+    return (
+        <div {...rest}>
+            <div className={styles['main-container']}>
+                <PieChart width={130} height={100} >
+                    <Pie
+                        data={data}
+                        cx={"50%"}
+                        cy={"50%"}
+                        innerRadius={30}
+                        outerRadius={40}
+                        fill="#1884d8"
+                        paddingAngle={2}
+                        cornerRadius={0}
+                        dataKey="value"
+                        fontSize={"0.8rem"}
+                    >
+                        {data.map((entry, index) => {
+                            return <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} stroke={'transparent'} />
+                        })}
+
+                        {/*<LabelList dataKey="name" position="outside" fontSize={"0.7rem"} >*/}
+                        
+                    </Pie>
+                    <Tooltip content={<CustomTooltip />} />
+                </PieChart>
+                <Legend />
             </div>
         </div>
     );

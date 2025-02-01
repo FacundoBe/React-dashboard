@@ -12,9 +12,10 @@
   --red: #c86066;
   --background: #0d1117;
   --innerbackground:  #1c2225;
-  ;
-  --selected: #19181f;
+  --selected: rgba(209, 218, 233, 0.1);
+  --darkselected: rgba(73, 76, 84, 0.8);
   --accent:#AD9A4B;
+  
   background-color: var(--background);
   color: var(--white);
   box-sizing: border-box;

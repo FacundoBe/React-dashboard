@@ -1,4 +1,14 @@
+.wallet-cards-container {
+  background:
+    linear-gradient(
+      152.09deg,
+      rgba(72, 216, 241, 0.2) 20.1%,
+      rgba(69, 154, 214, 0.25) 55.35%
+    );
 
-.wallet-cards-container{
-    width: 40%;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  padding: 2em;
+  gap: 1.5em;
 }
