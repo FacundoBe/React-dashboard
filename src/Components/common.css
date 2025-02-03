@@ -1,3 +1,39 @@
+.flex-col {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .left {
+    align-items: flex-start;
+    justify-content:flex-start;
+  }
+  
+  .right {
+    align-items: flex-end;
+    justify-content: flex-end;
+  }
+  
+  .center-center{
+    align-items: center;
+    justify-content: center;
+  }
+
+  .align-center {
+    align-items: center;
+  }
+  
+  .align-end {
+    align-items: end;
+  }
+  
+  .w100{
+    width: 100%;
+  }
+
 .txt-small{
     font-size: 0.75rem;
 }

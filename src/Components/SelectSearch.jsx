@@ -39,7 +39,8 @@ export default function Select({ disabled = false, selectedOption, onChange, opt
 
 
     const filteredOptions = searchValue === "" ? options
-        : options.filter(option => option.label.toLowerCase().includes(searchValue.toLowerCase()))
+        : options.filter(option => option.label.toLowerCase().includes(searchValue.toLowerCase()) 
+        || option.value.symbol.toLowerCase().includes(searchValue.toLowerCase()) )
 
 
 
