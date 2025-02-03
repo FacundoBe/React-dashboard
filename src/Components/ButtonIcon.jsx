@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
 import styles from './ButtonIcon.module.css'
 
-export function ButtonIcon({ type, height = "1.5em", ...rest }) {
+export function ButtonIcon({ type, height = "1.5em", disabled=false, ...rest }) {
   let svg
 
   if (type === "check") {
-    svg = <svg className={styles.button}
+    svg = <svg 
       fill="none"
       strokeWidth={3}
       stroke="currentColor"
@@ -19,7 +19,6 @@ export function ButtonIcon({ type, height = "1.5em", ...rest }) {
 
   if (type === "clear") {
     svg = <svg
-      className={styles.button}
       fill="none" viewBox="0 0 24 24"
       strokeWidth={3}
       stroke="currentColor"
@@ -31,7 +30,6 @@ export function ButtonIcon({ type, height = "1.5em", ...rest }) {
 
   if (type === "edit") {
     svg = <svg
-      className={styles.button}
       fill="none" viewBox="0 0 24 24"
       strokeWidth={1.5}
       stroke="currentColor" xmlns="http://www.w3.org/2000/svg" 
@@ -42,7 +40,7 @@ export function ButtonIcon({ type, height = "1.5em", ...rest }) {
   }
 
   return (
-    <button className={styles["invisible"]} >
+    <button className={`${styles["invisible"]} ${disabled ? "" : styles["enabled"]}`} disabled={disabled} >
       {svg}
     </button>
   )

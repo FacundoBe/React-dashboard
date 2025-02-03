@@ -26,10 +26,15 @@
 }
 
 .custom-tooltip{
-    font-size: 0.85rem;
-    font-weight: 500;
+    font-size: 0.7rem;
+    font-weight: 300;
     background-color: var(--darkselected);
     line-height: 2;
     padding: 0 0.5em;
     border-radius: 0.1rem;
+}
+
+.custom-tooltip span{
+    font-size: 0.85rem;
+    font-weight: 500;
 }

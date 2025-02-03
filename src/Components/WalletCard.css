@@ -6,6 +6,8 @@
   border-radius: 14px;
   overflow: hidden;
   position: relative;
+  justify-items: center;
+  align-content: center;
 }
 
 .wallet-card-name {
@@ -22,8 +24,17 @@
 }
 
 .wallet-card-total {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: var(--accent);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.8em;
+}
+
+.wallet-card-total p{
+margin: 0;
+padding: 0;
 }
 
 .wallet-card-total span {

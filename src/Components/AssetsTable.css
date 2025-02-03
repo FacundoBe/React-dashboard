@@ -41,3 +41,11 @@
   font-weight: 700;
   font-size: 0.6rem;
 }
+
+.legend-color {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 4px;
+  margin-right: 0.35em;
+  align-self: center;
+}

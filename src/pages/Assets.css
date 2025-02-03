@@ -6,9 +6,31 @@
       rgba(69, 154, 214, 0.25) 55.35%
     );
 
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 50%;
   padding: 2em;
   gap: 1.5em;
 }
+
+.wallet-cards-container.disabled {
+  pointer-events: none;
+  filter: blur(7px);
+}
+
+.wallets-container-disabled{
+position: absolute;
+width: 100%;
+height: 100vh;
+top: 0;
+left: 0;
+}
+
+.wallets-container-disabled.active{
+  background-color: #1515182c;
+  z-index: 100;
+  pointer-events: none;
+  }
+  
+

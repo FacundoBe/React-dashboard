@@ -81,10 +81,16 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
 
     function handleSubmitCoin(e) {
         e.preventDefault()
+
+        if (formData.selectedOption === "") return alert("Select a Coin")
+        if (formData.amount === "") return alert("Coin amount required") //** should also add validation for positive float numbers
+
         const coinName = formData.selectedOption.label
         const coinImage = formData.selectedOption.value.image
         const coinSymbol = formData.selectedOption.value.symbol
         const coinAmount = Number.parseFloat(formData.amount)
+
+
 
         if (coinToEditRef.current !== undefined) {// editing existing coin
             const updatedCoinList = myCoinsData.map(coin => {
@@ -203,16 +209,13 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
                     }
 
                     <form className="form-controls" onSubmit={(e) => handleFinishEntry(e)}>
-                        <button type="button"
-                            className="cancel-btn"
-                            onClick={() => setIsSourceNameSet(false)}
-                        >
-                            Back
-                        </button>
-                        <button
-                            type="submit"
-                            className="ok-btn"
-                        >
+                        {editAssetSourceId === "" ?
+                            <button type="button" className="cancel-btn" onClick={() => setIsSourceNameSet(false)}>
+                                Back
+                            </button>
+                            : <button type="button" className="cancel-btn" onClick={handleClear}>Cancel</button>
+                        }
+                        <button type="submit" className="ok-btn" >
                             Finish
                         </button>
                     </form>

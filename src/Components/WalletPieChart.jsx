@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
-import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, LabelList } from 'recharts';
+import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip } from 'recharts';
 import styles from './WalletPieChart.module.css'
+import {COLORS} from '../Assets/constants'
+
+
+ //const COLORS = ["#e9d8a6", "#ee9b00", "#ca6702", "#bb3e03", "#ae2012", "#9b2226", "#005f73", "#0a9396", "#94d2bd",];
 
 export default function WalletPieChart({ data = [], totalValue, ...rest }) {
-
-
-    const COLORS = ["#e9d8a6", "#ee9b00", "#ca6702", "#bb3e03", "#ae2012", "#9b2226", "#005f73", "#0a9396", "#94d2bd",];
-
-
+ 
     function Legend() {
 
         return (
@@ -22,11 +22,14 @@ export default function WalletPieChart({ data = [], totalValue, ...rest }) {
         )
     }
 
-    const CustomTooltip = ({ active, payload, label }) => {
+    const CustomTooltip = ({ active, payload }) => {
         if (active && payload && payload.length) {
             return (
                 <div className={styles["custom-tooltip"]}>
-                    <p>{`${payload[0].name} : ${(payload[0].value / totalValue * 100).toFixed(1)}%`}</p>
+                    <p>
+                        {`${payload[0].name}:`}
+                        <span> {`${(payload[0].value / totalValue * 100).toFixed(1)}%`}</span>
+                    </p>
                 </div>
             );
         }
@@ -52,15 +55,15 @@ export default function WalletPieChart({ data = [], totalValue, ...rest }) {
                         fontSize={"0.8rem"}
                     >
                         {data.map((entry, index) => {
-                            return <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} stroke={'transparent'} />
+                            return <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} stroke={'transparent'} style={{outline: 'none'}} />
                         })}
 
                         {/*<LabelList dataKey="name" position="outside" fontSize={"0.7rem"} >*/}
-                        
+
                     </Pie>
                     <Tooltip content={<CustomTooltip />} />
                 </PieChart>
-                <Legend />
+                {/* <Legend /> */}
             </div>
         </div>
     );

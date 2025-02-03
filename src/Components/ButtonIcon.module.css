@@ -1,10 +1,6 @@
 /* Variables css para los colores*/
 
-.button {
-  color: var(--grey);
-}
-
-.button:hover {
+.enabled:hover {
   color: var(--white);
   transform: scale(1.1);
 }
@@ -16,4 +12,5 @@
   display: flex;
   align-items: center;
   justify-items: center;
+  color: var(--grey);
 }

@@ -21,13 +21,13 @@ export default function Assets() {
         if (editAssetSourceId === "") {  // adding a nuew coin source
             setAssetsList(prevAssetsList => [...prevAssetsList, newSource])
         } else { // updating an edited existent coinsource
-            setAssetsList(prevAssetsList => [...prevAssetsList.filter(source => source.name !== editAssetSourceId), newSource])
+            setAssetsList(prevAssetsList => [newSource, ...prevAssetsList.filter(source => source.name !== editAssetSourceId)])
         }
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         localStorage.setItem("anonymousAssetList", JSON.stringify(assetsList))  // Saves the assets list to local Storage
-    },[assetsList])
+    }, [assetsList])
 
     function cleanEditAssetSourceId() {
         setEditAssetSourceId("")
@@ -48,10 +48,19 @@ export default function Assets() {
                 editAssetSourceId={editAssetSourceId}
                 cleanEditAssetSourceId={cleanEditAssetSourceId}
             />
-            <div className='wallet-cards-container'>
+            <div className={`wallet-cards-container ${editAssetSourceId !== "" && "disabled" }`}>
+                <div className={ `wallets-container-disabled ${editAssetSourceId !== "" && "active" }`  }>
+                </div>
                 {assetsList.length > 0 &&
-                    assetsList.map(source => <WalletCard key={source.name} source={source} editWallet={editWallet} deleteWallet={deleteWallet} />)
+                    assetsList.map(source =>
+                        <WalletCard
+                            key={source.name}
+                            disabled={editAssetSourceId !== ""}
+                            source={source}
+                            editWallet={editWallet}
+                            deleteWallet={deleteWallet} />)
                 }
+
             </div>
         </div>
     )
