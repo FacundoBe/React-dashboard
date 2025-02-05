@@ -5,6 +5,8 @@ import './Components/common.css'
 import LayOut from './Components/LayOut'
 import Portfolio from './Components/Portfolio'
 import Assets from './pages/assets'
+import Markets from './pages/Markets'
+import Watchlist from './pages/WatchList' 
 
 
 function App() {
@@ -16,6 +18,8 @@ function App() {
           <Route element={<LayOut/>}>
             <Route index element={<Portfolio/>}/>
             <Route path='/assets' element={<Assets/>} />
+            <Route path='/markets' element={<Markets/>} />
+            <Route path='/watchlist' element={<Watchlist/>} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -22,22 +22,6 @@ img {
   overflow: hidden;
   padding: 15px 20px 15px 15px;
   color: var(--white);
-  background: radial-gradient(
-      farthest-side at top left,
-      rgba(21, 21, 71, 0.75),
-      transparent
-    ),
-    radial-gradient(
-      farthest-side at bottom left,
-      rgba(34, 77, 120, 0.75),
-      transparent
-    ),
-    radial-gradient(
-        farthest-corner at bottom right,
-        rgba(7, 8, 72, 0.75),
-        transparent
-      )
-      #1b353b;
 }
 
 .coin-list {

@@ -7,6 +7,8 @@ export default function LateralBar() {
             LateralBar Goes here
             <Link to='/'> Portfolio </Link>
             <Link to='/assets'> Assets </Link>
+            <Link to='/markets'> Markets </Link>
+            <Link to='/watchlist'> Watchlist </Link>
         </div>
     )
 }

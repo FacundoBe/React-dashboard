@@ -1,21 +1,15 @@
 /* eslint-disable react/prop-types */
-import axios from "axios"
 import './CoinList.css'
-import { useEffect, useState } from "react"
+import { useContext } from "react"
+import { CoinsDataContext } from '../context/CoinsDataProvider'
 
 export default function CoinList() {
 
-    const [coins, setCoins] = useState([])
-
-    useEffect(() => {
-        axios.get('https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false')
-            .then(res => setCoins(res.data))
-            .catch(err => alert(err))
-    }, [])
-
+    const { coinsData: coins } = useContext(CoinsDataContext)
 
     function CoinRow({ coin, index }) {
         return (
+
             <div className="coin-row-container">
                 <div className="justify-center">
                     {index + 1}
@@ -36,7 +30,6 @@ export default function CoinList() {
                 <div >
                     ${coin.market_cap.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                 </div>
-
             </div>
         )
     }
@@ -44,9 +37,7 @@ export default function CoinList() {
 
     return (
         <div>
-            <h1>Coinlist</h1>
             {coins.length > 0 &&
-
                 <div className="coin-list-container">
                     <div className="coin-list">
                         <div className="coin-row-container">
