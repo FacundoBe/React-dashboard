@@ -7,7 +7,7 @@ export default function LayOut() {
     return(
         <div className='flex'>
            <LateralBar />
-           <Outlet />
+           <Outlet/>
         </div>
     )
 }
