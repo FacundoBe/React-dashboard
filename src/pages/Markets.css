@@ -4,6 +4,8 @@
         linear-gradient(152.09deg,
             rgba(72, 216, 241, 0.25) 2.8%,
             rgba(0, 0, 0, 0.2) 54.35%);
+
+            width: 100%;
 }
 
 .markets-search-input {

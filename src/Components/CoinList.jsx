@@ -1,15 +1,11 @@
 /* eslint-disable react/prop-types */
 import './CoinList.css'
-import { useContext } from "react"
-import { CoinsDataContext } from '../context/CoinsDataProvider'
 
-export default function CoinList() {
-
-    const { coinsData: coins } = useContext(CoinsDataContext)
-
+export default function CoinList({coins}) {
+   
+   
     function CoinRow({ coin, index }) {
         return (
-
             <div className="coin-row-container">
                 <div className="justify-center">
                     {index + 1}

@@ -42,7 +42,7 @@ export default function Assets() {
     }
 
     return (
-        <div className='flex'>
+        <div className={`flex w100`}>
             <CoinSourceForm assetsList={assetsList}
                 saveAssetsList={saveAssetsList}
                 editAssetSourceId={editAssetSourceId}

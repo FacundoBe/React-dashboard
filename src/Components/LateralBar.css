@@ -1,0 +1,39 @@
+.lateral-bar-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    gap: 4em;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Links as buttons */
+.lateral-bar-container a {
+    color: var(--grey);
+    text-decoration: none;
+    text-align: center;
+    line-height: 2.5;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 0 3em;
+}
+
+.lateral-bar-container a:focus {
+    outline: transparent;
+    background-color: var(--selected);
+}
+
+.lateral-bar-container a:hover {
+    background-color: var(--selected);
+}
+
+.lateral-bar-container a:active {
+    background: var(--darkaccent);
+    color: var(--black);
+}
+
+
+.selected-page {
+    background: var(--accent);
+    color: var(--black);
+}

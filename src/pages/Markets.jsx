@@ -1,7 +1,12 @@
+import { useContext } from "react"
+import { CoinsDataContext } from '../context/CoinsDataProvider'
 import Coinlist from '../Components/CoinList'
 import './Markets.css'
 
+
 export default function Markets(){
+
+    const { coinsData } = useContext(CoinsDataContext)
 
     return(
         <main className='markets-container'>
@@ -12,7 +17,7 @@ export default function Markets(){
                 placeholder='Search Coins'
                 />
             </div>
-            <Coinlist/>
+            <Coinlist coins={coinsData}/>
         </main>
     )
 }

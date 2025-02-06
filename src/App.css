@@ -3,10 +3,11 @@
 /* Variables css para los colores*/
 :root {
   --white: #e6e6e6;
+  --almostwhite: #c3c3c3;
   --black: #080808;
   --lightblack: #19191F;
   --blue: #3a80e9;
-  --grey: #9d9d9db7;
+  --grey: #bdbdbdb7;
   --darkgrey: #464352;
   --green: #60cf6f;
   --red: #c86066;
@@ -14,7 +15,9 @@
   --innerbackground:  #1c2225;
   --selected: rgba(209, 218, 233, 0.1);
   --darkselected: rgba(73, 76, 84, 0.8);
+  --highlighted: rgba(209, 218, 233, 0.25);
   --accent:#AD9A4B;
+  --darkaccent:#927e32;
   
   background-color: var(--background);
   color: var(--white);
