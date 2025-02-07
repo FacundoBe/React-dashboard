@@ -17,7 +17,7 @@
   --darkselected: rgba(73, 76, 84, 0.8);
   --highlighted: rgba(209, 218, 233, 0.25);
   --accent:#AD9A4B;
-  --darkaccent:#927e32;
+  --lightaccent:#ceb75b;
   
   background-color: var(--background);
   color: var(--white);
@@ -33,7 +33,7 @@
   font-style: normal;
 }
 
-/* Color de seleccion personalizado */
-::selection {
-  background-color: var(--blue);
+body{
+  margin: 0;
 }
+

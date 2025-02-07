@@ -1,33 +1,20 @@
-import { useEffect, useState } from 'react'
+/* eslint-disable react/prop-types */
+import { useState } from 'react'
 import './Assets.css'
 import WalletCard from '../Components/WalletCard'
 import CoinSourceForm from '../Components/CoinSourceForm'
 
-export default function Assets() {
+export default function Assets({assetsList, callSetAssetsList}) {
 
-    const [assetsList, setAssetsList] = useState([])
     const [editAssetSourceId, setEditAssetSourceId] = useState("")
-
-    useEffect(() => { // Read assetsList from local storage 
-        const saved = localStorage.getItem("anonymousAssetList")
-        if (saved) {
-            const savedList = JSON.parse(saved)
-            setAssetsList(savedList)
-        }
-    }, [])
-
-
+    console.log(assetsList)
     function saveAssetsList(newSource) {
         if (editAssetSourceId === "") {  // adding a nuew coin source
-            setAssetsList(prevAssetsList => [...prevAssetsList, newSource])
+          callSetAssetsList(prevAssetsList => [...prevAssetsList, newSource])
         } else { // updating an edited existent coinsource
-            setAssetsList(prevAssetsList => [newSource, ...prevAssetsList.filter(source => source.name !== editAssetSourceId)])
+          callSetAssetsList(prevAssetsList => [newSource, ...prevAssetsList.filter(source => source.name !== editAssetSourceId)])
         }
-    }
-
-    useEffect(() => {
-        localStorage.setItem("anonymousAssetList", JSON.stringify(assetsList))  // Saves the assets list to local Storage
-    }, [assetsList])
+      }
 
     function cleanEditAssetSourceId() {
         setEditAssetSourceId("")
@@ -38,7 +25,7 @@ export default function Assets() {
     }
 
     function deleteWallet(name) {
-        setAssetsList(prevAssetsList => prevAssetsList.filter(wallet => wallet.name !== name))
+        callSetAssetsList(prevAssetsList => prevAssetsList.filter(wallet => wallet.name !== name))
     }
 
     return (

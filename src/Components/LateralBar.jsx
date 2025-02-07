@@ -3,14 +3,13 @@ import './LateralBar.css'
 export default function LateralBar() {
 
     const {pathname} = useLocation()
-    console.log(pathname)
     
     return (
         <div className="lateral-bar-container">
-            <Link to='/'> Portfolio </Link>
-            <Link to='/assets'> Assets </Link>
-            <Link to='/markets'> Markets </Link>
-            <Link to='/watchlist'> Watchlist </Link>
+            <Link to='/' className={pathname==='/' ? "selected-page" : ""}> Portfolio </Link>
+            <Link to='/assets' className={pathname==='/assets'  ? "selected-page" : ""}> Assets </Link>
+            <Link to='/markets'className={pathname==='/markets' ? "selected-page" : ""}> Markets </Link>
+            <Link to='/watchlist'className={pathname==='/watchlist' ? "selected-page" : ""}> Watchlist </Link>
         </div>
     )
 }

@@ -12,7 +12,7 @@
     color: var(--grey);
     text-decoration: none;
     text-align: center;
-    line-height: 2.5;
+    line-height: 2;
     font-size: 1.4rem;
     font-weight: 600;
     padding: 0 3em;
@@ -32,8 +32,19 @@
     color: var(--black);
 }
 
-
-.selected-page {
+.lateral-bar-container .selected-page {
     background: var(--accent);
     color: var(--black);
+}                   
+
+.lateral-bar-container .selected-page:focus{
+    background: var(--accent);
+    color: var(--black);  
 }
+
+.lateral-bar-container .selected-page:hover
+ {
+    background: var(--lightaccent);
+    color: var(--black);
+}
+

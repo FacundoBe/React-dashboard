@@ -5,7 +5,7 @@ import './LayOut.css'
 export default function LayOut() {
 
     return(
-        <div className='flex'>
+        <div className='layout-container'>
            <LateralBar />
            <Outlet/>
         </div>

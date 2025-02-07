@@ -5,6 +5,7 @@ import { ButtonIcon } from './ButtonIcon'
 import './WalletCard.css'
 import WalletPieChart from './WalletPieChart'
 import { CoinsDataContext } from '../context/CoinsDataProvider'
+import { formatUS } from '../assets/functions'
 
 export default function WalletCard({ disabled = false, source, editWallet, deleteWallet }) {
 
@@ -14,10 +15,6 @@ export default function WalletCard({ disabled = false, source, editWallet, delet
     const totalValue = chartData.map(coin => coin.value).reduce(
         (accumulator, currentValue) => accumulator + currentValue).toFixed(2)
     //const tableData = source.sourceAssets.map(coin => ({ ...coin, ratio: coinPrice(coin.symbol) * coin.amount / totalValue * 100 }))
-
-    function formatUS(value) {
-        return value.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
-    }
 
 
     return (

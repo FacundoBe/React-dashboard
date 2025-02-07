@@ -37,3 +37,10 @@
 .txt-small{
     font-size: 0.75rem;
 }
+
+.divider-hor {
+  height: 0.05em;
+  width: 95%;
+  background-color: var(--darkgrey);
+  margin: 0 auto;
+}
