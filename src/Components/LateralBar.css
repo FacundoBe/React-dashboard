@@ -1,10 +1,8 @@
 .lateral-bar-container {
-  background: radial-gradient(
-      circle at 220%,
-      rgba(196, 197, 220, 0.15) 0%,
-      transparent 100%
-    ),
-    linear-gradient(#3d4f5a 0%, #0e0e10 100%);
+  background: radial-gradient(circle at 220%,
+      rgba(196, 197, 220, 0.10) 0%,
+      transparent 90%),
+    linear-gradient(#0E0E10 0%, #0e0e10 100%);
 
   border-right: 1px solid #ffffff33;
   height: 100vh;
@@ -16,6 +14,7 @@
   min-width: 200px;
   width: 16%;
 }
+
 
 .lateral-bar-container a {
   color: var(--grey);
