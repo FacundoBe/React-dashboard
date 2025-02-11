@@ -1,0 +1,50 @@
+.portfolio-card-container {
+    background: linear-gradient(90deg, #20222D 0%, #2B2D3C 100%);
+    border: 1px solid #43434C;
+    border-left: 10px solid #3D798F;
+    border-radius: 14px;
+    display: flex;
+}
+
+.portfolio-card-coin {
+    display: flex;
+    align-items: center;
+    padding: 1.5em 1.2em;
+}
+
+.portfolio-card-coin img {
+    height: 3.5rem;
+    filter: saturate(2);
+    margin-right: 0.4em;
+}
+
+.potfolio-coin-name-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.potfolio-coin-name-wrapper span {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--grey);
+}
+
+.portfolio-coin-total-container {
+    display: flex;
+    flex-direction: column;
+    padding: 1.5em 1.2em;
+    text-align: start;
+}
+
+.portfolio-coin-total-container p {
+margin: 0;
+} 
+
+.portfolio-coin-total {
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 1.75rem;
+}

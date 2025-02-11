@@ -49,3 +49,10 @@
   color: var(--almostwhite);
   font-weight: 500;
 }
+
+.portfolio-cards-container{
+  display: flex;
+  flex-direction: column;
+  padding: 2em;
+  gap: 1em;
+}
