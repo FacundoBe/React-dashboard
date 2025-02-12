@@ -1,11 +1,20 @@
+/* eslint-disable react/prop-types */
 import './Portfolio.css'
 import { formatUS } from '../assets/functions'
 import PortfolioCard from './PortfolioCard'
 
-export default function Portfolio() {
+export default function Portfolio({assetsList}) {
 
+console.log (assetsList)
 
-    return (
+let portfolioCoinList = [];
+assetsList.forEach(wallet =>{
+    
+})
+
+console.log(portfolioCoinList)
+
+return (
         <div className="flex w100">
             <div className='portfolio-coin-panel'>
 
