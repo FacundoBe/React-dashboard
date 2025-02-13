@@ -3,20 +3,35 @@ import './Portfolio.css'
 import { formatUS } from '../assets/functions'
 import PortfolioCard from './PortfolioCard'
 
-export default function Portfolio({assetsList}) {
+export default function Portfolio({ assetsList }) {
 
-console.log (assetsList)
+    if (assetsList.length > 0) {
 
-let portfolioCoinList = [];
-assetsList.forEach(wallet =>{
-    wallet.assetsList.forEach(coin => {
-        if(portfolioCoinList.map)
-    } )
-})
+        let portfolioCoinList = [];
+        assetsList.forEach(wallet => {
+            wallet?.sourceAssets.forEach(coin => {
+                if (portfolioCoinList.some(coinObj => coinObj.name === coin.name)) {  //already existing coin in portolioCoinList  
+                    const extPortfolioCoinList = portfolioCoinList.map(coinObj => {
+                        if (coinObj.name === coin.name) {
+                            console.log("agregar")
+                            return { ...coinObj, coinByWalletList: [...coinObj.coinByWalletList, { wallet: wallet.name, amount: coin.amount }] }
+                        }
+                        else return coinObj 
+                    })
+                    portfolioCoinList = extPortfolioCoinList
+                    
+                } else { //new coin 
+                    portfolioCoinList.push({ name: coin.name, symbol: coin.symbol, image: coin.image, coinByWalletList: [{ wallet: wallet.name, amount: coin.amount }] })
+                }
+            })
+        })
 
-console.log(portfolioCoinList)
+        console.log('portfolioCoinList', portfolioCoinList)
+    }
 
-return (
+
+
+    return (
         <div className="flex w100">
             <div className='portfolio-coin-panel'>
 
@@ -29,7 +44,7 @@ return (
                 <div className="divider-hor">  </div>
 
                 <div className='portfolio-cards-container'>
-                <PortfolioCard/>
+                    <PortfolioCard />
                 </div>
             </div>
             <div className='portfolio-chart-panel'>

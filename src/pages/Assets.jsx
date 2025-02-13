@@ -7,7 +7,7 @@ import CoinSourceForm from '../Components/CoinSourceForm'
 export default function Assets({assetsList, callSetAssetsList}) {
 
     const [editAssetSourceId, setEditAssetSourceId] = useState("")
-    console.log(assetsList)
+
     function saveAssetsList(newSource) {
         if (editAssetSourceId === "") {  // adding a nuew coin source
           callSetAssetsList(prevAssetsList => [...prevAssetsList, newSource])

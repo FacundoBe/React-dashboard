@@ -11,11 +11,15 @@ export default function WalletCard({ disabled = false, source, editWallet, delet
 
     const { coinPrice } = useContext(CoinsDataContext)
 
-    const chartData = source.sourceAssets.map(coin => ({ name: coin.symbol.toUpperCase(), value: coinPrice(coin.symbol) * coin.amount }))
-    const totalValue = chartData.map(coin => coin.value).reduce(
-        (accumulator, currentValue) => accumulator + currentValue).toFixed(2)
-    //const tableData = source.sourceAssets.map(coin => ({ ...coin, ratio: coinPrice(coin.symbol) * coin.amount / totalValue * 100 }))
+    let totalValue = "0" // initialize totalValue
+    let chartData = []
 
+    if (source.sourceAssets.length > 0) { // values are calculated only if there are assets loaded in the wallet/exchange
+        chartData = source.sourceAssets.map(coin => ({ name: coin.symbol.toUpperCase(), value: coinPrice(coin.symbol) * coin.amount }))
+        totalValue = chartData.map(coin => coin.value).reduce(
+            (accumulator, currentValue) => accumulator + currentValue).toFixed(2)
+        //const tableData = source.sourceAssets.map(coin => ({ ...coin, ratio: coinPrice(coin.symbol) * coin.amount / totalValue * 100 }))
+    }
 
     return (
         <div className='wallet-card-container'>
