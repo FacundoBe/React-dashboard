@@ -9,7 +9,9 @@ console.log (assetsList)
 
 let portfolioCoinList = [];
 assetsList.forEach(wallet =>{
-    
+    wallet.assetsList.forEach(coin => {
+        if(portfolioCoinList.map)
+    } )
 })
 
 console.log(portfolioCoinList)
