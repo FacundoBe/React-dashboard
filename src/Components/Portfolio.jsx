@@ -5,9 +5,9 @@ import PortfolioCard from './PortfolioCard'
 
 export default function Portfolio({ assetsList }) {
 
-    if (assetsList.length > 0) {
+    let portfolioCoinList = [];
 
-        let portfolioCoinList = [];
+    if (assetsList.length > 0) {
         assetsList.forEach(wallet => {
             wallet?.sourceAssets.forEach(coin => {
                 if (portfolioCoinList.some(coinObj => coinObj.name === coin.name)) {  //already existing coin in portolioCoinList  
@@ -25,8 +25,6 @@ export default function Portfolio({ assetsList }) {
                 }
             })
         })
-
-        console.log('portfolioCoinList', portfolioCoinList)
     }
 
 
@@ -44,7 +42,9 @@ export default function Portfolio({ assetsList }) {
                 <div className="divider-hor">  </div>
 
                 <div className='portfolio-cards-container'>
-                    <PortfolioCard />
+                {portfolioCoinList.map(card=> <PortfolioCard key={card.name} coinByWalletList={card.coinByWalletList}/>)
+                        
+                }
                 </div>
             </div>
             <div className='portfolio-chart-panel'>
