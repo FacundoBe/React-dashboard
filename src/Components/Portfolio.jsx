@@ -16,10 +16,10 @@ export default function Portfolio({ assetsList }) {
                             console.log("agregar")
                             return { ...coinObj, coinByWalletList: [...coinObj.coinByWalletList, { wallet: wallet.name, amount: coin.amount }] }
                         }
-                        else return coinObj 
+                        else return coinObj
                     })
                     portfolioCoinList = extPortfolioCoinList
-                    
+
                 } else { //new coin 
                     portfolioCoinList.push({ name: coin.name, symbol: coin.symbol, image: coin.image, coinByWalletList: [{ wallet: wallet.name, amount: coin.amount }] })
                 }
@@ -42,9 +42,11 @@ export default function Portfolio({ assetsList }) {
                 <div className="divider-hor">  </div>
 
                 <div className='portfolio-cards-container'>
-                {portfolioCoinList.map(card=> <PortfolioCard key={card.name} coinByWalletList={card.coinByWalletList}/>)
-                        
-                }
+                    {portfolioCoinList.map(portfolioCoin => <PortfolioCard
+                        key={portfolioCoin.name}
+                        portfolioCoin={portfolioCoin} />)
+
+                    }
                 </div>
             </div>
             <div className='portfolio-chart-panel'>

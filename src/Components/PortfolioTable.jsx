@@ -1,10 +1,7 @@
 /* eslint-disable react/prop-types */
 import './PortfolioTable.css'
-import { COLORS } from '../Assets/constants'
 
 export default function PortfolioTable({ coinByWalletList }) {
-
-    console.log(coinByWalletList)
 
     if (coinByWalletList.length === 0) return //early return for empty assets array
 

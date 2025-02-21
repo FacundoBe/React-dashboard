@@ -2,30 +2,44 @@
 import { formatUS } from '../assets/functions'
 import PortfolioTable from './PortfolioTable'
 import './PortfolioCard.css'
+import { useContext } from 'react'
+import { CoinsDataContext } from '../context/CoinsDataProvider'
 
-export default function PortfolioCard({ coinByWalletList }) {
+export default function PortfolioCard({ portfolioCoin }) {
+    const { coinByWalletList } = portfolioCoin
+
+    const { coinPrice } = useContext(CoinsDataContext)
+
+    console.log(coinByWalletList)
+    let totalCoin = 0
+    let totalValue = 0
+    if (coinByWalletList.length > 0) {
+        totalCoin = coinByWalletList.map(coin => coin.amount).reduce(
+            (accumulator, currentValue) => accumulator + currentValue).toFixed(2)
+        totalValue = (coinPrice(portfolioCoin.symbol) * totalCoin).toFixed(2)
+    }
 
     return (
-        <>{ 
+        <>{
             coinByWalletList.length > 0 &&
-                <div className='portfolio-card-container'>
-                    <div className='portfolio-card-left-panel'>
-                        <div className='portfolio-card-coin'>
-                            <img src="https://assets.coingecko.com/coins/images/325/standard/Tether.png?1696501661" alt="" />
-                            <div className='potfolio-coin-name-wrapper'>
-                                Etherum
-                                <span>ETC</span>
-                            </div>
-                        </div>
-                        <div >
-                            <div className='portfolio-coin-total-container'>
-                                <p>Total: {formatUS("1523")}<span>USD</span></p>
-                                <p className='portfolio-coin-total'>2.000135 <span>ETH</span></p>
-                            </div>
+            <div className='portfolio-card-container'>
+                <div className='portfolio-card-left-panel'>
+                    <div className='portfolio-card-coin'>
+                        <img src={portfolioCoin.image} alt="" />
+                        <div className='potfolio-coin-name-wrapper'>
+                            {portfolioCoin.name}
+                            <span>{portfolioCoin.symbol.toUpperCase()}</span>
                         </div>
                     </div>
-                    <PortfolioTable coinByWalletList={coinByWalletList} />
+                    <div >
+                        <div className='portfolio-coin-total-container'>
+                            <p>Total:{formatUS(totalValue)}<span> USD</span></p>
+                            <p className='portfolio-coin-total'>{totalCoin} <span>{portfolioCoin.symbol.toUpperCase()}</span></p>
+                        </div>
+                    </div>
                 </div>
+                <PortfolioTable coinByWalletList={coinByWalletList} />
+            </div>
         }</>
     )
 }

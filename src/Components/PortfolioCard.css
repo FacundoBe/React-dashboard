@@ -6,6 +6,10 @@
     display: flex;
 }
 
+.portfolio-card-left-panel{
+    min-width: 210px;
+}
+
 .portfolio-card-coin {
     display: flex;
     align-items: center;
@@ -47,4 +51,14 @@ margin: 0;
     color: var(--accent);
     font-weight: 700;
     font-size: 1.75rem;
+    display: flex;
+}
+
+.portfolio-coin-total span{
+    color: var(--accent);
+    font-weight: 700;
+    font-size: 1.0rem;
+    line-height: 1.75rem;
+    align-self:flex-end ;
+    margin-left: 0.1em;
 }
