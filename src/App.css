@@ -16,7 +16,7 @@
   --selected: rgba(209, 218, 233, 0.1);
   --darkselected: rgba(73, 76, 84, 0.8);
   --highlighted: rgba(209, 218, 233, 0.25);
-  --accent:#AD9A4B;
+  --accent:#F9BE6C;
   --lightaccent:#ceb75b;
   
   background-color: var(--background);

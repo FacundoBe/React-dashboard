@@ -1,14 +1,22 @@
 .portfolio-table-container {
   font-size: 0.85rem;
+  padding: 1em 3em;
 }
 
 .portfolio-table-header {
   display: grid;
-  grid-template-columns: 0.4fr 0.2fr 0.4fr;
+  grid-template-columns: 0.6fr 0.4fr;
   padding: 12px 0px 0 0px;
   color: var(--grey);
 }
 
+.portfolio-header-left {
+  margin-left: 1.5em;
+}
+
+.portfolio-header-right {
+  margin-right: 1.5em;
+}
 
 .port-grid-divider {
   grid-row: 2/2;
@@ -21,27 +29,19 @@
 
 .portfolio-table-row {
   display: grid;
-  grid-template-columns: 0.4fr 0.2fr 0.4fr;
+  grid-template-columns: 0.6fr 0.4fr;
 }
 
-.wallet-name {
+.portfolio-wallet-name {
   line-height: 1;
   display: flex;
   align-items: flex-end;
   padding: 0.1em 0;
+  font-size: 0.9rem;
+  font-weight: 400;
+  margin-left: 1.5em;
 }
 
-.funds-coin-name span {
-  color: var(--grey);
-  padding: 0 0.2em;
-  font-weight: 700;
-  font-size: 0.6rem;
-}
-
-.legend-color {
-  width: 0.7rem;
-  height: 0.7rem;
-  border-radius: 4px;
-  margin-right: 0.35em;
-  align-self: center;
+.portfolio-table-funds {
+  margin-right: 1.5em;
 }
