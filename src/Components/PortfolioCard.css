@@ -4,6 +4,7 @@
     border-left: 10px solid #3D798F;
     border-radius: 14px;
     display: flex;
+    box-shadow: 5px 5px 13.5px 0px #0000009C;
 }
 
 .portfolio-card-left-panel{

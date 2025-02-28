@@ -8,6 +8,8 @@
   position: relative;
   justify-items: center;
   align-content: center;
+  box-shadow: 5px 5px 13.5px 0px #0000009C;
+
 }
 
 .wallet-card-name {
