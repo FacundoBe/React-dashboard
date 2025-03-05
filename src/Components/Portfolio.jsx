@@ -2,10 +2,14 @@
 import './Portfolio.css'
 import { formatUS } from '../assets/functions'
 import PortfolioCard from './PortfolioCard'
+import { useContext } from 'react'
+import { CoinsDataContext } from '../context/CoinsDataProvider'
 
 export default function Portfolio({ assetsList }) {
 
     let portfolioCoinList = [];
+
+    const { coinPrice } = useContext(CoinsDataContext)
 
     if (assetsList.length > 0) {
         assetsList.forEach(wallet => {
@@ -13,7 +17,6 @@ export default function Portfolio({ assetsList }) {
                 if (portfolioCoinList.some(coinObj => coinObj.name === coin.name)) {  //already existing coin in portolioCoinList  
                     const extPortfolioCoinList = portfolioCoinList.map(coinObj => {
                         if (coinObj.name === coin.name) {
-                            console.log("agregar")
                             return { ...coinObj, coinByWalletList: [...coinObj.coinByWalletList, { wallet: wallet.name, amount: coin.amount }] }
                         }
                         else return coinObj
@@ -27,6 +30,18 @@ export default function Portfolio({ assetsList }) {
         })
     }
 
+    
+    let totalCoin = 0
+    let totalValue = 0
+    if (portfolioCoinList.length > 0) {
+        totalValue = portfolioCoinList.map(coin => {
+            totalCoin = coin.coinByWalletList.map(wallet => wallet.amount).reduce(
+                (accumulator, currentValue) => accumulator + currentValue).toFixed(2)
+                return (coinPrice(coin.symbol) * totalCoin)  //returns the total USD value of a given coin across all wallets
+        }
+        ).reduce((accumulator, currentValue) => accumulator + currentValue) //acumulates the different coins value in USD
+    }
+    const totalValueBtc= totalValue > 0 ? totalValue/coinPrice("btc") : 0
 
 
     return (
@@ -35,8 +50,8 @@ export default function Portfolio({ assetsList }) {
 
                 <div className='portfolio-total-panel'>
                     <div className='label'>TOTAL WORTH</div>
-                    <p><span>$</span>{formatUS("100000.5")}</p>
-                    <div className='crypto'> 23.50 BTC</div>
+                    <p><span>$</span>{formatUS(totalValue.toFixed(2))}</p>
+                    <div className='crypto'> {totalValueBtc} BTC </div>
                 </div>
 
                 <div className="divider-hor">  </div>

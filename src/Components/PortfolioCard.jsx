@@ -10,7 +10,6 @@ export default function PortfolioCard({ portfolioCoin }) {
 
     const { coinPrice } = useContext(CoinsDataContext)
 
-    console.log(coinByWalletList)
     let totalCoin = 0
     let totalValue = 0
     if (coinByWalletList.length > 0) {
