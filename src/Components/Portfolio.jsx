@@ -4,6 +4,7 @@ import { formatUS } from '../assets/functions'
 import PortfolioCard from './PortfolioCard'
 import { useContext } from 'react'
 import { CoinsDataContext } from '../context/CoinsDataProvider'
+import PortfolioPieChart from './PortfolioPieChart'
 
 export default function Portfolio({ assetsList }) {
 
@@ -65,7 +66,7 @@ export default function Portfolio({ assetsList }) {
                 </div>
             </div>
             <div className='portfolio-chart-panel'>
-                Coins Graph
+                <PortfolioPieChart portfolioCoinList={portfolioCoinList}/>
             </div>
         </div>
     )
