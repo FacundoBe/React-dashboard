@@ -11,8 +11,10 @@
 }
 
 .portfolio-chart-panel {
-  background-color: rgba(250, 235, 215, 0.34);
+  background-color:var(--background);
   flex-grow: 5;
+  display: flex;
+  justify-content: center;
 }
 
 .portfolio-total-panel {
