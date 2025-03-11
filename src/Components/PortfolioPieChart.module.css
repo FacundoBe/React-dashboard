@@ -2,24 +2,53 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 3em;
 }
 
 .legends-container{
     display: flex;
     flex-direction: column;
     padding: 0.2em 0 0 0;
+    overflow: auto;
+    margin-bottom: 3.5em;
+    padding-right: 2.5em;
+    padding-left: 2.5em;
 }
 
 .legend{
     display: flex;
     align-items: center;
     font-size: 1.0rem;
-    padding: 0.5em 0;
+    padding: 0.5em 0.0em;
 }
 
 .legend-color{
-    width: 1.0rem;
-     height: 1.0rem;
+    width: 1.3rem;
+     height: 1.3rem;
      border-radius: 50%;
       margin-right: 0.9em;
 }
+
+.coin-rate{
+    margin-right: 1.0em;
+    min-width: 3.5em;
+    text-align: right;
+    color: var(--almostwhite);
+}
+
+.coin-name {
+    font-weight: 500;
+}
+
+.coin-name span{
+    color: var(--grey);
+    font-size: 0.8rem;
+}
+
+/* scrollbars*/
+.legends-container {
+    scrollbar-width: thin;
+    scrollbar-color: var(--white) var(--selected);
+  }
+
+  

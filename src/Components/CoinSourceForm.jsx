@@ -200,12 +200,14 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
                     <div className="wallet-name flex">{formData.sourceName}</div>
 
                     {myCoinsData.length > 0 &&
-                        <AssetsTable
-                            myCoinsData={myCoinsData}
-                            editable
-                            handleEditCoin={handleEditCoin}
-                            handleDeleteCoin={handleDeleteCoin}
-                        />
+                        <div className="assets-table-container w100" > 
+                            <AssetsTable
+                                myCoinsData={myCoinsData}
+                                editable
+                                handleEditCoin={handleEditCoin}
+                                handleDeleteCoin={handleDeleteCoin}
+                            />
+                        </div>
                     }
 
                     <form className="form-controls" onSubmit={(e) => handleFinishEntry(e)}>

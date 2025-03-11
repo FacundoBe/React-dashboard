@@ -1,2 +1,2 @@
 export const COLORS = ["#e9d8a6", "#ee9b00", "#ca6702", "#bb3e03", "#ae2012", "#9b2226", "#005f73", "#0a9396", "#94d2bd",];
-export const COLORS_BLUE = ["#205781",    "#4F959D", "#98D2C0", " #F6F8D5",];
+export const COLORS_2 = [" #005f73", "#0a9396", "#94d2bd","#e9d8a6", "#ee9b00", "#ca6702", "#bb3e03", "#ae2012", "#9b2226",];
