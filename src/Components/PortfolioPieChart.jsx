@@ -17,12 +17,12 @@ export default function PortfolioPieChart({ portfolioCoinList }) {
         const totalCoin = coin.coinByWalletList.map(wallet => wallet.amount).reduce(
             (accumulator, currentValue) => accumulator + currentValue)
         return { name: coin.name, symbol: coin.symbol, amount: totalCoin, value: coinPrice(coin.symbol) * totalCoin }
-    })
+    }).sort((a,b) => b.value - a.value) // Sorts the coin list array in descending order by value
+
 
     if (coinData.length > 0) {
         totalValue = coinData.map(coin => coin.value).reduce(
             (accum, currentVal) => accum + currentVal)
-        console.log(totalValue)
     }
 
     const data = coinData.map(coin => ({ name: coin.name, value: coin.value, symbol: coin.symbol }));
@@ -62,7 +62,7 @@ export default function PortfolioPieChart({ portfolioCoinList }) {
                     outerRadius={outerRadius}
                     startAngle={startAngle}
                     endAngle={endAngle}
-                    cornerRadius={9}
+                    cornerRadius={percent < 0.018 ? 6 * percent / 0.018 : 6}
                     fill={fill}
                     style={{ outline: 'none' }}
                     tabIndex={-1}
@@ -135,7 +135,7 @@ export default function PortfolioPieChart({ portfolioCoinList }) {
                         <div className={styles['legend-color']} style={{ backgroundColor: COLORS[index % COLORS.length] }} >
                         </div>
                         <div className={styles['coin-rate']}>
-                            {totalValue && (coin.value / totalValue * 100).toFixed(2) }%
+                            {totalValue && (coin.value / totalValue * 100).toFixed(2)}%
                         </div>
                         <div className={styles['coin-name']}>
                             {coin.name}
@@ -158,14 +158,20 @@ export default function PortfolioPieChart({ portfolioCoinList }) {
                     innerRadius={120}
                     outerRadius={132}
                     paddingAngle={0.5}
-                    cornerRadius={5}
+                    // cornerRadius={6}  //Corner radius is customized inside cell elemnt to provide samler angle for 1% or smaller elements
                     fill="#8884d8"
                     dataKey="value"
                     onMouseEnter={onPieEnter}
                 >
 
                     {data.map((entry, index) => {// outline none prevents selection retangle from being visible when eleemnt is cliked
-                        return <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} stroke={'transparent'} strokeWidth={2} style={{ outline: 'none' }} />
+                        return <Cell key={`cell-${index}`}
+                            fill={COLORS[index % COLORS.length]}
+                            stroke={'transparent'}
+                            strokeWidth={0}
+                            cornerRadius={coinData[index].value / totalValue < 0.018 ? 6 * coinData[index].value / totalValue / 0.018 : 6}
+                            style={{ outline: 'none' }} />
+
                     })}
                 </Pie>
             </PieChart>

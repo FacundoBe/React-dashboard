@@ -6,8 +6,6 @@ import {COLORS} from '../Assets/constants'
 export default function AssetsTable({ myCoinsData, editable = true, handleEditCoin = () => { }, handleDeleteCoin = () => { } }) {
 
 
-    if (myCoinsData.length === 0) return //early return for empty assets array
-
     return (
 
         <div className="fund-list flex-column w100">
@@ -17,7 +15,8 @@ export default function AssetsTable({ myCoinsData, editable = true, handleEditCo
                 <div className="grid-divider">  </div>
             </div>
 
-            {myCoinsData.map((coin,index) => (
+            {myCoinsData.length > 0 &&
+             myCoinsData.map((coin,index) => (
                 <div key={coin.name} className={`${"funds-row"} ${!editable ? "no-btn" : null}`}>
                     <div className="funds-coin-name ">
                         <div className={'legend-color'} style={{ backgroundColor: COLORS[index % COLORS.length] }} > </div>

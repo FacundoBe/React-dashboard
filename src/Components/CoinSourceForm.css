@@ -29,7 +29,7 @@
 
 .coin-source-form {
   min-width: 360px;
-  width: 50%;
+  width:65%;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -38,7 +38,7 @@
 
 .coin-assets-form {
   min-width: 360px;
-  width: 50%;
+  width: 65%;
   padding: 0 0.5em;
   display: flex;
   flex-direction: column;

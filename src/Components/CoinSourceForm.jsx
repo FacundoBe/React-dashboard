@@ -105,7 +105,7 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
 
             if (myCoinsData.find(coin => coin.name === coinName) === undefined) {  // add the coin if it is not already in the coin list
 
-                setMyCoinsData(prev => [...prev, { name: coinName, symbol: coinSymbol, image: coinImage, amount: coinAmount }])
+                setMyCoinsData(prev => [{ name: coinName, symbol: coinSymbol, image: coinImage, amount: coinAmount }, ...prev])
             }
             else { // if the coin already exists the amounts of this new input is added to the previous amount value.
                 setMyCoinsData(prev => prev.map(coin => {
@@ -199,8 +199,8 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
 
                     <div className="wallet-name flex">{formData.sourceName}</div>
 
-                    {myCoinsData.length > 0 &&
-                        <div className="assets-table-container w100" > 
+                    {
+                        <div className="assets-table-container w100" >
                             <AssetsTable
                                 myCoinsData={myCoinsData}
                                 editable

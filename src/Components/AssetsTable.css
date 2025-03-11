@@ -7,7 +7,7 @@
 
 .funds-header {
   display: grid;
-  grid-template-columns: 0.4fr 0.4fr 0.2fr 0.03fr;
+  grid-template-columns: 0.5fr 0.3fr 0.2fr 0.03fr;
   padding: 12px 0px 0 0px;
   color: var(--grey);
 }
@@ -26,9 +26,10 @@
   margin-bottom: 0.8em;
 }
 
+
 .funds-row {
   display: grid;
-  grid-template-columns: 0.4fr 0.4fr 0.2fr 0.03fr;
+  grid-template-columns: 0.5fr 0.3fr 0.2fr 0.03fr;
 }
 
 .funds-coin-name {
