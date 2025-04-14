@@ -19,3 +19,19 @@
     min-width: 15em;
     width: 20%;
 }
+
+.input-delete-btn{
+    margin-left: 0.8em;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.295);
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    width: 25px;
+    color: rgba(255, 255, 255, 0.637);   
+}
+
+.input-delete-btn:hover {
+    background-color: rgba(165, 145, 255, 0.295) ;
+    border: 1px solid  rgba(165, 145, 255, 0.295);
+    color: white;
+}
