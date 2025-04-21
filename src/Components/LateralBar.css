@@ -20,12 +20,11 @@
   color: var(--grey);
   text-decoration: none;
   text-align: center;
-  line-height: 2.5;
+  line-height: 3;
   font-size: 1.25rem;
   font-weight: 400;
   letter-spacing: 0.03rem;
   width: 100%;
-  padding-top: 0.5em;
 }
 
 .lateral-bar-container a:focus {

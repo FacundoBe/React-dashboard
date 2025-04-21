@@ -33,7 +33,7 @@ img {
 
 .coin-row-container {
   display: grid;
-  grid-template-columns: 70px 0.35fr 2fr 1fr 2fr 2fr 2fr;
+  grid-template-columns: 70px 2fr 1fr 2fr 2fr 2fr;
   padding: 12px 0px 12px 0px;
   align-items: center;
   justify-items: end;
@@ -52,9 +52,6 @@ img {
   justify-self: center;
 }
 
-.header-coin-name {
-  grid-column: 2/4;
-}
 
 .briefcase-icon{
     stroke:var(--selected);
@@ -69,6 +66,8 @@ img {
 .coin-name {
   display: flex;
   justify-self: left;
+  align-items: center;
+  gap: 0.8em;
 }
 
 .coin-name div {
@@ -81,9 +80,9 @@ img {
 }
 
 .coin-image {
-  width: 30px;
+  width: 2rem;
   object-fit: cover;
-  padding-right: 1em;
+  justify-self: start;
 }
 
 /* scrollbars*/

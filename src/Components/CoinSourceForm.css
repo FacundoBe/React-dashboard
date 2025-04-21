@@ -73,26 +73,29 @@
   justify-content: space-between;
 }
 
+
+.cancel-btn, .ok-btn {
+  border-radius: 9px;
+  padding: 1em 2.2em;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
 .cancel-btn {
   background-color: var(--background);
-  border-radius: 9px;
   border: 0.05em solid var(--darkgrey);
-  padding: 1em 2.2em;
   color: var(--grey);
-  font-weight: 600;
 }
 
 .ok-btn {
   background-color: var(--accent);
-  border-radius: 9px;
   border: 0.05em solid var(--darkgrey);
-  padding: 1em 2.2em;
   color: var(--background);
-  font-weight: 600;
 }
 
 .ok-btn:hover {
-  filter: brightness(1.15);
+  filter: brightness(0.9);
+   color: var(--black);
 }
 
 .cancel-btn:hover {

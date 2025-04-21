@@ -10,8 +10,9 @@ export default function CoinList({coins}) {
                 <div className="justify-center">
                     {index + 1}
                 </div>
-                <img className="coin-image" src={coin.image} />
+                
                 <div className="coin-name">
+                    <img className="coin-image" src={coin.image} />
                     <div>{coin.name}</div> <span> {coin.symbol.toUpperCase()}</span>
                 </div>
                 <div >
