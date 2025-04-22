@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { useContext, useState, useCallback } from 'react'
 import { CoinsDataContext } from '../context/CoinsDataProvider'
-import { PieChart, Pie, Sector, Cell } from "recharts";
+import { PieChart, Pie, Sector, Cell, ResponsiveContainer } from "recharts";
 import styles from './PortfolioPieChart.module.css'
 import { COLORS } from '../Assets/constants'
 
@@ -17,7 +17,7 @@ export default function PortfolioPieChart({ portfolioCoinList }) {
         const totalCoin = coin.coinByWalletList.map(wallet => wallet.amount).reduce(
             (accumulator, currentValue) => accumulator + currentValue)
         return { name: coin.name, symbol: coin.symbol, amount: totalCoin, value: coinPrice(coin.symbol) * totalCoin }
-    }).sort((a,b) => b.value - a.value) // Sorts the coin list array in descending order by value
+    }).sort((a, b) => b.value - a.value) // Sorts the coin list array in descending order by value
 
 
     if (coinData.length > 0) {
@@ -54,7 +54,6 @@ export default function PortfolioPieChart({ portfolioCoinList }) {
 
         return (
             <g >
-
                 <Sector
                     cx={cx}
                     cy={cy}
@@ -85,9 +84,9 @@ export default function PortfolioPieChart({ portfolioCoinList }) {
                 />
                 <circle cx={ex} cy={ey} r={2} fill={fill} stroke="none" />
                 <text
-                    x={ex + (cos >= 0 ? 1 : -4.7) * 12}
+                    x={ex + (cos >= 0 ? 1 : -6.5) * 12}
                     y={ey}
-                    textAnchor={textAnchor}
+                    textAnchor={"start"}
                     dy={-3}
                     fill={fill}
                     fontSize={"0.9rem"}
@@ -95,10 +94,10 @@ export default function PortfolioPieChart({ portfolioCoinList }) {
                     {payload.symbol.toUpperCase()}
                 </text>
                 <text
-                    x={ex + (cos >= 0 ? 1 : -1) * 12}
+                    x={ex + (cos >= 0 ? 1 : -6.5) * 12}
                     y={ey}
                     dy={15}
-                    textAnchor={textAnchor}
+                    textAnchor={"start"}
                     fill="#c3c3c3"
                     style={{ outline: 'none' }}
                     tabIndex={-1}
@@ -106,9 +105,9 @@ export default function PortfolioPieChart({ portfolioCoinList }) {
                     {`$${value.toFixed(2)}`}
                 </text>
                 <text
-                    x={ex + (cos >= 0 ? 1 : 0.2) * 12}
+                    x={ex + (cos >= 0 ? 1 : -6.5) * 12}
                     y={ey}
-                    textAnchor={textAnchor}
+                    textAnchor={"start"}
                     dy={32}
                     fill={"#8C8BA1"}
                     fontSize={"0.9rem"}
@@ -148,33 +147,37 @@ export default function PortfolioPieChart({ portfolioCoinList }) {
 
     return (
         <div className={styles['main-container']}>
-            <PieChart width={600} height={450}>
-                <Pie
-                    activeIndex={activeIndex}
-                    activeShape={renderActiveShape}
-                    data={data}
-                    cx={"50%"}
-                    cy={"50%"}
-                    innerRadius={120}
-                    outerRadius={132}
-                    paddingAngle={0.5}
-                    // cornerRadius={6}  //Corner radius is customized inside cell elemnt to provide samler angle for 1% or smaller elements
-                    fill="#8884d8"
-                    dataKey="value"
-                    onMouseEnter={onPieEnter}
-                >
+            <div className={styles['pie-container']}>
+                <ResponsiveContainer>
+                    <PieChart>
+                        <Pie
+                            activeIndex={activeIndex}
+                            activeShape={renderActiveShape}
+                            data={data}
+                            cx={"50%"}
+                            cy={"50%"}
+                            innerRadius={"55%"}
+                            outerRadius={"63%"}
+                            paddingAngle={0.5}
+                            // cornerRadius={6}  //Corner radius is customized inside cell elemnt to provide samler angle for 1% or smaller elements
+                            fill="#8884d8"
+                            dataKey="value"
+                            onMouseEnter={onPieEnter}
+                        >
 
-                    {data.map((entry, index) => {// outline none prevents selection retangle from being visible when eleemnt is cliked
-                        return <Cell key={`cell-${index}`}
-                            fill={COLORS[index % COLORS.length]}
-                            stroke={'transparent'}
-                            strokeWidth={0}
-                            cornerRadius={coinData[index].value / totalValue < 0.018 ? 6 * coinData[index].value / totalValue / 0.018 : 6}
-                            style={{ outline: 'none' }} />
+                            {data.map((entry, index) => {// outline none prevents selection retangle from being visible when eleemnt is cliked
+                                return <Cell key={`cell-${index}`}
+                                    fill={COLORS[index % COLORS.length]}
+                                    stroke={'transparent'}
+                                    strokeWidth={0}
+                                    cornerRadius={coinData[index].value / totalValue < 0.018 ? 6 * coinData[index].value / totalValue / 0.018 : 6}
+                                    style={{ outline: 'none' }} />
 
-                    })}
-                </Pie>
-            </PieChart>
+                            })}
+                        </Pie>
+                    </PieChart>
+                </ResponsiveContainer>
+            </div>
             <Legend />
         </div>
     );

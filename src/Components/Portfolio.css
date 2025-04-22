@@ -8,13 +8,13 @@
   flex-direction: column;
   flex-grow: 3;
   overflow-y: auto;
-  
+
 }
 
 .portfolio-chart-panel {
-  background-color:var(--background);
+  background-color: var(--background);
   display: flex;
-  flex-grow: 1;
+  width: 50%;
   justify-content: center;
 }
 
@@ -54,7 +54,7 @@
   font-weight: 500;
 }
 
-.portfolio-cards-container{
+.portfolio-cards-container {
   display: flex;
   flex-direction: column;
   padding: 2em;
