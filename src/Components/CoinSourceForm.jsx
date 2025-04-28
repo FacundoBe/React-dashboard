@@ -140,13 +140,14 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
     return (
         <div className="coin-source-container">
             <div className="form-header">
-                Ingrese la información de sus cryptomonedas para seguirlas en su Portfolio.
+                Here you can Add your Wallet/Exchange and Cryptocurrency information. Then you can follow them in your Portfolio
             </div>
             <div className="form-divider-hor">  </div>
-            <form onSubmit={handleSubmitName}>
+            <img src="arrow-down.svg" alt="arrow pointing to the inputs" />
+            <form className="w100" onSubmit={handleSubmitName}>
                 {!isSourceNameSet &&
                     <div className="coin-source-form">
-                        <label htmlFor="sourceName">Wallet/Exchange</label>
+                        <label htmlFor="sourceName">Type the Wallet/Exchange name to add</label>
                         <input type="text"
                             id="sourceName"
                             className="input"
@@ -154,7 +155,7 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
                             onChange={(e) => handleChange(e)}
                             placeholder="Binanace, Metamask..."
                         />
-                        <label htmlFor="sourceAdress">Wallet/Exchange adress</label>
+                        <label htmlFor="sourceAdress">Type the Wallet/Exchange adress (optional)</label>
                         <input type="text" id="sourceAdress"
                             className="input"
                             value={formData.sourceAdress}

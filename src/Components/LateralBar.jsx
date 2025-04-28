@@ -1,15 +1,17 @@
 import { Link, useLocation } from "react-router";
-import './LateralBar.css'
+import './LateralBar.css';
+
 export default function LateralBar() {
 
     const {pathname} = useLocation()
     
     return (
         <div className="lateral-bar-container">
-            <Link to='/' className={pathname==='/' ? "selected-page" : ""}> Portfolio </Link>
-            <Link to='/assets' className={pathname==='/assets'  ? "selected-page" : ""}> Assets </Link>
-            <Link to='/markets'className={pathname==='/markets' ? "selected-page" : ""}> Markets </Link>
-            <Link to='/watchlist'className={pathname==='/watchlist' ? "selected-page" : ""}> Watchlist </Link>
+            <img className="logo-criptofolio" width="160px" src="logo-cryptofolio-text.svg" alt="" />
+            <Link to='/' className={pathname==='/' ? "selected-page" : ""}> PORTFOLIO </Link>
+            <Link to='/assets' className={pathname==='/assets'  ? "selected-page" : ""}> ASSETS </Link>
+            <Link to='/markets'className={pathname==='/markets' ? "selected-page" : ""}> MARKETS </Link>
+            <Link to='/watchlist'className={pathname==='/watchlist' ? "selected-page" : ""}> WATCHLIST </Link>
         </div>
     )
 }
