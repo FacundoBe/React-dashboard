@@ -11,29 +11,32 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden;
+  overflow: hidden;  
 }
 
 .form-header {
-  padding: 1.5em 5em 3.5em 1.5em;
-  text-align: start;
+  padding: 1.1em 1em 1.1em;
+  text-align: left;
   font-size: 1.5rem;
+  max-width: 65%;
+  
 }
 
 .form-divider-hor {
   height: 0.05em;
-  width: 90%;
+  width: 65%;
   background-color: var(--darkgrey);
-  margin: 0 0em 3em 0em;
+  margin: 0 0em 1em 0em;
 }
 
 .coin-source-form {
   min-width: 360px;
-  width:65%;
+  width: 65%;
   display: flex;
   flex-direction: column;
   align-items: start;
   padding: 0 0.5em;
+  margin: 0.5em auto ;
 }
 
 .coin-assets-form {
@@ -51,6 +54,7 @@
   font-weight: 600;
   margin-top: 2.5em;
   margin-bottom: 0.5em;
+  margin-left: 0.3em;
 }
 
 .input {

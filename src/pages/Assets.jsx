@@ -9,7 +9,7 @@ export default function Assets({assetsList, callSetAssetsList}) {
     const [editAssetSourceId, setEditAssetSourceId] = useState("")
 
     function saveAssetsList(newSource) {
-        if (editAssetSourceId === "") {  // adding a nuew coin source
+        if (editAssetSourceId === "") {  // adding a new coin source
           callSetAssetsList(prevAssetsList => [...prevAssetsList, newSource])
         } else { // updating an edited existent coinsource
           callSetAssetsList(prevAssetsList => [newSource, ...prevAssetsList.filter(source => source.name !== editAssetSourceId)])
