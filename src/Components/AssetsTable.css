@@ -39,7 +39,6 @@
 }
 
 .funds-coin-name {
-  line-height: 1;
   display: flex;
   align-items: baseline;
 }
