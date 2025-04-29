@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import { ButtonIcon } from "./ButtonIcon"
 import './AssetsTable.css'
-import {COLORS} from '../Assets/constants'
+import { COLORS } from '../Assets/constants'
 
 export default function AssetsTable({ myCoinsData, editable = true, handleEditCoin = () => { }, handleDeleteCoin = () => { } }) {
 
@@ -16,12 +16,15 @@ export default function AssetsTable({ myCoinsData, editable = true, handleEditCo
             </div>
 
             {myCoinsData.length > 0 &&
-             myCoinsData.map((coin,index) => (
-                <div key={coin.name} className={`${"funds-row"} ${!editable ? "no-btn" : null}`}>
-                    <div className="funds-coin-name ">
-                        <div className={'legend-color'} style={{ backgroundColor: COLORS[index % COLORS.length] }} > </div>
-                            {coin.name}
-                            <span > {coin?.symbol.toUpperCase()}</span>
+                myCoinsData.map((coin, index) => (
+                    <div key={coin.name} className={`${"funds-row"} ${!editable ? "no-btn" : null}`}>
+                        <div className="funds-coin-name-container ">
+                            <div className={'legend-color'} style={{ backgroundColor: COLORS[index % COLORS.length] }} >
+                            </div>
+                            <div className="funds-coin-name ">
+                                {coin.name}
+                                <span > {coin?.symbol.toUpperCase()}</span>
+                            </div>
                         </div>
                         <div className="flex right ">{coin.amount}</div>
                         {editable &&
@@ -31,8 +34,8 @@ export default function AssetsTable({ myCoinsData, editable = true, handleEditCo
                             </div>}
                         <div className="grid-divider">  </div>
                     </div>))}
-                </div>
+        </div>
 
 
-            )
+    )
 }
