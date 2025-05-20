@@ -37,7 +37,7 @@ export default function PortfolioCard({ portfolioCoin }) {
                         </div>
                     </div>
                 </div>
-                <PortfolioTable coinByWalletList={coinByWalletList} />
+                <PortfolioTable coinByWalletList={coinByWalletList} price={coinPrice(portfolioCoin.symbol)} />
             </div>
         }</>
     )

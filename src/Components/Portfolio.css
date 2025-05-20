@@ -14,7 +14,7 @@
 .portfolio-chart-panel {
   background-color: var(--background);
   display: flex;
-  width: 50%;
+  width: 45%;
   justify-content: center;
 }
 
@@ -57,7 +57,7 @@
 .portfolio-cards-container {
   display: flex;
   flex-direction: column;
-  padding: 2em;
+  padding: 2em 3em;
   gap: 1em;
 }
 

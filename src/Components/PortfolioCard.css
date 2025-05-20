@@ -14,7 +14,7 @@
 .portfolio-card-coin {
     display: flex;
     align-items: center;
-    padding: 1.5em 1.2em;
+    padding: 1.5em 1.7em;
 }
 
 .portfolio-card-coin img {
@@ -40,7 +40,7 @@
 .portfolio-coin-total-container {
     display: flex;
     flex-direction: column;
-    padding: 1.5em 1.2em;
+    padding: 0 1.7em 1.5em 1.7em;
     text-align: start;
 }
 

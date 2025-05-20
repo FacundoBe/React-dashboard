@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import './PortfolioTable.css'
 
-export default function PortfolioTable({ coinByWalletList }) {
+export default function PortfolioTable({ coinByWalletList, price }) {
 
     if (coinByWalletList.length === 0) return //early return for empty assets array
 
@@ -11,6 +11,7 @@ export default function PortfolioTable({ coinByWalletList }) {
             <div className="portfolio-table-header">
                 <span className="portfolio-header-left flex">Wallet / Exchange</span>
                 <span className="portfolio-header-right flex right ">Funds</span>
+                <span className="portfolio-header-right flex right ">Value</span>
                 <div className="grid-divider">  </div>
             </div>
 
@@ -20,6 +21,7 @@ export default function PortfolioTable({ coinByWalletList }) {
                         {wallet.wallet}
                     </div>
                     <div className="portfolio-table-funds flex right ">{wallet.amount}</div>
+                    <div className="portfolio-table-value flex right ">{(wallet.amount*price).toFixed(2)} <span>USD</span></div>
                     <div className="grid-divider">  </div>
                 </div>))}
         </div>

@@ -5,7 +5,7 @@
 
 .portfolio-table-header {
   display: grid;
-  grid-template-columns: 0.6fr 0.4fr;
+  grid-template-columns: 0.4fr 0.4fr 0.4fr; 
   padding: 12px 0px 0 0px;
   color: var(--grey);
 }
@@ -29,7 +29,7 @@
 
 .portfolio-table-row {
   display: grid;
-  grid-template-columns: 0.6fr 0.4fr;
+  grid-template-columns: 0.4fr 0.4fr 0.4fr;
 }
 
 .portfolio-wallet-name {
@@ -44,4 +44,11 @@
 
 .portfolio-table-funds {
   margin-right: 1.5em;
+}
+
+
+.portfolio-table-value span {
+font-size: 0.7rem;
+margin-left: 0.2rem;
+color: var(--grey);
 }
