@@ -5,3 +5,17 @@
     height: 100vh;
     overflow: hidden;
 }
+
+
+
+@media (max-width: 600px) {
+ 
+  .layout-container{
+    overflow: auto;
+    position: relative;
+}
+
+
+
+
+}

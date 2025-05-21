@@ -71,3 +71,21 @@
   background: var(--lightaccent);
   color: var(--black);
 } */
+
+
+
+
+  @media (max-width: 600px) {
+ 
+  .layout-container{
+    overflow: auto;
+}
+
+.lateral-bar-container {
+position: fixed;
+z-index: 1000;
+left: -48%;
+  
+}
+
+}
