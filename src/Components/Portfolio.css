@@ -72,7 +72,6 @@
 
 @media (max-width: 600px) {
 
-
   .portfolio-chart-panel {
     display: none;
   }
@@ -82,8 +81,9 @@
   }
 
   .portfolio-total-panel {
-  font-size: 2.7rem;
-  margin: 0em 0 0.8em 0.5em;
-  /*align-items: center;*/
-}
+    font-size: 2.7rem;
+    margin: 0em 0 0.8em 0.5em;
+    /*align-items: center;*/
+  }
+
 }

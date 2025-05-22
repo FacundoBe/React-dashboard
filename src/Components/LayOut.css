@@ -4,7 +4,14 @@
     padding: 0;
     height: 100vh;
     overflow: hidden;
+    position: relative;
 }
+
+.menu-icon{
+display: none;
+}
+
+
 
 
 
@@ -15,7 +22,15 @@
     position: relative;
 }
 
-
+.menu-icon{
+    position: fixed;
+    right: 12px;
+    top: 5px;
+    z-index: 1000;
+    height: 24px;
+    color:var(--white);
+    display: block;
+}
 
 
 }

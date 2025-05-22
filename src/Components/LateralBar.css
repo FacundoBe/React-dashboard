@@ -84,8 +84,13 @@
 .lateral-bar-container {
 position: fixed;
 z-index: 1000;
-left: -48%;
-  
+left: -100%;
+transition: 0.9s;
+}
+
+.lateral-bar-container.visible {
+transform: translateX(200%);
+transition: 0.2s;
 }
 
 }
