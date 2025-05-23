@@ -1,16 +1,16 @@
 /* eslint-disable react/prop-types */
 import './CoinList.css'
 
-export default function CoinList({coins}) {
-   
-   
+export default function CoinList({ coins }) {
+
+
     function CoinRow({ coin, index }) {
         return (
             <div className="coin-row-container">
                 <div className="justify-center">
                     {index + 1}
                 </div>
-                
+
                 <div className="coin-name">
                     <img className="coin-image" src={coin.image} />
                     <div>{coin.name}</div> <span> {coin.symbol.toUpperCase()}</span>

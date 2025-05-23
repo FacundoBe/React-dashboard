@@ -26,7 +26,6 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
     }, [])
 
 
-
     const options = coinList.map(coin => ({ label: coin.name, value: { name: coin.name, image: coin.image, symbol: coin.symbol } }))
 
     // Sets the form according to new source o editing existing source case
@@ -140,7 +139,9 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
     return (
         <div className="coin-source-container">
             <div className="form-header">
-                Here you can Add your Wallet/Exchange and Cryptocurrency information. Then you can follow them in your Portfolio
+            { !editAssetSourceId ? 
+            "Here you can Add your Wallet/Exchange and Cryptocurrency information. Then you can follow them in your Portfolio" 
+            :"Edit your Wallet/Exchange Assets"}
             </div>
             <div className="form-divider-hor">  </div>
             <img src="arrow-down.svg" alt="arrow pointing to the inputs" />

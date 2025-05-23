@@ -4,4 +4,33 @@
     padding: 0;
     height: 100vh;
     overflow: hidden;
+    position: relative;
+}
+
+.menu-icon{
+display: none;
+}
+
+
+
+
+
+@media (max-width: 600px) {
+ 
+  .layout-container{
+    overflow: auto;
+    position: relative;
+}
+
+.menu-icon{
+    position: fixed;
+    right: 12px;
+    top: 5px;
+    z-index: 10000;
+    height: 24px;
+    color:var(--white);
+    display: block;
+}
+
+
 }

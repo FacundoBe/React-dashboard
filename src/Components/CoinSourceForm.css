@@ -6,12 +6,10 @@
     linear-gradient(0deg, #1C1B23, #1C1B23);
 
   width: 50%;
-  padding: 2em;
   height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden;  
 }
 
 .form-header {
@@ -42,6 +40,7 @@
 .coin-assets-form {
   min-width: 360px;
   width: 65%;
+  height: 100%;
   padding: 0 0.5em;
   display: flex;
   flex-direction: column;
@@ -73,6 +72,7 @@
 .form-controls {
   width: 100%;
   margin-top: 1.5em;
+  margin-bottom: 1.5em;
   display: flex;
   justify-content: space-between;
 }
@@ -123,9 +123,8 @@
 }
 
 .assets-table-container{
-  height: 100%;
-  max-height: 30vh;
-  overflow:"hidden"
+flex-grow: 1;
+min-height: 130px;
 }
 
 .invisible {
