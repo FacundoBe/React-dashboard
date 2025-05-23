@@ -26,7 +26,7 @@ display: none;
     position: fixed;
     right: 12px;
     top: 5px;
-    z-index: 1000;
+    z-index: 10000;
     height: 24px;
     color:var(--white);
     display: block;
