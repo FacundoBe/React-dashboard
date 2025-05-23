@@ -147,7 +147,7 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
             <form className="w100" onSubmit={handleSubmitName}>
                 {!isSourceNameSet &&
                     <div className="coin-source-form">
-                        <label htmlFor="sourceName">Type the Wallet/Exchange name to add</label>
+                        <label htmlFor="sourceName">Type the Wallet/Exchange name</label>
                         <input type="text"
                             id="sourceName"
                             className="input"
