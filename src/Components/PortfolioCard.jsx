@@ -32,7 +32,7 @@ export default function PortfolioCard({ portfolioCoin }) {
                     </div>
                     <div >
                         <div className='portfolio-coin-total-container'>
-                            <p>Total:{formatUS(totalValue)}<span> USD</span></p>
+                            <p>Total: {formatUS(totalValue)}<span> USD</span></p>
                             <p className='portfolio-coin-total'>{totalCoin} <span>{portfolioCoin.symbol.toUpperCase()}</span></p>
                         </div>
                     </div>

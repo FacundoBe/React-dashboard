@@ -35,7 +35,6 @@
 }
 
 .potfolio-coin-name-wrapper span {
-    font-size: 1.25rem;
     font-weight: 400;
     color: var(--grey);
 }
@@ -54,14 +53,51 @@
     color: var(--accent);
     font-weight: 700;
     font-size: 1.75rem;
-    display: flex;
 }
 
 .portfolio-coin-total span {
     color: var(--accent);
     font-weight: 700;
     font-size: 1.0rem;
-    line-height: 1.75rem;
-    align-self: flex-end;
-    margin-left: 0.1em;
+}
+
+
+
+
+
+@media (max-width: 600px) {
+
+    .portfolio-card-container {
+        flex-direction: column;
+        border-left: 10px solid #3D798F;
+    }
+
+    .portfolio-card-left-panel {
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    .portfolio-card-coin img {
+        height: 3.5rem;
+        margin-right: 0.5em;
+    }
+
+    .potfolio-coin-name-wrapper {
+        font-size: 1.7rem;
+    }
+
+    .portfolio-coin-total-container {
+        font-size: 1.2rem;
+    }
+
+    .portfolio-coin-total {
+        font-size: 2.3rem;
+    }
+
+    .portfolio-coin-total span {
+        color: var(--accent);
+        font-weight: 700;
+        font-size: 1.4rem;
+    }
+
 }
