@@ -2,6 +2,7 @@
   background-color: var(--innerbackground);
   width: 100%;
   min-height: 120px;
+  min-width: fit-content;
   display: flex;
   border-radius: 14px;
   overflow: hidden;
@@ -21,7 +22,7 @@
   font-size: 1.25rem;
   font-weight: 700;
   background-color: var(--lightblack);
-  flex-grow: 1;
+  width: 30%;
 }
 
 .wallet-card-total {
@@ -33,19 +34,19 @@
   margin-top: 0.8em;
 }
 
-.wallet-card-total p{
-margin: 0;
-padding: 0;
+.wallet-card-total div {
+  font-weight: 400;
+  font-size: 0.7rem;
+  filter: brightness(0.9);
+}
+
+.wallet-card-total p {
+  margin: 0;
+  padding: 0;
 }
 
 .wallet-card-total span {
   font-weight: 400;
-  filter: brightness(0.85);
-}
-
-.wallet-card-total div {
-  font-weight: 400;
-  font-size: 0.7rem;
   filter: brightness(0.85);
 }
 
@@ -56,15 +57,62 @@ padding: 0;
   z-index: 100;
 }
 
+.wallet-card-list-and-pie-container {
+  display: flex;
+  flex-grow: 1;
+}
+
 .wallet-card-list {
-  flex-grow: 4;
+  flex-grow: 1;
   padding: 1em;
   align-content: center;
 }
 
 .wallet-card-pie {
+  min-width: 100px;
+  width: 20%;
   margin-top: 2.7em;
-  padding: 0 0.5em 2.7em 0.1em;
+  padding: 0 0.9em 2.7em 0.1em;
   display: flex;
-  align-items: center;  
+  align-items: center;
+}
+
+
+
+
+
+@media (max-width: 600px) {
+  .wallet-card-container {
+    flex-direction: column;
+  }
+
+  .wallet-card-name {
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 2.3rem;
+    padding: 1.8em 1em 1.4em 1em;
+  }
+
+  .wallet-card-total {
+    font-size: 2.3rem;
+    margin: 0;
+  }
+
+  .wallet-card-total div {
+    font-size: 1.2rem;
+    align-self: flex-start;
+  }
+
+  .wallet-card-list {
+    padding: 1em 0 1em 1.8em;
+  }
+
+  .wallet-card-pie {
+    margin: 0;
+    padding: 0 0.9em 0 0;
+    display: flex;
+    align-items: center;
+    min-width: 100px;
+  }
 }

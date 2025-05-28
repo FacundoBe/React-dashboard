@@ -9,7 +9,7 @@ export default function PortfolioTable({ coinByWalletList, price }) {
 
         <div className="portfolio-table-container flex-column">
             <div className="portfolio-table-header">
-                <span className="portfolio-header-left flex">Wallet / Exchange</span>
+                <span className="portfolio-header-left flex left">Wallet / Exchange</span>
                 <span className="portfolio-header-right flex right ">Funds</span>
                 <span className="portfolio-header-right flex right ">Value</span>
                 <div className="grid-divider">  </div>
@@ -21,7 +21,7 @@ export default function PortfolioTable({ coinByWalletList, price }) {
                         {wallet.wallet}
                     </div>
                     <div className="portfolio-table-funds flex right ">{wallet.amount}</div>
-                    <div className="portfolio-table-value flex right ">{(wallet.amount*price).toFixed(2)} <span>USD</span></div>
+                    <div className="portfolio-table-value flex right "> <p>{(wallet.amount * price).toFixed(2)} <span>USD</span></p></div>
                     <div className="grid-divider">  </div>
                 </div>))}
         </div>

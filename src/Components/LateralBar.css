@@ -1,9 +1,7 @@
 .lateral-bar-container {
-  background: radial-gradient(
-      circle at 220%,
+  background: radial-gradient(circle at 220%,
       rgba(196, 197, 220, 0.2) 0%,
-      transparent 90%
-    ),
+      transparent 90%),
     linear-gradient(#0e0e10 0%, #0e0e10 100%);
   border-right: 1px solid #ffffff33;
   height: 100vh;
@@ -79,11 +77,15 @@
     right: 0;
     top: 0;
     z-index: 1000;
-    width: 50%;
+    width: 100%;
     transform: translateX(100%);
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.4s ease-in-out;
   }
-  
+
+  .lateral-bar-container a {
+    font-size: 1.4rem;   
+  }
+
   .lateral-bar-container a::before {
     content: "";
     border-left: none;
@@ -91,6 +93,6 @@
 
   .lateral-bar-container.visible {
     transform: translateX(0%);
-    transition: transform 0.5s ease-in-out;
+    transition: transform 0.4s ease-in-out;
   }
 }

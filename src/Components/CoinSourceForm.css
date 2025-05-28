@@ -136,3 +136,14 @@ min-height: 130px;
   scrollbar-width: thin;
   scrollbar-color: var(--white) var(--selected);
 }
+
+
+
+
+@media (max-width: 600px){
+
+  .coin-source-container{
+    display: none;
+  }
+  
+}
