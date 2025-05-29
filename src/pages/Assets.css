@@ -3,7 +3,7 @@
     linear-gradient(152.09deg,
       rgba(72, 216, 241, 0.2) 20.1%,
       rgba(69, 154, 214, 0.25) 55.35%);
-
+  overflow: auto;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -31,6 +31,11 @@
   pointer-events: none;
 }
 
+/* scrollbars*/
+.wallet-cards-container  {
+  scrollbar-width: thin;
+  scrollbar-color: var(--white) var(--selected);
+}
 
 
 
