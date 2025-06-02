@@ -30,6 +30,7 @@ export default function Assets({assetsList, callSetAssetsList}) {
 
     return (
         <div className={`flex w100`}>
+            <button className='new-wallet-button'>Add New Wallet</button>
             <CoinSourceForm assetsList={assetsList}
                 saveAssetsList={saveAssetsList}
                 editAssetSourceId={editAssetSourceId}
