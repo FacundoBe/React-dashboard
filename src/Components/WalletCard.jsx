@@ -23,26 +23,23 @@ export default function WalletCard({ disabled = false, source, editWallet, delet
 
     return (
         <div className='wallet-card-container'>
-
             <div className='wallet-card-name'>
-                <div >
-                    {source.name}
-                    <div className='wallet-card-total'>
-                        <div className='flex'>Net worth</div>
-                        <p><span>$</span>{formatUS(totalValue)}</p>
-                    </div>
+                {source.name}
+                <div className='wallet-card-total'>
+                    <div className='flex'>Net worth</div>
+                    <p><span>$</span>{formatUS(totalValue)}</p>
                 </div>
             </div>
             <div className='flex wallet-card-controls'>
                 <ButtonIcon disabled={disabled} type={"edit"} onClick={() => editWallet(source.name)} />
                 <ButtonIcon disabled={disabled} type={"clear"} onClick={() => deleteWallet(source.name)} />
             </div>
-
-            <div className='wallet-card-list'>
-                <AssetsTable myCoinsData={source.sourceAssets} editable={false} />
+            <div className='wallet-card-list-and-pie-container'>
+                <div className='wallet-card-list'>
+                    <AssetsTable myCoinsData={source.sourceAssets} editable={false} />
+                </div>
+                <WalletPieChart data={chartData} className="wallet-card-pie" totalValue={totalValue} />
             </div>
-            <WalletPieChart data={chartData} className="wallet-card-pie" totalValue={totalValue} />
-
         </div>
     )
 }

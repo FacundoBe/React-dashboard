@@ -1,14 +1,14 @@
 .wallet-card-container {
   background-color: var(--innerbackground);
-  width: 100%;
-  min-height: 120px;
   display: flex;
+  width: 100%;
+  min-width: fit-content;
+  max-height: 260px;
   border-radius: 14px;
-  overflow: hidden;
   position: relative;
   justify-items: center;
   align-content: center;
-  box-shadow: 5px 5px 13.5px 0px #0000009C;
+  box-shadow: 5px 5px 13.5px 0px #0000009c;
 }
 
 .wallet-card-name {
@@ -17,11 +17,12 @@
   gap: 0.5em;
   align-items: center;
   justify-content: center;
+  min-height: 165px;
   min-width: 160px;
   font-size: 1.25rem;
   font-weight: 700;
   background-color: var(--lightblack);
-  flex-grow: 1;
+  width: 30%;
 }
 
 .wallet-card-total {
@@ -33,19 +34,19 @@
   margin-top: 0.8em;
 }
 
-.wallet-card-total p{
-margin: 0;
-padding: 0;
+.wallet-card-total div {
+  font-weight: 400;
+  font-size: 0.7rem;
+  filter: brightness(0.9);
+}
+
+.wallet-card-total p {
+  margin: 0;
+  padding: 0;
 }
 
 .wallet-card-total span {
   font-weight: 400;
-  filter: brightness(0.85);
-}
-
-.wallet-card-total div {
-  font-weight: 400;
-  font-size: 0.7rem;
   filter: brightness(0.85);
 }
 
@@ -56,15 +57,66 @@ padding: 0;
   z-index: 100;
 }
 
+.wallet-card-list-and-pie-container {
+  display: flex;
+  flex-grow: 1;
+}
+
 .wallet-card-list {
-  flex-grow: 4;
+  flex-grow: 1;
   padding: 1em;
   align-content: center;
 }
 
 .wallet-card-pie {
+  min-width: 100px;
+  width: 20%;
   margin-top: 2.7em;
-  padding: 0 0.5em 2.7em 0.1em;
+  padding: 0 0.9em 2.7em 0.1em;
   display: flex;
-  align-items: center;  
+  align-items: center;
+}
+
+@media (max-width: 600px) {
+  .wallet-card-container {
+    flex-direction: column;
+    max-height: none;
+  }
+
+  .wallet-card-name {
+    width: 100%;
+    min-height: fit-content;
+    border-radius: 14px 14px 0 0;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 1.8rem;
+    padding: 2em 1em 1.5em 1em;
+  }
+
+  .wallet-card-total {
+    font-size: 1.9rem;
+    margin: 0;
+  }
+
+  .wallet-card-total div {
+    font-size: 1.2rem;
+    align-self: flex-start;
+  }
+
+  .wallet-card-list-and-pie-container {
+   min-height: fit-content;
+   padding: 0.4em 0;
+  }
+
+  .wallet-card-list {
+    padding: 1em 0 1em 1.8em;
+  }
+
+  .wallet-card-pie {
+    margin: 0;
+    padding: 0 0.9em 0 0;
+    display: flex;
+    align-items: center;
+    min-width: 100px;
+  }
 }

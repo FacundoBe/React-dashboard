@@ -21,7 +21,6 @@
 
   background-color: var(--background);
   color: var(--white);
-  box-sizing: border-box;
 }
 
 #root {
@@ -34,6 +33,13 @@
   letter-spacing: 0.03rem;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+p{
+  margin: 0;
+}
 
 body {
   margin: 0;
@@ -41,7 +47,7 @@ body {
 
 
 @media (max-width: 1360px) {
-  
+
   html {
     font-size: 12.5px;
   }
@@ -49,7 +55,7 @@ body {
 
 
 @media (max-width: 600px) {
-  
+
   html {
     font-size: 10px;
   }

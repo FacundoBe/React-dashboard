@@ -30,13 +30,14 @@ export default function Assets({assetsList, callSetAssetsList}) {
 
     return (
         <div className={`flex w100`}>
+            <button className='new-wallet-button'>Add New Wallet</button>
             <CoinSourceForm assetsList={assetsList}
                 saveAssetsList={saveAssetsList}
                 editAssetSourceId={editAssetSourceId}
                 cleanEditAssetSourceId={cleanEditAssetSourceId}
             />
-            <div className={`wallet-cards-container ${editAssetSourceId !== "" && "disabled" }`}>
-                <div className={ `wallets-container-disabled ${editAssetSourceId !== "" && "active" }`  }>
+            <div className={`wallet-cards-container ${editAssetSourceId !== "" ? "disabled" : "" }`}>
+                <div className={ `wallets-container-disabled ${editAssetSourceId !== "" ? "active" : "" }`  }>
                 </div>
                 {assetsList.length > 0 &&
                     assetsList.map(source =>

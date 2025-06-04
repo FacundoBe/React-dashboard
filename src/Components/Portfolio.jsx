@@ -61,7 +61,6 @@ export default function Portfolio({ assetsList }) {
                     {portfolioCoinList.map(portfolioCoin => <PortfolioCard
                         key={portfolioCoin.name}
                         portfolioCoin={portfolioCoin} />)
-
                     }
                 </div>
             </div>
