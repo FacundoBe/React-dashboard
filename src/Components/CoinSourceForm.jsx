@@ -8,7 +8,7 @@ import coinList from '../json'
 import AssetsTable from "./AssetsTable";
 
 
-export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAssetSourceId, editAssetSourceId }) {
+export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAssetSourceId, editAssetSourceId, isFormVisible, hideCoinSourceForm }) {
     const [isSourceNameSet, setIsSourceNameSet] = useState(false)
     const [formData, setFormData] = useState({ sourceName: "", sourceAdress: "", selectedOption: "", amount: "" })
     const [myCoinsData, setMyCoinsData] = useState([])
@@ -60,6 +60,7 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
         setMyCoinsData([])
         setIsSourceNameSet(false)
         cleanEditAssetSourceId()
+        hideCoinSourceForm()
     }
 
     function handleSubmitName(e) {
@@ -137,7 +138,7 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
     }
 
     return (
-        <div className="coin-source-container">
+        <div className={`coin-source-container ${isFormVisible ? "visible": ""}`}>
             <div className="form-header">
             { !editAssetSourceId ? 
             "Here you can Add your Wallet/Exchange and Cryptocurrency information. Then you can follow them in your Portfolio" 
