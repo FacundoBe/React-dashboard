@@ -37,15 +37,24 @@
   scrollbar-color: var(--white) var(--selected);
 }
 
-
+.new-wallet-button{
+  display: none;
+}
 
 
 @media (max-width: 600px) {
 
 .wallet-cards-container {
-
   padding-top: 5rem;
   width: 100%;
+}
+
+.new-wallet-button{
+  display: block;
+  position: absolute;
+  left: 22px;
+  top: 10px;
+  z-index: 100;
 }
 
 }
