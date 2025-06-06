@@ -69,12 +69,15 @@
 
     .portfolio-card-container {
         flex-direction: column;
-        border-left: 10px solid #3D798F;
+        border: 1px solid #43434C;
     }
 
     .portfolio-card-left-panel {
         flex-direction: row;
         justify-content: space-around;
+          border-radius: 14px 14px 0 0;
+        background-color: var(--innerbackground);
+        
     }
 
     .portfolio-card-coin img {
