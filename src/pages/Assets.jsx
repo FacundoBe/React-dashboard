@@ -34,15 +34,11 @@ export default function Assets({ assetsList, callSetAssetsList }) {
         callSetAssetsList(prevAssetsList => prevAssetsList.filter(wallet => wallet.name !== name))
     }
 
-    console.log(isFormVisible)
+
 
     return (
         <div className={`flex w100`}>
-            <button
-                type='button'
-                className='new-wallet-button'
-                onClick={() => setIsFormVisible(prev => !prev)}
-            >Add New Wallet</button>
+
             <CoinSourceForm assetsList={assetsList}
                 saveAssetsList={saveAssetsList}
                 editAssetSourceId={editAssetSourceId}
@@ -53,6 +49,11 @@ export default function Assets({ assetsList, callSetAssetsList }) {
             <div className={`wallet-cards-container ${editAssetSourceId !== "" ? "disabled" : ""}`}>
                 <div className={`wallets-container-disabled ${editAssetSourceId !== "" ? "active" : ""}`}>
                 </div>
+                <button
+                    type='button'
+                    className='new-wallet-button'
+                    onClick={() => setIsFormVisible(prev => !prev)}
+                >Add Wallet</button>
                 {assetsList.length > 0 &&
                     assetsList.map(source =>
                         <WalletCard

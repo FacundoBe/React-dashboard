@@ -38,7 +38,6 @@
   padding: 0;
   color: var(--white);
   font-weight: 500;
-
 }
 
 .portfolio-total-panel span {
@@ -77,7 +76,7 @@
   }
 
   .portfolio-coin-panel {
-    padding: 2em 1.2em;
+    margin-top: 58px ;
   }
 
   .portfolio-total-panel {

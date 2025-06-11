@@ -1,9 +1,10 @@
 .coin-source-container {
-  background:
-    linear-gradient(152.09deg,
+  background: linear-gradient(
+      152.09deg,
       rgba(52, 213, 241, 0.2) 2.8%,
-      rgba(0, 0, 0, 0.2) 54.35%),
-    linear-gradient(0deg, #1C1B23, #1C1B23);
+      rgba(0, 0, 0, 0.2) 54.35%
+    ),
+    linear-gradient(0deg, #1c1b23, #1c1b23);
 
   width: 50%;
   height: 100vh;
@@ -17,7 +18,6 @@
   text-align: left;
   font-size: 1rem;
   max-width: 65%;
-  
 }
 
 .form-divider-hor {
@@ -38,7 +38,7 @@
   flex-direction: column;
   align-items: start;
   padding: 0 0.5em;
-  margin: 0.5em auto ;
+  margin: 0.5em auto;
 }
 
 .coin-assets-form {
@@ -71,8 +71,6 @@
   align-self: stretch;
 }
 
-
-
 .form-controls {
   width: 100%;
   margin-top: 1.5em;
@@ -81,8 +79,8 @@
   justify-content: space-between;
 }
 
-
-.cancel-btn, .ok-btn {
+.cancel-btn,
+.ok-btn {
   border-radius: 9px;
   padding: 1em 2.2em;
   font-size: 0.85rem;
@@ -103,7 +101,7 @@
 
 .ok-btn:hover {
   filter: brightness(0.9);
-   color: var(--black);
+  color: var(--black);
 }
 
 .cancel-btn:hover {
@@ -126,9 +124,9 @@
   font-size: 1.2rem;
 }
 
-.assets-table-container{
-flex-grow: 1;
-min-height: 130px;
+.assets-table-container {
+  flex-grow: 1;
+  min-height: 130px;
 }
 
 .invisible {
@@ -141,25 +139,20 @@ min-height: 130px;
   scrollbar-color: var(--white) var(--selected);
 }
 
-
-
-
-@media (max-width: 600px){
-
-  .coin-source-container{
+@media (max-width: 600px) {
+  .coin-source-container {
     position: fixed;
     z-index: 500;
     width: 100%;
     transform: translateX(100%);
+    padding-top: 58px;
   }
 
-  .assets-table-container{
+  .assets-table-container {
     flex-grow: 0;
   }
 
-  .coin-source-container.visible{
+  .coin-source-container.visible {
     transform: translateX(0%);
   }
-  
-  
 }

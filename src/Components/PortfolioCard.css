@@ -35,6 +35,7 @@
 }
 
 .potfolio-coin-name-wrapper span {
+    font-size: 0.8rem;
     font-weight: 400;
     color: var(--grey);
 }
@@ -69,12 +70,15 @@
 
     .portfolio-card-container {
         flex-direction: column;
-        border-left: 10px solid #3D798F;
+        border: 1px solid #43434C;
     }
 
     .portfolio-card-left-panel {
         flex-direction: row;
         justify-content: space-around;
+          border-radius: 14px 14px 0 0;
+        background-color: var(--innerbackground);
+        
     }
 
     .portfolio-card-coin img {
@@ -84,6 +88,10 @@
 
     .potfolio-coin-name-wrapper {
         font-size: 1.7rem;
+    }
+
+     .potfolio-coin-name-wrapper span{
+        font-size: 1.0rem;
     }
 
     .portfolio-coin-total-container {
