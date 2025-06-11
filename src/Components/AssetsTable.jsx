@@ -3,7 +3,7 @@ import { ButtonIcon } from "./ButtonIcon"
 import './AssetsTable.css'
 import { COLORS } from '../Assets/constants'
 
-export default function AssetsTable({ myCoinsData, editable = true, handleEditCoin = () => { }, handleDeleteCoin = () => { } }) {
+export default function AssetsTable({ myCoinsData, editable = true, handleEditCoin = () => { }, handleDeleteCoin = () => { }, animatedRowSymbol = undefined }) {
 
 
     return (
@@ -17,7 +17,8 @@ export default function AssetsTable({ myCoinsData, editable = true, handleEditCo
 
             {myCoinsData.length > 0 &&
                 myCoinsData.map((coin, index) => (
-                    <div key={coin.name} className={`${"funds-row"} ${!editable ? "no-btn" : null}`}>
+                    <div key={coin.name} className={`${"funds-row"} ${!editable ? "no-btn" : "" } 
+                                                    ${animatedRowSymbol?.symbol===coin.symbol ? "animate" : "" }`}>
                         <div className="funds-coin-name-container ">
                             <div className={'legend-color'} style={{ backgroundColor: COLORS[index % COLORS.length] }} >
                             </div>

@@ -35,6 +35,7 @@
 }
 
 .potfolio-coin-name-wrapper span {
+    font-size: 0.8rem;
     font-weight: 400;
     color: var(--grey);
 }
@@ -87,6 +88,10 @@
 
     .potfolio-coin-name-wrapper {
         font-size: 1.7rem;
+    }
+
+     .potfolio-coin-name-wrapper span{
+        font-size: 1.0rem;
     }
 
     .portfolio-coin-total-container {

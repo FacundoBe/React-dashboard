@@ -1,12 +1,15 @@
-import { Outlet } from 'react-router'
+import { Outlet, useLocation } from 'react-router'
 import LateralBar from './LateralBar'
 import './LayOut.css'
-import { ButtonIcon } from './ButtonIcon'
+
 import { useState } from 'react'
 
 export default function LayOut() {
 
     const [latBarVisible, setLatBarVisible] = useState(false)
+
+    const {pathname} = useLocation();
+    const pages = {'/':'Portfolio', '/assets':'Assets', '/markets': 'Markets', '/watchlist':'Watchlist' }
 
     function hideLatBar() {
         setLatBarVisible(false)
@@ -17,7 +20,7 @@ export default function LayOut() {
             <nav className='top-nav-bar'>
                 <div className='top-nav-logo-title-container'>
                     <img className="logo-criptofolio-top-nav-bar" src="logo-cryptofolio.svg" alt="" />
-                    <p>Portfolio</p>
+                    <p>{pages[pathname]}</p>
                 </div>
                 <svg
                     className='menu-icon'

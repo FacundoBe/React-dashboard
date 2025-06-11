@@ -16,7 +16,10 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
     const coinToEditRef = useRef(undefined)
     const coinListRef = useRef(undefined)
     const amountInputRef = useRef(null)
-    const selectSearchHandle = document.getElementById("coin-select")
+    const animatedRowSymbolRef = useRef(undefined)
+    const selectSearchHandle = document.getElementById("coin-select") //** 
+
+
 
     useEffect(() => {
         //console.log("fetching data from coingecko") / ** esto hay que subirlo mas arriba en la cadena de componentes y pasarlo por props
@@ -24,6 +27,11 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
         //    .then(res => coinListRef.current = res.data)
         //    .catch(err => alert(err))
     }, [])
+
+    if (animatedRowSymbolRef.current?.render === 1) animatedRowSymbolRef.current = undefined // cleaning the ref to avoid animetions after the first render   
+    if (animatedRowSymbolRef.current?.render === 0) animatedRowSymbolRef.current.render = 1 // this is the first render afer modifyng or adding a coin
+
+
 
 
     const options = coinList.map(coin => ({ label: coin.name, value: { name: coin.name, image: coin.image, symbol: coin.symbol } }))
@@ -91,7 +99,6 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
         const coinAmount = Number.parseFloat(formData.amount)
 
 
-
         if (coinToEditRef.current !== undefined) {// editing existing coin
             const updatedCoinList = myCoinsData.map(coin => {
                 if (coin.name !== coinToEditRef.current) return coin
@@ -100,6 +107,7 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
             setMyCoinsData(updatedCoinList)
             setFormData(prevFormData => ({ ...prevFormData, amount: "", selectedOption: options[0] })) //resets form data SelectSearch and Amount states
             coinToEditRef.current = undefined
+            animatedRowSymbolRef.current = { render: 0, symbol: coinSymbol } // set the ref to animate the coin row 
         }
         else if (!isNaN(formData.amount) && Number(formData.amount) > 0) { // Checks that the input is a positive number
 
@@ -114,6 +122,7 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
                 }))
             }
             setFormData(prevFormData => ({ ...prevFormData, amount: "", selectedOption: options[0] }))
+            animatedRowSymbolRef.current = { render: 0, symbol: coinSymbol } // set the ref to animate the coin row 
             selectSearchHandle.focus()
         }
     }
@@ -138,11 +147,11 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
     }
 
     return (
-        <div className={`coin-source-container ${isFormVisible ? "visible": ""}`}>
+        <div className={`coin-source-container ${isFormVisible ? "visible" : ""}`}>
             <div className="form-header">
-            { !editAssetSourceId ? 
-            "Here you can Add your Wallet/Exchange and Cryptocurrency information. Then you can follow them in your Portfolio" 
-            :"Edit your Wallet/Exchange Assets"}
+                {!editAssetSourceId ?
+                    "Here you can Add your Wallet/Exchange and Cryptocurrency information. Then you can follow them in your Portfolio"
+                    : "Edit your Wallet/Exchange Assets"}
             </div>
             <div className="form-divider-hor">  </div>
             <img src="arrow-down.svg" alt="arrow pointing to the inputs" />
@@ -209,6 +218,7 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
                                 editable
                                 handleEditCoin={handleEditCoin}
                                 handleDeleteCoin={handleDeleteCoin}
+                                animatedRowSymbol={animatedRowSymbolRef.current}
                             />
                         </div>
                     }
