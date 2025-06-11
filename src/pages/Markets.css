@@ -8,13 +8,17 @@
     width: 100%;
 }
 
+h2 {
+    font-weight: bold;
+}
+
 .markets-search-input {
     background-color: transparent;
     border-radius: 0.5em;
     border: 0.05em solid var(--darkgrey);
-    padding: 0.3em 0.5em 0.3em 1em;
+    padding: 0.4em  1em;
     line-height: 1.5;
-    font-size: 0.85rem;
+    margin: 0.5em 0;
     color: var(--grey);
     min-width: 15em;
     width: 20%;
@@ -26,8 +30,9 @@
     border: 1px solid rgba(255, 255, 255, 0.295);
     border-radius: 50%;
     aspect-ratio: 1/1;
-    width: 25px;
-    color: rgba(255, 255, 255, 0.637);   
+    color: rgba(255, 255, 255, 0.637);
+    display: inline-block;
+    align-content: center;
 }
 
 .input-delete-btn:hover {

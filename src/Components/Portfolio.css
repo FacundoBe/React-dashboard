@@ -24,13 +24,13 @@
   flex-direction: column;
   align-items: start;
   font-size: 2.7rem;
-  margin: 1.5em 0 0.7em 0;
+  margin: 0.3em 0 0.7em 0;
 }
 
 .portfolio-total-panel .label {
   font-weight: 400;
   font-size: 1.1rem;
-  filter: brightness(0.85);
+  filter: brightness(0.7);
 }
 
 .portfolio-total-panel p {
@@ -56,7 +56,7 @@
 .portfolio-cards-container {
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 2em;
 }
 
 
