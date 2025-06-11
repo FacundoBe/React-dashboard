@@ -18,7 +18,7 @@ img {
 }
 
 .coin-list-container {
-  height: 75vh;
+  height: 82vh;
   overflow: hidden;
   padding: 15px 20px 15px 15px;
   color: var(--white);
@@ -34,10 +34,11 @@ img {
 .coin-row-container {
   display: grid;
   grid-template-columns: 70px 2fr 1fr 2fr 2fr 2fr;
-  padding: 12px 0px 12px 0px;
+  padding: 0.85em 0px;
   align-items: center;
   justify-items: end;
   box-shadow: 0px -1px var(--selected);
+  margin-right: 1em;
 }
 
 .coin-row-container:hover {

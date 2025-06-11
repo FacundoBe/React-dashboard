@@ -154,11 +154,11 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
                     : "Edit your Wallet/Exchange Assets"}
             </div>
             <div className="form-divider-hor">  </div>
-            <img src="arrow-down.svg" alt="arrow pointing to the inputs" />
+            <img  className="arrow-down" src="arrow-down.svg" alt="arrow pointing to the inputs" />
             <form className="w100" onSubmit={handleSubmitName}>
                 {!isSourceNameSet &&
                     <div className="coin-source-form">
-                        <label htmlFor="sourceName">Type the Wallet/Exchange name to add</label>
+                        <label htmlFor="sourceName">Type the Wallet/Exchange name</label>
                         <input type="text"
                             id="sourceName"
                             className="input"
