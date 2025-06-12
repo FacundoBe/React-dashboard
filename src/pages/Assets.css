@@ -1,9 +1,7 @@
 .wallet-cards-container {
-  background: linear-gradient(
-    152.09deg,
-    rgba(72, 216, 241, 0.2) 20.1%,
-    rgba(69, 154, 214, 0.25) 55.35%
-  );
+  background: linear-gradient(152.09deg,
+      rgba(72, 216, 241, 0.2) 20.1%,
+      rgba(69, 154, 214, 0.25) 55.35%);
   overflow: auto;
   position: relative;
   display: flex;
@@ -42,11 +40,18 @@
   display: none;
 }
 
+.save-data-container {
+  z-index: 100;
+  display: flex;
+  flex-grow: 1;
+  justify-content: start;
+  align-items: end;
+  gap: 2em;
+  padding-top: 1.5em;
+}
+
 .export-data-button,
 .import-data-button {
-  position: absolute;
-  left: 80px;
-  z-index: 1000;
   padding: 0.4em 1em;
   background-color: transparent;
   color: var(--almostwhite);
@@ -54,18 +59,10 @@
   border: 1px solid var(--almostwhite);
 }
 
-.export-data-button {
-  bottom: 80px;
-}
-
-.import-data-button {
-  bottom: 40px;
-}
 .export-data-button:hover,
 .import-data-button:hover {
   color: var(--white);
   border: 1px solid var(--white);
-  background-color: var(--selected);
 }
 
 @media (max-width: 600px) {
