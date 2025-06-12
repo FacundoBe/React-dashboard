@@ -53,7 +53,22 @@ export default function Assets({ assetsList, callSetAssetsList }) {
                     type='button'
                     className='new-wallet-button'
                     onClick={() => setIsFormVisible(prev => !prev)}
-                >Add Wallet</button>
+                >Add Wallet
+                </button>
+                <div className='flex-col'>
+                    <button
+                        type='button'
+                        className='export-data-button'
+                        onClick={() => { }}
+                    >Export Data
+                    </button>
+                    <button
+                        type='button'
+                        className='import-data-button'
+                        onClick={() => { }}
+                    >Import Data
+                    </button>
+                </div>
                 {assetsList.length > 0 &&
                     assetsList.map(source =>
                         <WalletCard
