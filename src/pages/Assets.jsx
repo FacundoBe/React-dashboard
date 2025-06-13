@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import './Assets.css'
 import WalletCard from '../Components/WalletCard'
 import CoinSourceForm from '../Components/CoinSourceForm'
@@ -8,6 +8,7 @@ export default function Assets({ assetsList, callSetAssetsList }) {
 
     const [editAssetSourceId, setEditAssetSourceId] = useState("")
     const [isFormVisible, setIsFormVisible] = useState(false)
+    const importDataInputRef = useRef()
 
     function saveAssetsList(newSource) {
         if (editAssetSourceId === "") {  // adding a new coin source
@@ -35,6 +36,42 @@ export default function Assets({ assetsList, callSetAssetsList }) {
     }
 
 
+    function handleExportFile() {
+        const backupAssetsList = "assetsBackup" + JSON.stringify(assetsList) //add a string to validate file as assets backup
+        const blob = new Blob([backupAssetsList], { type: 'application/json' })
+        const url = URL.createObjectURL(blob)
+        const link = document.createElement('a')
+        link.href = url
+        link.download = "PortfolioBackup.bak"
+        document.body.appendChild(link)
+        link.click()
+
+        document.body.removeChild(link)
+        URL.revokeObjectURL(url)
+    }
+
+    function handleImportFile(e) {
+        const file = e.target.files[0]
+        if (file.name.split('.').pop() === "bak") {//verifies thet the extension is .bak
+            const reader = new FileReader()
+            reader.readAsText(file);
+            reader.onloadend = () => {
+                if (reader.result.slice(0, 12) === "assetsBackup") { //veryfies that the file has the initial string "assetsBackup"
+                    const cleanAssetsList = reader.result.slice(12) //removes th initial string added only for verification porpouses
+                    localStorage.setItem("anonymousAssetList", cleanAssetsList)  // Saves the imported assets list to local Storage
+                    callSetAssetsList(JSON.parse(cleanAssetsList)) // reseto la assetslist with the data imported from e backup file
+                }
+                else {
+                    alert("This file is no a valid cryptofolio Backup file")
+                }
+            }
+
+
+        }
+        else alert("This file is no a valid cryptofolio Backup file")
+        e.target.value = "" //clean the input after loading the file
+    }
+
 
     return (
         <div className={`flex w100`}>
@@ -53,7 +90,9 @@ export default function Assets({ assetsList, callSetAssetsList }) {
                     type='button'
                     className='new-wallet-button'
                     onClick={() => setIsFormVisible(prev => !prev)}
-                >Add Wallet</button>
+
+                >Add Wallet
+                </button>
                 {assetsList.length > 0 &&
                     assetsList.map(source =>
                         <WalletCard
@@ -64,6 +103,26 @@ export default function Assets({ assetsList, callSetAssetsList }) {
                             deleteWallet={deleteWallet}
                         />)
                 }
+                <div className='save-data-container'>
+                    <button
+                        type='button'
+                        className='export-data-button'
+                        onClick={() => handleExportFile()}
+                    >Export Data
+                    </button>
+                    <button
+                        type='button'
+                        className='import-data-button'
+                        onClick={() => { importDataInputRef.current.click() }}
+                    >Import Data
+                    </button>
+                    <input
+                        className='import-data-input-hiden'
+                        type="file" accept='.bak'
+                        ref={importDataInputRef}
+                        onChange={(e) => handleImportFile(e)}
+                    />
+                </div>
 
             </div>
         </div>
