@@ -35,6 +35,7 @@ export default function Assets({ assetsList, callSetAssetsList }) {
         callSetAssetsList(prevAssetsList => prevAssetsList.filter(wallet => wallet.name !== name))
     }
 
+
     function handleExportFile() {
         const backupAssetsList = "assetsBackup" + JSON.stringify(assetsList) //add a string to validate file as assets backup
         const blob = new Blob([backupAssetsList], { type: 'application/json' })
@@ -71,6 +72,7 @@ export default function Assets({ assetsList, callSetAssetsList }) {
         e.target.value = "" //clean the input after loading the file
     }
 
+
     return (
         <div className={`flex w100`}>
 
@@ -88,6 +90,7 @@ export default function Assets({ assetsList, callSetAssetsList }) {
                     type='button'
                     className='new-wallet-button'
                     onClick={() => setIsFormVisible(prev => !prev)}
+
                 >Add Wallet
                 </button>
                 {assetsList.length > 0 &&
