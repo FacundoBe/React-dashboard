@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react'
+import { useRef, useState } from 'react'
 import './Assets.css'
 import WalletCard from '../Components/WalletCard'
 import CoinSourceForm from '../Components/CoinSourceForm'
@@ -8,6 +8,7 @@ export default function Assets({ assetsList, callSetAssetsList }) {
 
     const [editAssetSourceId, setEditAssetSourceId] = useState("")
     const [isFormVisible, setIsFormVisible] = useState(false)
+    const importDataInputRef = useRef()
 
     function saveAssetsList(newSource) {
         if (editAssetSourceId === "") {  // adding a new coin source
@@ -109,10 +110,15 @@ export default function Assets({ assetsList, callSetAssetsList }) {
                     <button
                         type='button'
                         className='import-data-button'
-                        onClick={() => { }}
+                        onClick={() => { importDataInputRef.current.click() }}
                     >Import Data
                     </button>
-                    <input type="file" accept='.bak' onChange={(e) => handleImportFile(e)} />
+                    <input
+                        className='import-data-input-hiden'
+                        type="file" accept='.bak'
+                        ref={importDataInputRef}
+                        onChange={(e) => handleImportFile(e)}
+                    />
                 </div>
 
             </div>

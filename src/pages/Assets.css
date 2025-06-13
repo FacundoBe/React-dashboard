@@ -65,6 +65,10 @@
   border: 1px solid var(--white);
 }
 
+.import-data-input-hiden{
+  display: none;
+}
+
 @media (max-width: 600px) {
   .wallet-cards-container {
     padding-top: 78px;
