@@ -62,25 +62,55 @@
     font-size: 1.0rem;
 }
 
+.portfolio-header-right:nth-child(2) {
+    justify-content: flex-end;   
+}
 
+.portfolio-table-funds,
+.portfolio-header-right:nth-child(2) {
+    margin-right: 1.5rem;
+ }
 
+.portfolio-table-row {
+    align-items: baseline;
+    font-size: 14px;
+}
 
 
 @media (max-width: 600px) {
 
+
+    
+    .portfolio-total-panel p span {
+        margin-right: 0.1em;
+    }
+
+    .portfolio-total-panel .label {
+        margin-bottom: 0.4em;  
+    }
+
+    .portfolio-total-panel .crypto {
+        margin-top: 0.2em;
+        text-align: right;
+        font-size: 13px;
+    }
+    
+    /* CARD */
+    
     .portfolio-card-container {
         flex-direction: column;
         border: 1px solid #43434C;
+        padding-bottom: 1.5em ; 
     }
 
     .portfolio-card-left-panel {
         flex-direction: row;
         justify-content: space-around;
-          border-radius: 14px 14px 0 0;
+        border-radius: 14px 14px 0 0;
         background-color: var(--innerbackground);
-        
+        padding: 2.5em 0;    
     }
-
+  
     .portfolio-card-coin img {
         height: 3.5rem;
         margin-right: 0.5em;
@@ -96,6 +126,11 @@
 
     .portfolio-coin-total-container {
         font-size: 1.2rem;
+        text-align: right;
+    }
+
+    .portfolio-coin-total-container p span {
+        font-size: 10px;
     }
 
     .portfolio-coin-total {
@@ -106,5 +141,16 @@
         color: var(--accent);
         font-weight: 700;
     }
+
+    .portfolio-table-header > * ,
+    .portfolio-table-row > * {
+        margin: 0;
+    }
+    
+    .portfolio-table-value {
+        justify-content: flex-end;
+        text-align: right;
+    }
+
 
 }
