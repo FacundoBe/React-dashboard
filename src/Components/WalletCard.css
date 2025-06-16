@@ -88,9 +88,9 @@
     min-height: fit-content;
     border-radius: 14px 14px 0 0;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     font-size: 1.8rem;
-    padding: 2em 1em 1.5em 1em;
+    padding: 2em 1.5em 1.5em 1.5em;
   }
 
   .wallet-card-total {
@@ -109,12 +109,12 @@
   }
 
   .wallet-card-list {
-    padding: 1em 0 1em 1.8em;
+    padding: 1em 0 1em 2.7em;
   }
 
   .wallet-card-pie {
     margin: 0;
-    padding: 0 0.9em 0 0;
+    padding: 0 1.5em 0 1.5em;
     display: flex;
     align-items: center;
     min-width: 100px;

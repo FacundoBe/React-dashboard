@@ -5,16 +5,20 @@
   padding-right: 0.6em;
 }
 
-.funds-header {
+.funds-header,
+.funds-row {
   display: grid;
-  grid-template-columns: 0.5fr 0.3fr 0.2fr 0.03fr;
+  grid-template-columns: 2fr 1fr 0.8fr;
+}
+
+.funds-header {
   padding: 1.1em 0 0 0;
   color: var(--grey);
 }
 
 .funds-header.no-btn,
 .funds-row.no-btn {
-  grid-template-columns: 0.47fr 0.47fr 0.06fr 0.03fr;
+  grid-template-columns: 2fr 1fr;
 }
 
 .grid-divider {
@@ -24,12 +28,6 @@
   background-color: var(--darkgrey);
   margin-top: 0.8em;
   margin-bottom: 0.8em;
-}
-
-
-.funds-row {
-  display: grid;
-  grid-template-columns: 0.5fr 0.3fr 0.2fr 0.03fr;
 }
 
 .funds-row.animate {
@@ -45,6 +43,8 @@
 .funds-coin-name {
   display: flex;
   align-items: baseline;
+  flex-wrap: wrap;
+  text-align: start;
 }
 
 .funds-coin-name span {
@@ -62,12 +62,15 @@
   align-self: center;
 }
 
+ .funds-coin-amount {
+    padding-left: 0.7em;
+  }
+
 /* scrollbars*/
 .fund-list {
   scrollbar-width: thin;
   scrollbar-color: var(--white) var(--selected);
 }
-
 
 @keyframes show {
   0% {
@@ -81,10 +84,9 @@
   }
 }
 
-
 @media (max-width: 600px) {
   .fund-list {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     padding-right: 0;
   }
 
@@ -93,4 +95,11 @@
     margin-bottom: 0.5em;
   }
 
+  .funds-coin-name span {
+    font-size: 0.8rem;
+  }
+
+  .funds-coin-amount {
+    font-size: 1.4rem;
+  }
 }

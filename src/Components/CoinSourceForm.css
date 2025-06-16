@@ -14,7 +14,7 @@
 }
 
 .form-header {
-  padding:5em 1em 1.1em;
+  padding: 5em 1em 1.1em;
   text-align: left;
   font-size: 1rem;
   max-width: 65%;
@@ -145,14 +145,47 @@
     z-index: 500;
     width: 100%;
     transform: translateX(100%);
-    padding-top: 58px;
+    padding-top: 18px;
+  }
+
+  .coin-source-container.visible {
+    transform: translateX(0%);
+  }
+
+  .form-header {
+    font-size: 1.3rem;
+    max-width: none;
+    width: 80%;
+  }
+
+  .form-divider-hor {
+    width: 80%;
   }
 
   .assets-table-container {
     flex-grow: 0;
   }
 
-  .coin-source-container.visible {
-    transform: translateX(0%);
+  .coin-source-form {
+    width: 80%;
+  }
+
+  .coin-source-container label {
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+
+  .input {
+    font-size: 1.2rem;
+  }
+
+  .coin-assets-form {
+    min-width: auto;
+    width: 80%;
+  }
+
+  .cancel-btn,
+  .ok-btn {
+    font-size: 1.2rem;
   }
 }

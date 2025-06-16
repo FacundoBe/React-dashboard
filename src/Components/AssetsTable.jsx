@@ -27,7 +27,7 @@ export default function AssetsTable({ myCoinsData, editable = true, handleEditCo
                                 <span > {coin?.symbol.toUpperCase()}</span>
                             </div>
                         </div>
-                        <div className="flex right ">{coin.amount}</div>
+                        <div className="funds-coin-amount flex right">{coin.amount}</div>
                         {editable &&
                             <div className="flex right ">
                                 <ButtonIcon type="edit" height="1.25em" onClick={() => handleEditCoin(coin.name, coin.amount)} />

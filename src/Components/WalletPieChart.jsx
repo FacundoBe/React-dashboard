@@ -47,13 +47,12 @@ export default function WalletPieChart({ data = [], totalValue, ...rest }) {
                             data={data}
                             cx={"50%"}
                             cy={"50%"}
-                            innerRadius={30}
-                            outerRadius={40}
+                            innerRadius={"80%"}
+                            outerRadius={"105%"}
                             fill="#1884d8"
                             paddingAngle={2}
                             cornerRadius={0}
                             dataKey="value"
-                            fontSize={"0.8rem"}
                         >
                             {data.map((entry, index) => {
                                 return <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} stroke={'transparent'} style={{ outline: 'none' }} />
