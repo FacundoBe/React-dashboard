@@ -1,5 +1,5 @@
 /* eslint-disable react/prop-types */
-import { formatUS } from '../assets/functions'
+
 import PortfolioTable from './PortfolioTable'
 import './PortfolioCard.css'
 import { useContext } from 'react'
@@ -9,6 +9,11 @@ export default function PortfolioCard({ portfolioCoin }) {
     const { coinByWalletList } = portfolioCoin
 
     const { coinPrice } = useContext(CoinsDataContext)
+
+    const currencyFormater = new Intl.NumberFormat("en-US", {   //currency formater setted fo US locale
+        style: "currency",
+        currency: "USD",
+    })
 
     let totalCoin = 0
     let totalValue = 0
@@ -33,7 +38,7 @@ export default function PortfolioCard({ portfolioCoin }) {
                     <div >
                         <div className='portfolio-coin-total-container'>
                             <p className='portfolio-coin-total'>{totalCoin} <span>{portfolioCoin.symbol.toUpperCase()}</span></p>
-                            <p>Total: {formatUS(totalValue)}<span> USD</span></p>
+                            <p>Total: {currencyFormater.format(totalValue)}<span> USD</span></p>
                         </div>
                     </div>
                 </div>

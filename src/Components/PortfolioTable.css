@@ -7,7 +7,7 @@
 .portfolio-table-header,
 .portfolio-table-row {
   display: grid;
-  grid-template-columns: 0.3fr 0.3fr 0.4fr;
+  grid-template-columns: 1fr 1fr 1.25fr;
 }
 
 .portfolio-table-header {
@@ -44,6 +44,7 @@
   font-size: 0.9rem;
   font-weight: 400;
   margin-left: 1.5em;
+  text-align: left;
 }
 
 

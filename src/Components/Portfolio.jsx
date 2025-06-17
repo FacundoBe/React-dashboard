@@ -1,6 +1,5 @@
 /* eslint-disable react/prop-types */
 import './Portfolio.css'
-import { formatUS } from '../assets/functions'
 import PortfolioCard from './PortfolioCard'
 import { useContext } from 'react'
 import { CoinsDataContext } from '../context/CoinsDataProvider'
@@ -11,6 +10,11 @@ export default function Portfolio({ assetsList }) {
     let portfolioCoinList = [];
 
     const { coinPrice } = useContext(CoinsDataContext)
+
+    const currencyFormater = new Intl.NumberFormat("en-US", {   //currency formater setted fo US locale
+        style: "currency",
+        currency: "USD",
+    })
 
     if (assetsList.length > 0) {
         assetsList.forEach(wallet => {
@@ -31,18 +35,18 @@ export default function Portfolio({ assetsList }) {
         })
     }
 
-    
+
     let totalCoin = 0
     let totalValue = 0
     if (portfolioCoinList.length > 0) {
         totalValue = portfolioCoinList.map(coin => {
             totalCoin = coin.coinByWalletList.map(wallet => wallet.amount).reduce(
                 (accumulator, currentValue) => accumulator + currentValue).toFixed(2)
-                return (coinPrice(coin.symbol) * totalCoin)  //returns the total USD value of a given coin across all wallets
+            return (coinPrice(coin.symbol) * totalCoin)  //returns the total USD value of a given coin across all wallets
         }
         ).reduce((accumulator, currentValue) => accumulator + currentValue) //acumulates the different coins value in USD
     }
-    const totalValueBtc= totalValue > 0 ? totalValue/coinPrice("btc") : 0
+    const totalValueBtc = totalValue > 0 ? totalValue / coinPrice("btc") : 0
 
 
     return (
@@ -51,7 +55,7 @@ export default function Portfolio({ assetsList }) {
 
                 <div className='portfolio-total-panel'>
                     <div className='label'>TOTAL WORTH</div>
-                    <p><span>$</span>{formatUS(totalValue.toFixed(2))}</p>
+                    <p>{currencyFormater.format(totalValue)}</p>
                     <div className='crypto'> {totalValueBtc} BTC </div>
                 </div>
 
@@ -65,7 +69,7 @@ export default function Portfolio({ assetsList }) {
                 </div>
             </div>
             <div className='portfolio-chart-panel'>
-                <PortfolioPieChart portfolioCoinList={portfolioCoinList}/>
+                <PortfolioPieChart portfolioCoinList={portfolioCoinList} />
             </div>
         </div>
     )

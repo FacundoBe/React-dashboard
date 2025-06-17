@@ -164,7 +164,8 @@ export default function CoinSourceForm({ assetsList, saveAssetsList, cleanEditAs
                             className="input"
                             value={formData.sourceName}
                             onChange={(e) => handleChange(e)}
-                            placeholder="Binanace, Metamask..."
+                            placeholder="Binanace, Metamask..." 
+                            maxLength="15"
                         />
                         <label htmlFor="sourceAdress">Type the Wallet/Exchange adress (optional)</label>
                         <input type="text" id="sourceAdress"

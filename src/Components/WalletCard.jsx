@@ -5,11 +5,14 @@ import { ButtonIcon } from './ButtonIcon'
 import './WalletCard.css'
 import WalletPieChart from './WalletPieChart'
 import { CoinsDataContext } from '../context/CoinsDataProvider'
-import { formatUS } from '../assets/functions'
 
 export default function WalletCard({ disabled = false, source, editWallet, deleteWallet }) {
 
     const { coinPrice } = useContext(CoinsDataContext)
+    const currecyFormater = new Intl.NumberFormat("en-US", {   //currency formater setted fo US locale
+        style: "currency",
+        currency: "USD",
+    })
 
     let totalValue = "0" // initialize totalValue
     let chartData = []
@@ -27,7 +30,7 @@ export default function WalletCard({ disabled = false, source, editWallet, delet
                 {source.name}
                 <div className='wallet-card-total'>
                     <div className='flex'>Net worth</div>
-                    <p><span>$</span>{formatUS(totalValue)}</p>
+                    <p>{currecyFormater.format(totalValue)}</p>
                 </div>
             </div>
             <div className='flex wallet-card-controls'>
