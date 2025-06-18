@@ -1,13 +1,14 @@
 .portfolio-table-container {
   font-size: 0.85rem;
   width: 100%;
-  padding: 1em 2.5em;
+  padding: 1em 2.5rem;
 }
 
 .portfolio-table-header,
 .portfolio-table-row {
   display: grid;
-  grid-template-columns: 0.3fr 0.3fr 0.4fr;
+  grid-template-columns: 1fr 1.5fr 2.5fr;
+  justify-content: space-between;
 }
 
 .portfolio-table-header {
@@ -19,9 +20,10 @@
   margin-left: 1.5em;
 }
 
-/* .portfolio-header-right {
-  margin-right: 1.5em;
-} */
+.portfolio-table-row {
+    align-items: baseline;
+    font-size: 14px;
+}
 
 .port-grid-divider {
   grid-row: 2/2;
@@ -32,27 +34,15 @@
   margin-bottom: 0.8em;
 }
 
-.portfolio-table-row {
-
-}
-
 .portfolio-wallet-name {
   line-height: 1;
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   padding: 0.1em 0;
   font-size: 0.9rem;
   font-weight: 400;
-  margin-left: 1.5em;
+  margin-left: 1.5em; 
 }
-
-
-.portfolio-table-value span {
-  font-size: 0.7rem;
-  color: var(--grey);
-}
-
-
 
 @media (max-width: 600px) {
 
@@ -68,5 +58,14 @@
   .portfolio-table-value span {
     font-size: 0.9rem;
   }
+
+  .portfolio-header-right {
+  margin-right: 30px;
+}
+
+.funds {
+  margin-right: 0;
+  color: white;
+}
 
 }

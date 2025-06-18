@@ -18,9 +18,10 @@ h2 {
     border: 0.05em solid var(--darkgrey);
     padding: 0.4em  1em;
     line-height: 1.5;
-    margin: 0.5em 0;
+    margin: 0.8em 0;
     color: var(--grey);
-    min-width: 15em;
+    min-width: 180px;
+    max-width: 240px;
     width: 20%;
 }
 
@@ -39,4 +40,16 @@ h2 {
     background-color: rgba(165, 145, 255, 0.295) ;
     border: 1px solid  rgba(165, 145, 255, 0.295);
     color: white;
+}
+
+@media (max-width: 600px) {
+    
+    .markets-search {
+        margin: 50px 0 1.4em 0;
+        
+    }
+
+    .markets-search-input {
+        padding: 0.6em 1em;
+    }
 }
