@@ -7,7 +7,7 @@ export default function CoinList({ coins }) {
     function CoinRow({ coin, index }) {
         return (
             <div className="coin-row-container">
-                <div className="justify-center">
+                <div className=" coin-number justify-center">
                     {index + 1}
                 </div>
 
@@ -21,10 +21,10 @@ export default function CoinList({ coins }) {
                 <div className={`${coin.price_change_percentage_24h > 0 ? "up" : "down"}`} >
                     {coin.price_change_percentage_24h.toFixed(2)}%
                 </div>
-                <div >
+                <div className='coin-total-volume' >
                     ${coin.total_volume.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                 </div>
-                <div >
+                <div className='coin-market-cap' >
                     ${coin.market_cap.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                 </div>
             </div>

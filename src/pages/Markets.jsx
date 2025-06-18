@@ -27,7 +27,7 @@ export default function Markets() {
     return (
         <main className='markets-container'>
             <h2>Cryptocurrency Prices</h2>
-            <div >
+            <div className="markets-search">
                 <input className='markets-search-input'
                     type="text"
                     placeholder='Search Coins'

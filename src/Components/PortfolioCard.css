@@ -63,24 +63,7 @@
     font-size: 1.0rem;
 }
 
-.portfolio-header-right:nth-child(2) {
-    justify-content: flex-end;   
-}
-
-.portfolio-table-funds,
-.portfolio-header-right:nth-child(2) {
-    margin-right: 1.5rem;
- }
-
-.portfolio-table-row {
-    align-items: baseline;
-    font-size: 14px;
-}
-
-
 @media (max-width: 600px) {
-
-
     
     .portfolio-total-panel p span {
         margin-right: 0.1em;
@@ -106,10 +89,11 @@
 
     .portfolio-card-left-panel {
         flex-direction: row;
-        justify-content: space-around;
+        justify-content: space-between;
         border-radius: 14px 14px 0 0;
         background-color: var(--innerbackground);
-        padding: 2.5em 0.5em;    
+        padding: 2.5rem 3rem;    
+
 
     }
   
@@ -149,10 +133,7 @@
         margin: 0;
     }
     
-    .portfolio-table-value {
-        justify-content: flex-end;
-        text-align: right;
-    }
+
 
 
 }
