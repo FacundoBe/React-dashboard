@@ -5,6 +5,11 @@ export default function PortfolioTable({ coinByWalletList, price }) {
 
     if (coinByWalletList.length === 0) return //early return for empty assets array
 
+    const decimalFormater = new Intl.NumberFormat("en-US", {   // formater setted fo US locale but with no currency symbol included in the string
+        style: "decimal",
+        maximumFractionDigits: 2,
+    })
+
     return (
 
         <div className="portfolio-table-container flex-column">
@@ -20,9 +25,9 @@ export default function PortfolioTable({ coinByWalletList, price }) {
                     <div className="portfolio-wallet-name ">
                         {wallet.wallet}
                     </div>
-                    <div className="portfolio-table-funds flex right ">{wallet.amount}</div>
-                    <div className="portfolio-table-value flex right "> <p>{(wallet.amount * price).toFixed(2)} </p></div>
-                    <div className="grid-divider"> </div>
+                    <div className="portfolio-table-value flex right "> <p>{decimalFormater.format(wallet.amount * price)} <span>USD</span></p></div>
+                    <div className="grid-divider">  </div>
+
                 </div>))}
         </div>
 

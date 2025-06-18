@@ -23,7 +23,12 @@
   font-weight: 700;
   background-color: var(--lightblack);
   width: 30%;
+  overflow-wrap:anywhere;
 }
+.wallet-card-name div {
+    overflow-wrap:normal;
+}
+
 
 .wallet-card-total {
   font-size: 0.95rem;
@@ -45,7 +50,7 @@
   padding: 0;
 }
 
-.wallet-card-total span {
+.wallet-card-total p::first-letter {
   font-weight: 400;
   filter: brightness(0.85);
 }

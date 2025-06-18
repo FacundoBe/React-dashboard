@@ -5,6 +5,7 @@
     border-radius: 14px;
     display: flex;
     box-shadow: 5px 5px 13.5px 0px #0000009C;
+    min-width: fit-content;
 }
 
 .portfolio-card-left-panel {
@@ -92,6 +93,7 @@
         border-radius: 14px 14px 0 0;
         background-color: var(--innerbackground);
         padding: 2.5rem 3rem;    
+
 
     }
   

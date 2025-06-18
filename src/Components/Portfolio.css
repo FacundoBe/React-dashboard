@@ -40,7 +40,7 @@
   font-weight: 500;
 }
 
-.portfolio-total-panel span {
+.portfolio-total-panel p::first-letter {
   font-weight: 400;
   filter: brightness(0.85);
   color: var(--almostwhite);

@@ -7,8 +7,9 @@
 .portfolio-table-header,
 .portfolio-table-row {
   display: grid;
-  grid-template-columns: 1fr 1.5fr 2.5fr;
   justify-content: space-between;
+  grid-template-columns: 1fr 1fr 1.25fr;
+
 }
 
 .portfolio-table-header {
@@ -41,7 +42,8 @@
   padding: 0.1em 0;
   font-size: 0.9rem;
   font-weight: 400;
-  margin-left: 1.5em; 
+  margin-left: 1.5em;
+  text-align: left;
 }
 
 @media (max-width: 600px) {
