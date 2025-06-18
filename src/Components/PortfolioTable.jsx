@@ -25,7 +25,10 @@ export default function PortfolioTable({ coinByWalletList, price }) {
                     <div className="portfolio-wallet-name ">
                         {wallet.wallet}
                     </div>
-                    <div className="portfolio-table-value flex right "> <p>{decimalFormater.format(wallet.amount * price)} <span>USD</span></p></div>
+                    <div className="portfolio-table-funds flex right ">{wallet.amount}</div>
+                    <div className="portfolio-table-value flex right ">
+                        <p>{decimalFormater.format(wallet.amount * price)} <span>USD</span></p>
+                    </div>
                     <div className="grid-divider">  </div>
 
                 </div>))}
