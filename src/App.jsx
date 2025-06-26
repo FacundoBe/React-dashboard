@@ -11,6 +11,7 @@ import Watchlist from './pages/WatchList'
 
 function App() {
   const [assetsList, setAssetsList] = useState([])
+  const [favList, setFavList] = useState([])
 
   useEffect(() => { // Read assetsList from local storage 
     const saved = localStorage.getItem("anonymousAssetList")
@@ -19,23 +20,45 @@ function App() {
       setAssetsList(savedList)
     }
   }, [])
+  
+  useEffect(() => { // Read assetsList from local storage 
+    const savedFav = localStorage.getItem("anonymousFavList")
+    if (savedFav) {
+      const savedList = JSON.parse(savedFav)
+      setFavList(savedList)
+    }
+  }, [])
 
   useEffect(() => {
     localStorage.setItem("anonymousAssetList", JSON.stringify(assetsList))  // Saves the assets list to local Storage
   }, [assetsList])
 
-  function callSetAssetsList(assetList){
+  useEffect(() => {
+    localStorage.setItem("anonymousFavList", JSON.stringify(favList))  // Saves the Favorites list to local Storage
+  }, [favList])
+
+  function callSetAssetsList(assetList) {
     setAssetsList(assetList)
-  }  
+  }
+
+  function toogleFavorite(symbol) {
+    if (!favList.includes(symbol)) {
+      setFavList(prevState => [...prevState, symbol])
+    }
+    else {
+      setFavList(prevState => prevState.filter(element => element !== symbol))
+    }
+  }
+
 
   return (
     <>
       <BrowserRouter>
         <Routes>
           <Route element={<LayOut />}>
-            <Route index element={<Portfolio assetsList={assetsList}  />} />
+            <Route index element={<Portfolio assetsList={assetsList} />} />
             <Route path='/assets' element={<Assets assetsList={assetsList} callSetAssetsList={callSetAssetsList} />} />
-            <Route path='/markets' element={<Markets />} />
+            <Route path='/markets' element={<Markets favList={favList} toogleFavorite={toogleFavorite} />} />
             <Route path='/watchlist' element={<Watchlist />} />
           </Route>
         </Routes>

@@ -12,17 +12,47 @@ h2 {
     font-weight: bold;
 }
 
+
+
+.markets-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+}
+
+.search-icon {
+    border-left: 0.05em solid var(--darkgrey);
+    border-top: 0.05em solid var(--darkgrey);
+    border-bottom: 0.05em solid var(--darkgrey);
+    border-bottom-left-radius: 18px;
+    border-top-left-radius: 18px;
+    height: 35px;
+    width: 35px;
+    padding-left: 0.8em;
+    
+    
+}
+
 .markets-search-input {
     background-color: transparent;
-    border-radius: 0.5em;
-    border: 0.05em solid var(--darkgrey);
-    padding: 0.4em  1em;
+    border-style: none;
+    border-right: 0.05em solid var(--darkgrey);
+    border-top: 0.05em solid var(--darkgrey);
+    border-bottom: 0.05em solid var(--darkgrey);
+    border-bottom-right-radius: 18px;
+    border-top-right-radius: 18px;
+    padding-left: 0.5em;
     line-height: 1.5;
     margin: 0.8em 0;
     color: var(--grey);
     min-width: 180px;
-    max-width: 240px;
+    max-width: 300px;
     width: 20%;
+    height: 35px;
+}
+
+.markets-search-input:focus{
+    outline: none;
 }
 
 .input-delete-btn{
@@ -37,10 +67,50 @@ h2 {
 }
 
 .input-delete-btn:hover {
-    background-color: rgba(165, 145, 255, 0.295) ;
+    background-color: rgba(165, 145, 255, 0.295);
     border: 1px solid  rgba(165, 145, 255, 0.295);
     color: white;
 }
+
+.fav-btn-container {
+    align-items: center;
+    display: flex;
+    gap: 0.8em;
+    margin-left: 1.5em;
+}
+
+.fav-btn-container p { 
+    font-size: 0.85rem;
+}
+
+.fav-btn {
+    padding: 0;
+    background-color: rgba(0, 0, 0, 0.274);
+    border:1px solid var(--darkgrey) ;
+    border-radius: 20px;
+    position: relative;
+    width: 34px;
+    height: 17px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.fav-btn-switch {
+    background-color: rgb(111, 108, 128);
+    
+    width: 17px;
+    height: 17px;
+    border-radius: 20px;
+    transform: translateX(0%);
+    transition: all 0.2s;
+}
+
+.switch-btn-active {
+    transform: translateX(100%);
+    background-color: white;
+}
+
 
 @media (max-width: 600px) {
     
@@ -52,4 +122,8 @@ h2 {
     .markets-search-input {
         padding: 0.6em 1em;
     }
+
+    .fav-btn-container p { 
+    font-size: 1.2rem;
+}
 }
