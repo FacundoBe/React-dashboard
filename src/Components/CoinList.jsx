@@ -1,12 +1,19 @@
 /* eslint-disable react/prop-types */
+import { useState } from 'react'
 import './CoinList.css'
 
-export default function CoinList({ coins }) {
 
+export default function CoinList({ coins, favList, toogleFavorite }) {
+    
 
-    function CoinRow({ coin, index }) {
+    function CoinRow({ coin, index, favList, toogleFavorite }) {
+
+        const isFavorite = favList.includes(coin.symbol)
+
         return (
             <div className="coin-row-container">
+                
+                <img onClick={() => toogleFavorite(coin.symbol)} src={isFavorite?"fav-on.svg":"fav-off.svg"} alt="favorite toggle icon" />
                 <div className=" coin-number justify-center">
                     {index + 1}
                 </div>
@@ -36,8 +43,10 @@ export default function CoinList({ coins }) {
         <div>
             {coins.length > 0 &&
                 <div className="coin-list-container">
+                    
                     <div className="coin-list">
                         <div className="coin-row-container">
+                            <div> Fav</div>
                             <div className="justify-center"> # </div>
                             <div className="header-coin-name justify-left"> Coin </div>
                             <div> Price </div>
@@ -47,7 +56,7 @@ export default function CoinList({ coins }) {
                         </div>
 
                         {coins.map((coin, index) => {
-                            return <CoinRow key={coin.id} coin={coin} index={index} />
+                            return <CoinRow key={coin.id} coin={coin} index={index} favList={favList} toogleFavorite={toogleFavorite} />
                         })}
                     </div>
                 </div>
