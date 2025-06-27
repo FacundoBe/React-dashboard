@@ -1,15 +1,12 @@
 .wallet-cards-container {
-  background:
-    linear-gradient(152.09deg,
-      rgba(72, 216, 241, 0.2) 20.1%,
-      rgba(69, 154, 214, 0.25) 55.35%);
+  background-color: rgb(17, 16, 19);
   overflow: auto;
   position: relative;
   display: flex;
   flex-direction: column;
   width: 50%;
   padding: 2em 3em;
-  gap: 2em;
+  gap: 2em; 
 }
 
 .wallet-cards-container.disabled {
@@ -41,8 +38,6 @@
   display: none;
 }
 
-
-
 .save-data-container {
   z-index: 100;
   display: flex;
@@ -51,28 +46,70 @@
   align-items: end;
   gap: 2em;
   padding-top: 1.5em;
+  margin: 0 auto;
+}
+
+.data-btn-container {
+  display: flex;
+  cursor: pointer;
 }
 
 .export-data-button,
 .import-data-button {
   padding: 0.4em 1em;
   background-color: transparent;
-  color: var(--almostwhite);
-  border-radius: 4px;
-  border: 1px solid var(--almostwhite);
+  color: var(--grey);
+  border-style: none;
+  display: flex;
+  cursor: pointer;
+  align-items: center;
+}
+
+.save-data-svg {
+  fill-opacity: 0.5;
+  stroke-opacity: 0.5;
+  width: 23px;
+}
+
+.import-data-button:hover .save-data-svg,
+.export-data-button:hover .save-data-svg {
+  fill-opacity: 1;
+  fill: rgb(148, 132, 236);
 }
 
 .export-data-button:hover,
 .import-data-button:hover {
   color: var(--white);
-  border: 1px solid var(--white);
+}
+
+.export-data-button span,
+.import-data-button span {
+  padding-left: 0.5em;
+  position: relative;
+  padding-bottom: 0.3em;
+  padding-right: 0.5em;
+}
+
+.export-data-button span::after,
+.import-data-button span::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 0%;
+  background-color: rgba(255, 255, 255, 0.46);
+  transition: 0.5s;
+}
+
+.export-data-button:hover span::after,
+.import-data-button:hover span::after {
+  width: 100%; 
 }
 
 .import-data-input-hiden{
   display: none;
 }
-
-
 
 @media (max-width: 600px) {
 
