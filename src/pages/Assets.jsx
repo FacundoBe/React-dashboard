@@ -91,8 +91,15 @@ export default function Assets({ assetsList, callSetAssetsList }) {
                     className='new-wallet-button'
                     onClick={() => setIsFormVisible(prev => !prev)}
 
-                >Add Wallet
+                >
+                    <svg width="34" height="34" viewBox="0 0 34 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        {/* <rect x="0.5" y="0.5" width="33" height="33" rx="16.5" stroke="white" /> */}
+                        <rect width="3.1828" height="16.8234" rx="1.5914" transform="matrix(-0.0103079 0.999947 -0.999947 0.0103079 25.3252 15.3246)" fill="#EEAC04" />
+                        <rect width="3.1828" height="16.8234" rx="1.5914" transform="matrix(0.999947 -0.0103079 -0.0103079 0.999947 15.3926 8.60779)" fill="#EEAC04" />
+                    </svg>
+                    <span>Add Wallet</span>
                 </button>
+                
                 {assetsList.length > 0 &&
                     assetsList.map(source =>
                         <WalletCard
@@ -111,7 +118,7 @@ export default function Assets({ assetsList, callSetAssetsList }) {
                         className='export-data-button'
                         onClick={() => handleExportFile()}
                     >
-                        <svg  className='save-data-svg' width="32" height="29" viewBox="0 0 32 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <svg className='save-data-svg' width="32" height="29" viewBox="0 0 32 31" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <line opacity="1" y1="27.5" x2="32" y2="27.5" stroke="white" stroke-width="3" />
                             <path opacity="1" d="M17.0607 0.93934C16.4749 0.353553 15.5251 0.353553 14.9393 0.93934L5.3934 10.4853C4.80761 11.0711 4.80761 12.0208 5.3934 12.6066C5.97919 13.1924 6.92893 13.1924 7.51472 12.6066L16 4.12132L24.4853 12.6066C25.0711 13.1924 26.0208 13.1924 26.6066 12.6066C27.1924 12.0208 27.1924 11.0711 26.6066 10.4853L17.0607 0.93934ZM16 24L17.5 24L17.5 2L16 2L14.5 2L14.5 24L16 24Z" fill="white" />
                         </svg>
