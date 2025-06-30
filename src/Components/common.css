@@ -44,3 +44,7 @@
   background-color: var(--darkgrey);
   margin: 0 auto;
 }
+
+.grey-text{
+  color: var(--darkgrey);
+}

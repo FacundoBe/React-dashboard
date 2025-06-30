@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import { useState } from 'react'
 import './CoinList.css'
+import { Link } from 'react-router'
 
 
 export default function CoinList({ coins, favList, toogleFavorite }) {
-    
+
 
     function CoinRow({ coin, index, favList, toogleFavorite }) {
 
@@ -12,16 +12,17 @@ export default function CoinList({ coins, favList, toogleFavorite }) {
 
         return (
             <div className="coin-row-container">
-                
-                <img onClick={() => toogleFavorite(coin.symbol)} src={isFavorite?"fav-on.svg":"fav-off.svg"} alt="favorite toggle icon" />
+
+                <img onClick={() => toogleFavorite(coin.symbol)} src={isFavorite ? "fav-on.svg" : "fav-off.svg"} alt="favorite toggle icon" />
                 <div className=" coin-number justify-center">
                     {index + 1}
                 </div>
-
-                <div className="coin-name">
-                    <img className="coin-image" src={coin.image} />
-                    <div>{coin.name}</div> <span> {coin.symbol.toUpperCase()}</span>
-                </div>
+                <Link to={`/coins/${coin.symbol.toUpperCase()}`}>
+                    <div className="coin-name">
+                        <img className="coin-image" src={coin.image} />
+                        <div>{coin.name}</div> <span> {coin.symbol.toUpperCase()}</span>
+                    </div>
+                </Link>
                 <div >
                     ${coin.current_price.toFixed(2)}
                 </div>
@@ -43,7 +44,7 @@ export default function CoinList({ coins, favList, toogleFavorite }) {
         <div>
             {coins.length > 0 &&
                 <div className="coin-list-container">
-                    
+
                     <div className="coin-list">
                         <div className="coin-row-container">
                             <div> Fav</div>

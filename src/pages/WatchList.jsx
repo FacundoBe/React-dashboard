@@ -5,3 +5,4 @@ export default function Watchlist (){
         <h2>Watchlist Paga goes here</h2>
     )
 }
+

@@ -7,6 +7,7 @@ import Portfolio from './Components/Portfolio'
 import Assets from './pages/Assets'
 import Markets from './pages/Markets'
 import Watchlist from './pages/WatchList'
+import TradingViewWidget from './Components/TradingViewWidget'
 
 
 function App() {
@@ -59,6 +60,7 @@ function App() {
             <Route index element={<Portfolio assetsList={assetsList} />} />
             <Route path='/assets' element={<Assets assetsList={assetsList} callSetAssetsList={callSetAssetsList} />} />
             <Route path='/markets' element={<Markets favList={favList} toogleFavorite={toogleFavorite} />} />
+            <Route path='/coins/:symbol' element={<TradingViewWidget/>} />
             <Route path='/watchlist' element={<Watchlist />} />
           </Route>
         </Routes>
