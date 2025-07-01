@@ -1,10 +1,12 @@
 // TradingViewWidget.jsx
 import { useEffect, useRef, memo } from 'react';
 import { useParams } from "react-router"
+import './TradingViewWidget.css'
+
 
 function TradingViewWidget() {
     const container = useRef();
-    
+
     let params = useParams()
     console.log(params.symbol)
     useEffect(
@@ -22,7 +24,7 @@ function TradingViewWidget() {
           "gridLineColor": "rgba(242, 242, 242, 0.06)",
           "volumeUpColor": "rgba(34, 171, 148, 0.5)",
           "volumeDownColor": "rgba(247, 82, 95, 0.5)",
-          "backgroundColor": "rgba(10, 12, 10, 0.3)",
+          "backgroundColor": "rgba(0, 0, 0, 0.0)",
           "widgetFontColor": "#DBDBDB",
           "upColor": "#22ab94",
           "downColor": "#f7525f",
@@ -69,10 +71,12 @@ function TradingViewWidget() {
     );
 
     return (
-        <div className="tradingview-widget-container" ref={container} style={{ background: "linear-gradient(152.09deg, rgba(52, 213, 241, 0.2) 2.8%,rgba(0, 0, 0, 0.2) 54.35%), linear-gradient(0deg, #1C1B23, #1C1B23)" }}>
-            <div className="tradingview-widget-container__widget"></div>
-            <div className="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
-                <span className="grey-text">Track all markets on TradingView</span> </a>
+        <div className='tradingview-widget-external-container'>
+            <div className="tradingview-widget-container" ref={container} >
+                <div className="tradingview-widget-container__widget"></div>
+                <div className="tradingview-widget-copyright"><a href="https://www.tradingview.com/" rel="noopener nofollow" target="_blank">
+                    <span className="grey-text">Track all markets on TradingView</span> </a>
+                </div>
             </div>
         </div>
     );
